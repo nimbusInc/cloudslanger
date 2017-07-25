@@ -6,9 +6,13 @@ import Routes from './Routes';
 
 import 'babel-polyfill'
 
+
 ReactDOM.render(
+
   <Provider store={store}>
-    <Routes />
+    <div>
+      <Routes />
+    </div>
   </Provider>,
   document.getElementById('main')
 );
