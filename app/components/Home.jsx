@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => {
+export default () => { // hello react
     return (
         <h1>
             Live, bruh
