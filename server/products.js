@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
-const Product = db.model('prodcut')
+const Product = db.model('product')
 const router = require('express').Router()
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
@@ -14,6 +14,6 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
     })
 
     //Single Route
-    
+
 
 module.exports
