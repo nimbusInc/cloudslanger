@@ -3,11 +3,12 @@
 const {STRING, INTEGER, TEXT} = require('sequelize')
 
 module.exports = db => db.define('products', {
+  // OB/SJB: consider validations
   name: STRING,
   img: STRING,
   description: TEXT,
   quantity: INTEGER,
-  price: INTEGER,
+  price: INTEGER, // OB/SJB: stored in cents, yay! floating point math
 }, {
   getterMethods: {
     price: function() {

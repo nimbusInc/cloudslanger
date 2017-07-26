@@ -1,11 +1,15 @@
 import React from 'react'
 
 export default () => {
-
+    let topSearch;
     return (
         <nav  className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
 
-            <div className="top-search">
+            <div
+                ref={actualDivNode => {
+                    topSearch = actualDivNode;
+                }}
+                className="top-search">
                 <div className="container">
                     <div  className="input-group">
                         <span className="input-group-addon"><i className="fa fa-search"></i></span>
@@ -18,7 +22,8 @@ export default () => {
 
             <div className="container">
 
-                <div onClick={(e) => {$('.top-search').slideToggle()}}  className="attr-nav">
+                {/* OB/SJB: if you need to do something with an actual element (dom node) refs can be useful: https://facebook.github.io/react/docs/refs-and-the-dom.html*/}
+                <div onClick={(e) => {$(topSearch).slideToggle()}}  className="attr-nav">
                     <ul>
                         <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
                         <li>

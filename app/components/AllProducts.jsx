@@ -19,6 +19,7 @@ export default function(props) {
           <Sidebar props={props}/>
           <div className={`col-lg-9`}>
             <ul className={`list-unstyled`}>
+            {/* OB/SJB: dead code should be buried, make sure it doesn't get to master! */}
             {/*
               {props.products && props.products.map(product => {
                 return (

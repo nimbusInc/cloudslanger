@@ -5,6 +5,7 @@ const Product = db.model('products')
 const router = require('express').Router()
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
+// OB/SJB: inconsistent style
 
     //All products route
     router.get('/', (req, res, next) => {
@@ -22,8 +23,8 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
     //Add Prouduct Route
      router.post('/', (req, res, next) => {
-        if(req.body){
-          Product.findById(req.params.id)
+        if(req.body){ // OB/SJB: this is always true, always an empty object
+          Product.findById(req.params.id) // OB/SJB: this does not create product, unfinished code not in master
           .then(product=>res.json(product))
           .catch(next)
         }
@@ -43,8 +44,9 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
        if(unupdatedProduct){
        return unupdatedProduct.update(req.body);
        }
+       // OB/SJB: if unupdatedProduct is falsy, it should throw an error
      })
-     .then(updatedProduct=> res.status(201).json(updatedProduct))
+     .then(updatedProduct=> res.status(201).json(updatedProduct)) // OB/SJB: 201 means "created"
      .catch(next);
    });
 
@@ -57,11 +59,11 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
      })
      .then(()=>{
        res.send({
-         message: 'Product removed'
+         message: 'Product removed' // OB/SJB: perfect place for a 204 status ("empty content")
        });
      })
      .catch((err)=>{
-       res.sendStatus(500);
+       res.sendStatus(500); // OB/SJB: could just be next
      });
    });
 module.exports = router

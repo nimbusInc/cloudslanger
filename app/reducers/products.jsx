@@ -54,8 +54,9 @@ export const fetchProduct = (id) => dispatch => {
 
 // optimistic
 export const removeProduct = id => dispatch => {
-  dispatch(remove(id));
+  dispatch(remove(id)); // OB/SJB: optimistic, neat (or not)!
   axios.delete(`/api/products/${id}`)
+        // OB/SJB: check out https://github.com/tomchentw/react-toastr for error reporting to users
        .catch(err => console.error(`Removing product: ${id} unsuccessful`, err));
 };
 
