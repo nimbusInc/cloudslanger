@@ -4,10 +4,12 @@ const db = require('APP/db'),
   { User, Product, Review, Order, Promise } = db,
   { mapValues } = require('lodash')
 
+
 function seedEverything() {
   const seeded = {
     users: users()
   }
+
 
   seeded.orders = orders(seeded)
   seeded.products = products(seeded)
@@ -17,6 +19,7 @@ function seedEverything() {
 }
 
 const users = seed(User, ({
+
   god: {
     email: 'god@example.com',
     name: 'So many names',
@@ -26,12 +29,14 @@ const users = seed(User, ({
     name: 'Barack Obama',
     email: 'barack@example.gov',
     password_digest: '12334'
+
   },
   truman: {
     name: 'Truman Purnell',
     email: 'truman@example.gov',
     password_digest: '1233j4'
   },
+
   eli: {
     name: 'Eli Mauskopf',
     email: 'eli@head.gov',
@@ -41,6 +46,7 @@ const users = seed(User, ({
 
 
 const products = seed(Product, ({
+
   storm: {
     name: 'storm',
     description: 'its loud',
@@ -71,6 +77,7 @@ const products = seed(Product, ({
 
 }))
 
+
 const orders = seed(Order, ({ users, products }) => ({
   order1: {
     user_id: users.god.id,
@@ -86,7 +93,6 @@ const orders = seed(Order, ({ users, products }) => ({
   }
 }))
 
-
 const reviews = seed(Review, ({ users, products }) => ({
   r1: {
     body: `Actually gentrify etsy tbh biodiesel meh vice street art stumptown photo booth hexagon knausgaard pok pok lyft. Food truck bicycle rights helvetica activated charcoal keffiyeh. Slow-carb fingerstache retro, woke cliche mixtape jean shorts direct trade portland. Literally messenger bag marfa irony master cleanse scenester vice brooklyn lyft. Actually man braid disrupt whatever church-key swag. Meditation bespoke pinterest, food truck normcore pour-over fingerstache fanny pack polaroid kale chips. Health goth kinfolk cred direct trade, lumbersexual butcher listicle. 90's yr truffaut cold-pressed chartreuse affogato vinyl vaporware tbh next level wayfarers. Hella hell of succulents four dollar toast food truck cronut deep v celiac. PBR&B health goth jean shorts cloud bread, +1 kitsch affogato salvia XOXO chillwave. Keytar pinterest paleo marfa skateboard swag, tote bag ethical ugh kickstarter. Cred bespoke skateboard cloud bread put a bird on it pickled.`,
@@ -100,6 +106,7 @@ const reviews = seed(Review, ({ users, products }) => ({
     user_id: users.truman.id,
     product_id: products.rain.id
   },
+
   r3: {
     body: `Ethical kickstarter enamel pin intelligentsia wayfarers, waistcoat taiyaki pok pok selfies mustache. Kogi sriracha pabst, kale chips slow-carb jean shorts humblebrag glossier pok pok chicharrones pinterest PBR&B lomo. Helvetica church-key celiac YOLO vape umami. Banh mi microdosing cold-pressed gentrify hot chicken. Cronut truffaut humblebrag kogi kickstarter shaman shoreditch biodiesel tumblr. Artisan affogato pug tacos. Af tumeric small batch locavore you probably haven't heard of them lyft photo booth microdosing asymmetrical literally pork belly. Kitsch waistcoat semiotics YOLO literally, pickled activated charcoal vexillologist humblebrag mixtape cred everyday carry meditation. VHS affogato taxidermy succulents, venmo occupy austin bespoke keffiyeh flexitarian tattooed pok pok man bun pabst. Cloud bread XOXO before they sold out chambray slow-carb VHS subway tile whatever selfies kitsch yuccie flexitarian. Intelligentsia scenester chia palo santo hammock. Master cleanse pitchfork cornhole meditation selfies scenester franzen waistcoat fixie etsy mixtape wolf schlitz tattooed. Mumblecore hella mustache, cronut wayfarers portland slow-carb. Snackwave asymmetrical ugh single-origin coffee narwhal truffaut selvage pork belly kickstarter 90's iPhone poutine succulents leggings locavore. Ethical letterpress salvia distillery seitan narwhal.`,
     star: 5,
@@ -110,14 +117,12 @@ const reviews = seed(Review, ({ users, products }) => ({
 
 
 
-
 if (module === require.main) {
   db.didSync
     .then(() => db.sync({ force: true }))
     .then(seedEverything)
     .finally(() => process.exit(0))
 }
-
 class BadRow extends Error {
   constructor(key, row, error) {
     super(error)
@@ -125,12 +130,10 @@ class BadRow extends Error {
     this.row = row
     this.key = key
   }
-
   toString() {
     return `[${this.key}] ${this.cause} while creating ${JSON.stringify(this.row, 0, 2)}`
   }
 }
-
 // seed(Model: Sequelize.Model, rows: Function|Object) ->
 //   (others?: {...Function|Object}) -> Promise<Seeded>
 //
@@ -151,10 +154,10 @@ function seed(Model, rows) {
           typeof other === 'function' ? other() : other)
       ).then(rows)
     }
-
     return Promise.resolve(rows)
       .then(rows => Promise.props(
         Object.keys(rows)
+
         .map(key => {
           const row = rows[key]
           return {
@@ -178,5 +181,6 @@ function seed(Model, rows) {
       })
   }
 }
+
 
 module.exports = Object.assign(seed, { users, products, reviews, orders })
