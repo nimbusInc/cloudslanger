@@ -19,33 +19,33 @@ function SideBar(props){
             <div class="input-group-addon">
               <input type="checkbox" aria-label="...">
                 <span>White</span>//A color
-              </div>
+              </input>
             <div class="input-group-addon">
               <input type="checkbox" aria-label="...">
                 <span>Grey</span>//B color
-              </div>
+              </input>
               <div class="input-group-addon">
                 <input type="checkbox" aria-label="...">
                   <span>Avocado</span>//C color
-                </div>
-          </div><!-- /input-group -->
+                </input>
+          </div>
       </div>
           <h5>Locations</h5>
           <hr/>
           <div class="input-group-addon">
             <input type="checkbox" aria-label="...">
               <span>Americas</span>//A Area
-            </div>
+            </input>
           <div class="input-group-addon">
-            <input type="checkbox" aria-label="...">
+            <input type="checkbox" aria-label="..."></input>
               <span> Eurasia</span>//B Area
             </div>
             <div class="input-group-addon">
-              <input type="checkbox" aria-label="...">
+              <input type="checkbox" aria-label="..."></input>
                 <span>Austroasia</span>//C Area
               </div>
-          </div><!-- /input-group -->
-      </div><!-- /.row -->
+          </div>
+      </div>
     </div>
   )
 }

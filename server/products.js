@@ -68,3 +68,4 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 
 module.exports = router
+
