@@ -3,7 +3,6 @@
 // Require our models. Running each module registers the model into sequelize
 // so any other part of the application could call sequelize.model('User')
 // to get access to the User model.
-
 const app = require('APP')
     , debug = require('debug')(`${app.name}:models`)
     // Our model files export functions that take a database and return
@@ -15,8 +14,9 @@ const app = require('APP')
     , metaModels = {
       OAuth: require('./oauth'),
       User: require('./user'),
-      Thing: require('./thing'),
-      Favorite: require('./favorite'),
+      Product: require('./product'),
+      Review: require('./review'),
+      Order: require('./order')
       // ---------- Add new models here ----------
     }
     , {mapValues} = require('lodash')
