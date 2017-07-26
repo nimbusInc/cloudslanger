@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Thumbnail from './Thumbnail.jsx'
-import Sidebar from './Sidebar.jsx'
-import {connect} from 'react-redux'
+import React from "react";
+import { Link } from "react-router-dom";
+import Thumbnail from "./Thumbnail.jsx";
+import Sidebar from "./Sidebar.jsx";
+import { connect } from "react-redux";
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -12,38 +12,12 @@ import {connect} from 'react-redux'
   unordered list
 */
 
-const AllProducts = function({allProducts}) {
-  return (
+console.log('here?');
+const AllProducts = function({ allProducts }) {
+  console.log('WHAT!!');
+  return <h1>hi?</h1>;
+};
 
-      <div className={`container`}>
-      <h1> am i here?!?</h1>
-        <div className={`row`}>
-          <Sidebar />
-          <div className={`col-lg-9`}>
-            <ul className={`list-unstyled`}>
-            {
-              {allProducts && allProducts.map(product => {
-                return (
-                  <div key={product.id} className={`col-lg-4`}>
-                    <figure className={`highlight-default`}>
-                      <li>
-                        <Thumbnail {...product} />
-                      </li>
-                    </figure>
-                  </div>
-                )
-              })}
+const mapProps = ({ products }) => ({ allProducts: products });
 
-            }
-
-            </ul>
-          </div>
-        </div>
-      </div>
-
-  )
-}
-
-const mapProps = ({products})=>({allProducts:products})
-
-export default connect(mapProps)(AllProducts)
+export default connect(mapProps)(AllProducts);
