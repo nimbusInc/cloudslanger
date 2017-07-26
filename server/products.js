@@ -64,7 +64,4 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
        res.sendStatus(500);
      });
    });
-
-
-
 module.exports = router
