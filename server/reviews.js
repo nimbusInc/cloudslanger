@@ -1,19 +1,18 @@
 'use strict'
 
 const db = require('APP/db')
-const Product = db.model('prodcut')
+const Review = db.model('review')
 const router = require('express').Router()
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 
-    //All products route
+    //All reviews route
     router.get('/', (req, res, next) => {
-        Product.findAll()
-        .then(products => res.json(products))
+        Review.findAll()
+        .then(reviews => res.json(reviews))
         .catch(next)
     })
 
-    //Single Route
-    
+    //
 
-module.exports
+module.exports = router
