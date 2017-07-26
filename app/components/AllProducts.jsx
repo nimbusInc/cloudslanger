@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Thumbnail from "./Thumbnail.jsx";
-import Sidebar from "./Sidebar.jsx";
-import { connect } from "react-redux";
+import { connect     } from "react-redux";
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -12,9 +11,7 @@ import { connect } from "react-redux";
   unordered list
 */
 
-console.log('here?');
 const AllProducts = function({ allProducts }) {
-  console.log('WHAT!!');
   return <h1>hi?</h1>;
 };
 

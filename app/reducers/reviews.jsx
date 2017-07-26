@@ -28,9 +28,6 @@ export default function reducer (reviews = [], action) {
     case REMOVE:
       return reviews.filter(review => review.id !== action.id);
 
-    case REMOVE_USER:
-      return reviews.filter(review => review.author_id !== action.id);
-
     case UPDATE:
       return reviews.map(review => (
         action.review.id === review.id ? action.review : review

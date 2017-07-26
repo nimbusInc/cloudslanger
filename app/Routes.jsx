@@ -5,12 +5,12 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 console.log('foo');
 import AllProducts from "./components/AllProducts";
-import { retrieveProducts } from "/reducers/products";
+import { retrieveProducts } from "./reducers/products";
 import Jumbotron from './components/Jumbotron'
 
 class Routes extends Component {
     componentDidMount() {
-        this.props.fetchInitialData()
+        // this.props.fetchInitialData()
     }
 
     render() {
