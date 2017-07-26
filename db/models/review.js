@@ -2,7 +2,7 @@
 
 const {STRING} = require('sequelize')
 
-module.exports = db => db.define('review', {
+module.exports = db => db.define('reviews', {
   body: STRING
 })
 

@@ -2,7 +2,7 @@
 
 const {STRING, INTEGER} = require('sequelize')
 
-module.exports = db => db.define('things', {
+module.exports = db => db.define('products', {
   name: STRING,
   img: STRING,
   description: STRING,
@@ -16,6 +16,6 @@ module.exports = db => db.define('things', {
   }
 })
 
-module.exports.associations = (Thing, {User, Favorite}) => {
-  Thing.belongsToMany(User, {as: 'lovers', through: Favorite})
+module.exports.associations = (Product, {Order}) => {
+  Product.belongsToMany(Order, {through: 'OrderProduct'})
 }
