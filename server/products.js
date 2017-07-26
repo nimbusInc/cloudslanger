@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db')
-const Product = db.model('prodcut')
+const Product = db.model('product')
 const router = require('express').Router()
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
@@ -13,7 +13,27 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
         .catch(next)
     })
 
-    //Single Route
+    //Single Product Route
+    router.get('/:id', (req, res, next) => {
+        Product.findById(req.params.id)
+        .then(product=>res.json(product))
+        .catch(next)
+    })
+
+    //Add Prouduct Route
+     router.post('/', (req, res, next) => {
+        Product.findById(req.params.id)
+        .then(product=>res.json(product))
+        .catch(next)
+    })
+
+    //Update Product Route
+     router.get('/:id', (req, res, next) => {
+        Product.findById(req.params.id)
+        .then(product=>res.json(product))
+        .catch(next)
+    })
     
 
-module.exports
+
+module.exports = router
