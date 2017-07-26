@@ -1,9 +1,10 @@
 'use strict'
 
-const {STRING} = require('sequelize')
+const {TEXT, INTEGER} = require('sequelize')
 
 module.exports = db => db.define('reviews', {
-  body: STRING
+  body: TEXT,
+  star: INTEGER
 })
 
 module.exports.associations = (Review, {Product, User}) => {
