@@ -16,7 +16,7 @@ export default () => {
             </div>
 
 
-            <div   className="container">
+            <div className="container">
 
                 <div onClick={(e) => {$('.top-search').slideToggle()}}  className="attr-nav">
                     <ul>

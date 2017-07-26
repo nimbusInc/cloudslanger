@@ -9,7 +9,7 @@ class Routes extends Component {
         return (
 
             <Router>
-                <div>
+                <div className="culmn">
                     <Navbar />
                     <Route exact path="/" component={Home} />
                 </div>

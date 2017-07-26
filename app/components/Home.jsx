@@ -1,9 +1,9 @@
 import React from 'react'
+import Splash from './Splash'
 
-export default () => { // hello react
+
+export default () => { 
     return (
-        <h1>
-            Live, bruh
-        </h1>   
+       <Splash />
     )
 }

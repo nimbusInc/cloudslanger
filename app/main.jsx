@@ -10,9 +10,7 @@ import 'babel-polyfill'
 ReactDOM.render(
 
   <Provider store={store}>
-    <div>
       <Routes />
-    </div>
   </Provider>,
   document.getElementById('main')
 );

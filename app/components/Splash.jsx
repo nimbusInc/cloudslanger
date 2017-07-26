@@ -1,40 +1,30 @@
+import React from 'react'
+
 export default () => {
 
     return (
 
-        <div class="container">
-            <div class="row">
-                <div class="main_feature">
 
-                    <div class="col-md-6 m-top-120">
+        <section id="hello" className="home bg-mega">
+            <div className="overlay"></div>
+            <div className="container">
+                <div className="row">
+                    <div className="main_home text-center">
+                        <div className="home_text">
+                            <h4 className="text-white text-uppercase">a new creative studio</h4>
+                            <h1 className="text-white text-uppercase">good design is always in season</h1>
 
-                        <div class="head_title">
-                            <h2>From Ocean</h2>
-                            <h5><em>Pouseidon brings the waves to somewhere so far,
-                                            with beautiful & elegant</em></h5>
-                            <div class="separator_left"></div>
-                        </div>
+                            <div className="separator"></div>
 
-
-                        <div class="feature_content wow fadeIn m-top-40">
-                            <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere
-                                me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate velit
-                                esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
-                                et iusto odio dignissim qui blandit praesent luptatum</p>
-
-                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-                                illum dolore feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim</p>
-
-                            <div class="feature_btns m-top-30">
-                                <a href="" class="btn btn-default text-uppercase">more about us <i class="fa fa-long-arrow-right"></i></a>
-                            </div>
+                            <h5 className=" text-uppercase text-white"><em>One day, the dream will come true with lorem ipsum dolor sit amet,
+                                        consectetuer adipiscing elit, nummy nibh euismod tincidunt laoreet.</em></h5>
                         </div>
                     </div>
-
                 </div>
             </div>
+        </section>
 
-        </div>
+
     )
 
 }
