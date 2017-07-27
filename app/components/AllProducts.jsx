@@ -17,7 +17,7 @@ const mapProps = ({ products }) => ({ allProducts: products });
 
 
 
-function Allproducts(props) {
+function AllProducts(props) {
     return (
       <div className={`container`}>
         <div className={`row`}>
