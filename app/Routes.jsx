@@ -10,7 +10,7 @@ import Jumbotron from './components/Jumbotron'
 
 class Routes extends Component {
     componentDidMount() {
-        // this.props.fetchInitialData()
+        this.props.fetchInitialData()
     }
 
     render() {
