@@ -1,22 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function(props) {
-    return (
-    <Link to= 'Placeholder'>
+export default function(product) {
+  return (
+    <Link to={'/'}>
       <div className={`container`}>
         <div className={`col-lg-12`}>
-          <img src= 'Placeholder' />
+          <img src={product.img} />
+
         </div>
         <p className="lead">
-          {props.productName}
+          {product.name}
         </p>
         <hr />
         <p>
-          {props.productDescription}
+          {product.description}
         </p>
         <p>
-          ${props.price}
+          ${product.price}
         </p>
       </div>
     </Link>

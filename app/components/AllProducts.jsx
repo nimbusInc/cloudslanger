@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Thumbnail from './Thumbnail.jsx'
-import Sidebar from './Sidebar.jsx'
+import React from "react";
+import { Link } from "react-router-dom";
+import Thumbnail from "./Thumbnail.jsx";
+import { connect     } from "react-redux";
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -11,7 +11,13 @@ import Sidebar from './Sidebar.jsx'
   unordered list
 */
 
-export default function Allproducts(props) {
+
+
+const mapProps = ({ products }) => ({ allProducts: products });
+
+
+
+function Allproducts(props) {
     return (
       <div className={`container`}>
         <div className={`row`}>
@@ -25,3 +31,5 @@ export default function Allproducts(props) {
 
     )
 }
+
+export default connect(mapProps)(AllProducts);

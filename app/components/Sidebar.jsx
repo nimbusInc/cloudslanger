@@ -1,7 +1,10 @@
 import React from 'react'
 
-function SideBar(props) {
-    return (
+export default function SideBar(props){
+
+    return(
+    <div>
+
       <div className="container">
         <div className="row">
           <h3>Clouds</h3> // Clouds can change if need be

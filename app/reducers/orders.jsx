@@ -28,9 +28,6 @@ export default function reducer (orders = [], action) {
     case REMOVE:
       return orders.filter(order => order.id !== action.id);
 
-    case REMOVE_USER:
-      return orders.filter(order => order.author_id !== action.id);
-
     case UPDATE:
       return orders.map(order => (
         action.order.id === order.id ? action.order : order
