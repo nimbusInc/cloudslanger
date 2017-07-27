@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function(product) {
   return (
@@ -7,6 +7,7 @@ export default function(product) {
       <div className={`container`}>
         <div className={`col-lg-12`}>
           <img src={product.img} />
+
         </div>
         <p className="lead">
           {product.name}
@@ -20,5 +21,5 @@ export default function(product) {
         </p>
       </div>
     </Link>
-  );
+  )
 }

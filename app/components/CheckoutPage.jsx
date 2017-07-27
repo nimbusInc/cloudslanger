@@ -1,10 +1,10 @@
+import React from 'react'
 
-
-function CheckoutPage(props){
-    return(
-        <div className=container>
+function CheckoutPage(props) {
+    return (
+        <div className= "container">
             <div className="row">
-                <h3>Clouds</h3> // Clouds can change if need be
+                <h3>Clouds</h3>
                     <hr/>
             </div>
         <div className="row">

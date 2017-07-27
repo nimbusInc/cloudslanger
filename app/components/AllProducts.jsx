@@ -11,10 +11,25 @@ import { connect     } from "react-redux";
   unordered list
 */
 
-const AllProducts = function({ allProducts }) {
-  return <h1>hi?</h1>;
-};
+
 
 const mapProps = ({ products }) => ({ allProducts: products });
+
+
+
+function Allproducts(props) {
+    return (
+      <div className={`container`}>
+        <div className={`row`}>
+          <Sidebar props={props}/>
+          <div className={`col-lg-9`}>
+            <ul className={`list-unstyled`}>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    )
+}
 
 export default connect(mapProps)(AllProducts);

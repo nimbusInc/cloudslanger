@@ -1,7 +1,6 @@
 import React from 'react'
 
-export default () => {
-
+export default function jumbotron(props) {
     return (
         <div class="jumbotron">
             <h1>Hello, world!</h1>
@@ -9,5 +8,4 @@ export default () => {
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
         </div>
     )
-
 }
