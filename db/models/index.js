@@ -12,11 +12,11 @@ const app = require('APP')
     // This lets us avoid cyclic dependencies, which can be hard to reason
     // about.
     , metaModels = {
-      OAuth: require('./oauth'),
-      User: require('./user'),
-      Product: require('./product'),
-      Review: require('./review'),
-      Order: require('./order')
+        OAuth: require('./oauth'),
+        User: require('./user'),
+        Product: require('./product'),
+        Review: require('./review'),
+        Order: require('./order')
       // ---------- Add new models here ----------
     }
     , {mapValues} = require('lodash')
@@ -24,7 +24,7 @@ const app = require('APP')
 module.exports = db => {
   // Create actual model classes by calling each meta model with the
   // database.
-  const models = mapValues(metaModels, defineModel => defineModel(db))
+    const models = mapValues(metaModels, defineModel => defineModel(db))
 
   /*
   At this point, all our models have been created. We just need to
@@ -42,17 +42,17 @@ module.exports = db => {
 
   https://github.com/sequelize/express-example#sequelize-setup
   */
-  Object.keys(metaModels)
+    Object.keys(metaModels)
     .forEach(name => {
-      const {associations} = metaModels[name]
-      if (typeof associations === 'function') {
-        debug('associating model %s', name)
+        const {associations} = metaModels[name]
+        if (typeof associations === 'function') {
+            debug('associating model %s', name)
         // Metamodel::associations(self: Model, others: {[name: String]: Model}) -> ()
         //
         // Associate self with others.
-        associations.call(metaModels[name], models[name], models)
-      }
+            associations.call(metaModels[name], models[name], models)
+        }
     })
 
-  return models
+    return models
 }
