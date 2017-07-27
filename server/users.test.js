@@ -6,10 +6,10 @@ const request = require('supertest')
 /* global describe it before afterEach */
 
 describe('/api/users', () => {
-  before('Await database sync', () => db.didSync)
-  afterEach('Clear the tables', () => db.truncate({ cascade: true }))
+    before('Await database sync', () => db.didSync)
+    afterEach('Clear the tables', () => db.truncate({ cascade: true }))
 
-  describe('GET /:id', () =>
+    describe('GET /:id', () =>
     describe('when not logged in', () =>
       it('fails with a 401 (Unauthorized)', () =>
         request(app)
@@ -17,27 +17,27 @@ describe('/api/users', () => {
           .expect(401)
       )))
 
-  describe('POST', () =>
+    describe('POST', () =>
     describe('when not logged in', () => {
-      it('creates a user', () =>
+        it('creates a user', () =>
         request(app)
           .post('/api/users')
           .send({
-            email: 'beth@secrets.org',
-            password: '12345'
+              email: 'beth@secrets.org',
+              password: '12345'
           })
           .expect(201))
 
-      it('redirects to the user it just made', () =>
+        it('redirects to the user it just made', () =>
         request(app)
           .post('/api/users')
           .send({
-            email: 'eve@interloper.com',
-            password: '23456',
+              email: 'eve@interloper.com',
+              password: '23456',
           })
           .redirects(1)
           .then(res => expect(res.body).to.contain({
-            email: 'eve@interloper.com'
+              email: 'eve@interloper.com'
           })))
     }))
 })
