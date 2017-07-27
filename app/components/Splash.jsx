@@ -1,10 +1,7 @@
 import React from 'react'
 
-export default () => {
-
+export default function splash(props) {
     return (
-
-
         <section id="hello" className="home bg-mega">
             <div className="overlay"></div>
             <div className="container">
@@ -23,8 +20,5 @@ export default () => {
                 </div>
             </div>
         </section>
-
-
     )
-
 }

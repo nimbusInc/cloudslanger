@@ -11,35 +11,17 @@ import Sidebar from './Sidebar.jsx'
   unordered list
 */
 
-export default function(props) {
-  return (
-
+export default function Allproducts(props) {
+    return (
       <div className={`container`}>
         <div className={`row`}>
           <Sidebar props={props}/>
           <div className={`col-lg-9`}>
             <ul className={`list-unstyled`}>
-            {/*
-              {props.products && props.products.map(product => {
-                return (
-                  <div key={product.id} className={`col-lg-4`}>
-                    <figure className={`highlight-default`}>
-                      <li>
-                        <Thumbnail {...product} />
-                      </li>
-                    </figure>
-                  </div>
-                )
-              })}
-
-            */}
-              <Thumbnail />
-              <Thumbnail />
-              <Thumbnail />
             </ul>
           </div>
         </div>
       </div>
 
-  )
+    )
 }
