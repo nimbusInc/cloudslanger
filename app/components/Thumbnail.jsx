@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function(props) {
-  return (
-    <Link to={TKTKTKT}>
+    return (
+    <Link to= 'Placeholder'>
       <div className={`container`}>
         <div className={`col-lg-12`}>
-          <img src={TKTKTKT} />
+          <img src= 'Placeholder' />
         </div>
         <p className="lead">
           {props.productName}
@@ -20,5 +20,5 @@ export default function(props) {
         </p>
       </div>
     </Link>
-  );
+  )
 }

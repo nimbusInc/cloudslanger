@@ -1,6 +1,7 @@
-function SideBar(props){
+import React from 'react'
 
-    return(
+function SideBar(props) {
+    return (
       <div className="container">
         <div className="row">
           <h3>Clouds</h3> // Clouds can change if need be
@@ -47,5 +48,7 @@ function SideBar(props){
           </div>
       </div>
     </div>
-  )
+    </div>
+    </div>
+    )
 }
