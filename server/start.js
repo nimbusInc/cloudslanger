@@ -39,7 +39,10 @@ module.exports = app
       name: 'session',
       keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
   }))
-
+  .use((req,res,next) => {
+      console.log('session',req.session)
+      next()
+  })
   // Body parsing middleware
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
@@ -64,10 +67,8 @@ module.exports = app
           next()
       }
   })
-
   // Send index.html for anything else.
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
-
   // Error middleware interceptor, delegates to same handler Express uses.
   // https://github.com/expressjs/express/blob/master/lib/application.js#L162
   // https://github.com/pillarjs/finalhandler/blob/master/index.js#L172
