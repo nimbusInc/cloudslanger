@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {logout} from '../reducers/user'
 
-const Navbar = ({user}) => {
+const Navbar = ({user, logout}) => {
     return (
-            
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
 
             <div className="top-search">
@@ -34,7 +34,7 @@ const Navbar = ({user}) => {
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
                         <li>{ user.info && <Link to="/">profile</Link> }</li>
-                        <li>{ user.info && <Link to="/">logout</Link> }</li>
+                        <li onClick={(e) => { logout }}>{ user.info && <Link to="/">logout</Link> }</li>
                         <li>{ !user.info && <Link to="/login">login</Link>}</li>
                     </ul>
                 </div>
@@ -42,11 +42,11 @@ const Navbar = ({user}) => {
             </div>
 
         </nav>
-        
-)
+
+    )
 }
 
 const mapProps = ({user}) => ({ user })
-const mapDispatch = null
+const mapDispatch = ({logout}) => ({ logout })
 
 export default connect(mapProps, mapDispatch)(Navbar)
