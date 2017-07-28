@@ -7,6 +7,7 @@ console.log('foo')
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import Thumbnail from './components/Thumbnail'
+import Login from './components/Login'
 
 
 class Routes extends Component {
@@ -20,9 +21,10 @@ class Routes extends Component {
                 <div className='culmn'>
                     {''}{/* this is the way god wants it... */}
                     <Navbar />
+                    <Route exact path='/thumbnail' component={Thumbnail} />
+                    <Route exact path='/products' component={AllProducts} />
+                    <Route exact path='/login' component={Login} />
                     <Route exact path='/' component={Home} />
-                    <Route path='/thumbnail' component={Thumbnail} />
-                    <Route path='/products' component={AllProducts} />
                 </div>
             </Router>
         )

@@ -30,9 +30,7 @@ export default () => (
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li><Link to="">our models</Link></li>
-                        <li><Link to="">blog</Link></li>
-                        <li><Link to="">contact</Link></li>
+                        <li><Link to="/login">login</Link></li>
                     </ul>
                 </div>
 
