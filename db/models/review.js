@@ -3,8 +3,14 @@
 const {TEXT, INTEGER} = require('sequelize')
 
 module.exports = db => db.define('reviews', {
-    body: TEXT,
-    star: INTEGER
+    body: {
+        type: TEXT,
+        allowNull: false
+    },
+    star: {
+        type: INTEGER,
+        allowNull: false
+    }
 })
 
 module.exports.associations = (Review, {Product, User}) => {
