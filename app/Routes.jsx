@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import Thumbnail from './components/Thumbnail'
+import Footer from './components/Footer'
 
 class Routes extends Component {
     componentDidMount() {
@@ -21,6 +22,7 @@ class Routes extends Component {
                     <Route exact path='/' component={Home} />
                     <Route path='/thumbnail' component={Thumbnail} />
                     <Route path='/products' component={AllProducts} />
+                <Footer />
                 </div>
             </Router>
         )
