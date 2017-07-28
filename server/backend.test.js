@@ -38,7 +38,7 @@ describe('The User Model', () => {
             return user.validate()
             .then(function(result) {
                 expect(result).to.be.an.instanceOf(Error)
-                expect(result.message).to.contain('Validation error')
+                expect(result.message).to.contain('notNull Violation')
             })
         })
 
@@ -48,7 +48,7 @@ describe('The User Model', () => {
             return user.validate()
             .then(function(result) {
                 expect(result).to.be.an.instanceOf(Error)
-                expect(result.message).to.contain('Validation error')
+                expect(result.message).to.contain('notNull Violation')
             })
         })
     })
