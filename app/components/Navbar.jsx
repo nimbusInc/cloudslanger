@@ -2,25 +2,14 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-<<<<<<< HEAD
-export default () => (
-    <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
-=======
+
 const Navbar = ({user}) => {
 
     return (
-            
-        <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
->>>>>>> origin/master
 
+        <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
         <div className="top-search">
             <div className="container">
-<<<<<<< HEAD
-                <div className="input-group">
-                    <span className="input-group-addon"><i className="fa fa-search"></i></span>
-                    <input type="text" className="form-control" placeholder="Search"></input>
-                    <span className="input-group-addon close-search"><i className="fa fa-times"></i></span>
-=======
                 <div onClick={(e) => { $('.top-search').slideToggle() }} className="attr-nav">
                     <ul>
                         <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
@@ -38,13 +27,12 @@ const Navbar = ({user}) => {
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
                         <li>
-                            { user 
+                            { user
                                 ? <Link to="/">profile</Link>
                                 : <Link to="/login">login</Link>
                             }
                         </li>
                     </ul>
->>>>>>> origin/master
                 </div>
             </div>
         </div>
@@ -70,15 +58,8 @@ const Navbar = ({user}) => {
                     <li><Link to="">contact</Link></li>
                 </ul>
             </div>
-
-<<<<<<< HEAD
-        </div>
-
-    </nav>
-)
-=======
         </nav>
-        
+
 )
 }
 
@@ -86,4 +67,3 @@ const mapProps = ({auth}) => ({ user: auth })
 const mapDispatch = null
 
 export default connect(mapProps, mapDispatch)(Navbar)
->>>>>>> origin/master
