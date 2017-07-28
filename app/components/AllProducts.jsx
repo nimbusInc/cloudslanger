@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Thumbnail from './Thumbnail.jsx'
 import Sidebar from './Sidebar.jsx'
 import {connect} from 'react-redux'
-import {products} from './reducers/products'
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -14,37 +13,34 @@ import {products} from './reducers/products'
 */
 
 function AllProducts(props) {
-  return (
-      <div className={`container`}>
-        <div className={`row`}>
-          <Sidebar className={'col-lg-3 col-md-4'} props={props}/>
-          <div className={`col-lg-9`}>
-            <ul className={`list-unstyled`}>
-              {props.products.map((product) => {
-                  return (
-                 <li className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={ product.id }>
-                  <NavLink to={`/products/${product.id}`} className="thumbnail">
-                <img src={product.img} />
-                <div className="caption">
-                  <h5>
-                    <span>{product.name}</span>
-                    <hr/>
-                    <p>{product.description}</p>
-                  </h5>
-                  </div>
-              </NavLink>
-                  </li>
-                  )
-              })}
-            </ul>
-          </div>
+    return (
+        <div className={`container`}>
+            <div className={`row`}>
+                <div className={`col-lg-9`}>
+                    <ul className={`list-unstyled`}>
+                        {props.products.map((product) => (
+                            <li className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={ product.id }>
+                                <NavLink to={`/products/${product.id}`} className="thumbnail">
+                                    <img src={product.img} />
+                                    <div className="caption">
+                                        <h5>
+                                            <span>{product.name}</span>
+                                            <hr/>
+                                            <p>{product.description}</p>
+                                        </h5>
+                                    </div>
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
 
-  )
+    )
 }
-const mapProps= (state) => {
-    products:state.products
-}
+const mapProps= (state) => ({
+    products: state.products
+})
 
 export default connect(mapProps)(AllProducts)

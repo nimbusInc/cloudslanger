@@ -8,8 +8,8 @@ import 'babel-polyfill'
 
 ReactDOM.render(
 
-  <Provider store={store}>
-      <Routes />
-  </Provider>,
-  document.getElementById('main')
+    <Provider store={store}>
+        <Routes />
+    </Provider>,
+    document.getElementById('main')
 )

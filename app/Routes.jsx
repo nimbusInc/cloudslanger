@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
-console.log('foo')
 import AllProducts from './components/AllProducts'
 import {retrieveProducts} from './reducers/products'
 import Jumbotron from './components/Jumbotron'
