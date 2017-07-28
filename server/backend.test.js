@@ -1,8 +1,8 @@
 'use strict'
 
-const db = require('./app/db')
+const db = require('../db')
 , { User, Product, Review, Order } = db
-, {expect, describe, before, beforeEach, afterEach, it} = require('chai')
+, {expect} = require('chai')
 
 describe('The User Model', () => {
     before(function() {
