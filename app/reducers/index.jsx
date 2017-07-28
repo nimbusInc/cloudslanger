@@ -4,7 +4,7 @@ import orders from './orders'
 import reviews from './reviews'
 
 const rootReducer = combineReducers({
-    auth: require('./auth').default,
+    user: require('./user').default,
     products,
     orders,
     reviews

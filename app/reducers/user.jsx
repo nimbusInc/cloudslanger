@@ -2,7 +2,8 @@ import axios from 'axios'
 
 const reducer = (state={user: {}, cart: {}}, action) => {
     const newState = Object.assign({}, state)
-    
+    const cart = newState.cart
+    const item = action.item
     switch (action.type) {
       
       case AUTHENTICATED:
@@ -10,20 +11,16 @@ const reducer = (state={user: {}, cart: {}}, action) => {
           return newState
 
       case ADD_TO_CART:
-          const cart = newState.cart
-          const item = action.item
           cart[item.id] 
           ? cart[item.id] += item.quantity
           : cart[item.id] = item.quantity
           return newState
 
       case REMOVE_FROM_CART:
-          const cart = newState.cart
           cart[action.item.id] = null
           return newState
 
       case UPDATE_ITEM:
-          const cart = newState.cart
           cart[action.item.id] = action.item.newQuantity
           return newState
       
