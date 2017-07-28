@@ -3,17 +3,36 @@
 const {STRING, INTEGER, TEXT} = require('sequelize')
 
 module.exports = db => db.define('products', {
-    name: STRING,
-    img: STRING,
-    description: TEXT,
-    quantity: INTEGER,
-    price: INTEGER,
+    name: {
+        type: STRING,
+        allowNull: false
+    },
+    img: {
+        type: STRING,
+        allowNull: false
+    },
+    description: {
+        type: TEXT,
+        allowNull: false
+    },
+    quantity: {
+        type: INTEGER,
+        allowNull: false
+    },
+    price: {
+        type: INTEGER,
+        allowNull: false
+    },
+    category: {
+        type: STRING,
+        allowNull: false
+    }
 }, {
     getterMethods: {
         price: function() {
             return (this.getDataValue('price') / 100).toFixed(2)
         }
-    }
+    },
 })
 
 module.exports.associations = (Product, {Order}) => {
