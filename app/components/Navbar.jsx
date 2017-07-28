@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 const Navbar = ({user}) => {
-
     return (
             
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
@@ -34,12 +33,9 @@ const Navbar = ({user}) => {
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li>
-                            { user 
-                                ? <Link to="/">profile</Link>
-                                : <Link to="/login">login</Link>
-                            }
-                        </li>
+                        <li>{ user.info && <Link to="/">profile</Link> }</li>
+                        <li>{ user.info && <Link to="/">logout</Link> }</li>
+                        <li>{ !user.info && <Link to="/login">login</Link>}</li>
                     </ul>
                 </div>
 
@@ -50,7 +46,7 @@ const Navbar = ({user}) => {
 )
 }
 
-const mapProps = ({auth}) => ({ user: auth })
+const mapProps = ({user}) => ({ user })
 const mapDispatch = null
 
 export default connect(mapProps, mapDispatch)(Navbar)

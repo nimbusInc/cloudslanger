@@ -46,7 +46,7 @@ export const Login = ({ login }) => (
 
 )
 
-import {login} from 'APP/app/reducers/auth'
+import {login} from 'APP/app/reducers/user'
 import {connect} from 'react-redux'
 
 export default connect(

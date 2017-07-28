@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const reducer = (state={user: {}, cart: {}}, action) => {
+const reducer = (state={info: {}, cart: {}}, action) => {
     const newState = Object.assign({}, state)
     const cart = newState.cart
     const item = action.item
     switch (action.type) {
       
       case AUTHENTICATED:
-          newState.user = action.user
+          newState.info = action.info
           return newState
 
       case ADD_TO_CART:
@@ -51,8 +51,8 @@ const CHECKOUT = 'co'
 
 
 const AUTHENTICATED = 'AUTHENTICATED'
-export const authenticated = user => ({
-    type: AUTHENTICATED, user
+export const authenticated = info => ({
+    type: AUTHENTICATED, info
 })
 
 export const login = (username, password) =>
