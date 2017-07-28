@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default () => (
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
@@ -27,11 +28,11 @@ export default () => (
                 </div>
                 <div className="collapse navbar-collapse" id="navbar-menu">
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li><a href="">home</a></li>
-                        <li><a href="">about</a></li>
-                        <li><a href="">our models</a></li>
-                        <li><a href="">blog</a></li>
-                        <li><a href="">contact</a></li>
+                        <li><Link to="/">home</Link></li>
+                        <li><Link to="/products">products</Link></li>
+                        <li><Link to="">our models</Link></li>
+                        <li><Link to="">blog</Link></li>
+                        <li><Link to="">contact</Link></li>
                     </ul>
                 </div>
 
