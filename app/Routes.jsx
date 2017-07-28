@@ -5,12 +5,14 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
+import {create} from './reducers/categories'
 import Thumbnail from './components/Thumbnail'
 import Footer from './components/Footer'
 
 class Routes extends Component {
     componentDidMount() {
         this.props.fetchInitialData()
+        this.props.products.map((product) => this.props.fetchCategories(product.category))
     }
 
     render() {
@@ -22,17 +24,22 @@ class Routes extends Component {
                     <Route exact path='/' component={Home} />
                     <Route path='/thumbnail' component={Thumbnail} />
                     <Route path='/products' component={AllProducts} />
-                <Footer />
+                    <Footer />
                 </div>
             </Router>
         )
     }
 }
-
+const mapProps= (state) => ({
+    products: state.products
+})
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchProducts())
+    },
+    fetchCategories: (category) => {
+        dispatch(create(category))
     }
 })
 
-export default connect(null, mapDispatch)(Routes)
+export default connect(mapProps, mapDispatch)(Routes)

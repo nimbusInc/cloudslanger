@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Thumbnail from './Thumbnail.jsx'
-import Sidebar from './Sidebar.jsx'
+import Categories from './AllProductsCategoryFilter.jsx'
 import {connect} from 'react-redux'
 
 /* EXPLANATION
@@ -25,6 +25,7 @@ function AllProducts(props) {
                                         <h2>Selection</h2>
                                         <h5><em>Get your head in the clouds</em></h5>
                                         <div className="separator_left"></div>
+                                        <Categories/>
                                     </div>
                                 </div>
                             </div>
