@@ -14,31 +14,60 @@ import {connect} from 'react-redux'
 
 function AllProducts(props) {
     return (
-        <div className={`container`}>
-            <div className={`row`}>
-                <div className={`col-lg-9`}>
-                    <ul className={`list-unstyled`}>
-                        {props.products.map((product) => (
-                            <li className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={ product.id }>
-                                <NavLink to={`/products/${product.id}`} className="thumbnail">
-                                    <img src={product.img} />
-                                    <div className="caption">
-                                        <h5>
-                                            <span>{product.name}</span>
-                                            <hr/>
-                                            <p>{product.description}</p>
-                                        </h5>
+        <div>
+            <Sidebar/>
+            <div className="col-lg-9">
+                <section id="gallery" className="gallery margin-top-120 bg-grey">
+                    <div className="container">
+                        <div className="row">
+                            <div className="main-gallery roomy-80">
+                                <div className="col-md-12">
+                                    <div className="head_title text-left sm-text-center wow fadeInDown">
+                                        <h2>Selection</h2>
+                                        <h5><em>Get your head in the clouds</em></h5>
+                                        <div className="separator_left"></div>
                                     </div>
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        </div>
+                                </div>
 
+                                <div className="col-md-12 m-bottom-60">
+                                    <div className="filters-button-group text-right sm-text-center">
+                                        <button className="button is-checked" data-filter="*">View all</button>
+                                        <button className="button" data-filter=".metal">Catwalk</button>
+                                        <button className="button" data-filter=".transition">Advertisement</button>
+                                        <button className="button" data-filter=".alkali">Fashionista</button>
+                                        <button className="button" data-filter=".ar">Model Photo</button>
+                                    </div>
+                                </div>
+
+                                <div className="grid text-center">
+                                    {props.products.map(
+                                        (product) => (
+                                            <NavLink to={`/products/${product.id}`} key={ product.id }>
+                                                <div className="grid-item transition metal ium">
+                                                    <img alt="" src={product.img}></img>
+                                                    <div className="grid_hover_area text-center">
+                                                        <div className="grid_hover_text m-top-110">
+                                                            <h4 className="text-white">{product.name}</h4>
+                                                            <h5 className="text-white"><em>{product.description}</em></h5>
+                                                            <img src="assets/images/porfolio-01.jpg" className="popup-img text-white m-top-40"/>See more <i className="fa fa-cloud"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </NavLink>
+                                        ))
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+        </div>
     )
 }
+
 const mapProps= (state) => ({
     products: state.products
 })

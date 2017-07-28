@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
-import {retrieveProducts} from './reducers/products'
-import Jumbotron from './components/Jumbotron'
+import { fetchProducts } from './reducers/products'
+import Thumbnail from './components/Thumbnail'
 
 class Routes extends Component {
     componentDidMount() {
@@ -17,10 +17,10 @@ class Routes extends Component {
             <Router>
                 <div className='culmn'>
                     {''}{/* this is the way god wants it... */}
-                    <Navbar/>
-                    <Route exact path='/' component={Home}/>
-                    <Route path='/jumbotron' component={Jumbotron}/>
-                    <Route path='/products' component={AllProducts}/>
+                    <Navbar />
+                    <Route exact path='/' component={Home} />
+                    <Route path='/thumbnail' component={Thumbnail} />
+                    <Route path='/products' component={AllProducts} />
                 </div>
             </Router>
         )
@@ -29,7 +29,7 @@ class Routes extends Component {
 
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
-        dispatch(retrieveProducts())
+        dispatch(fetchProducts())
     }
 })
 
