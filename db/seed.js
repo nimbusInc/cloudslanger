@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Product, Review, Order, Promise } = db,
+    { User, Product, Review, Order, Category, Promise } = db,
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -12,9 +12,19 @@ function seedEverything() {
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
+    seeded.categories = categories(seeded)
 
     return Promise.props(seeded)
 }
+
+const categories = seed(Category, ({
+    storm: { category: 'storm' },
+    fog: { category: 'fog' },
+    preciptation: { category: 'precipitation' },
+    frost: { category: 'frost' },
+    dry: { category: 'dry' },
+    clouds: { category: 'clouds' }
+}))
 
 const users = seed(User, ({
 
@@ -54,12 +64,12 @@ const users = seed(User, ({
     }
 }))
 
-const products = seed(Product, ({
+const products = seed(Product, (categories) => ({
 
     storm: {
         name: 'storm',
         description: 'its loud',
-        category: 'rough weather',
+        category_id: categories.storm.id,
         img: 'https://s-media-cache-ak0.pinimg.com/originals/37/6d/44/376d442176f0af9dd2112cf8e5ea4937.jpg',
         price: 100,
         id: 1,
@@ -68,19 +78,46 @@ const products = seed(Product, ({
     cloud: {
         name: 'cloud',
         description: 'a nice ol cloud',
-        category: 'precipitation',
+        category_id: categories.cloud.id,
         img: 'https://cdn.pixabay.com/photo/2011/06/21/14/13/cloud-8075_960_720.jpg',
         price: 50,
         id: 2,
         quantity: 45
     },
+    cumulonimbus: {
+        name: 'cumulonimbus',
+        description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
+        category_id: categories.cloud.id,
+        img: 'https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
+        price: 500,
+        id: 3,
+        quantity: 25
+    },
+    Cirrostratus: {
+        name: 'Cirrostratus',
+        description: 'Cirrostratus /ˌsɪroʊˈstrɑːtəs/ is a high-level, very thin, generally uniform stratiform genus-type of cloud, composed of ice-crystals. It is difficult to detect and is capable of forming halos when the cloud takes the form of thin cirrostratus nebulosus. The cloud has a fibrous texture with no halos if it is thicker cirrostratus fibratus. On the approach of a frontal system, the cirrostratus often begins as nebulosus and turns to fibratus. If the cirrostratus begins as fragmented fibratus it often means the front is weak. Cirrostratus is usually located above 5.5 km (18,000 ft). Its presence indicates a large amount of moisture in the upper atmosphere.',
+        category_id: categories.cloud.id,
+        img: 'https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg#/media/File:Cirrostratus_with_mock_sun.jpg',
+        price: 200,
+        id: 4,
+        quantity: 5
+    },
     rain: {
         name: 'rain',
         description: 'water from clouds',
-        category: 'precipitation',
+        category_id: categories.precipitation.id,
         img: 'http://dreamicus.com/data/rain/rain-01.jpg',
         price: 50,
-        id: 3,
+        id: 5,
+        quantity: 3
+    },
+    haboob: {
+        name: 'haboob',
+        description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
+        category_id: categories.precipitation.id,
+        img: 'https://commons.wikimedia.org/wiki/File:Haboob_Ransom_Canyon_Texas_2009.jpg#/media/File:Haboob_Ransom_Canyon_Texas_2009.jpg',
+        price: 50,
+        id: 5,
         quantity: 3
     }
 
@@ -125,9 +162,9 @@ const reviews = seed(Review, ({ users, products }) => ({
 
 if (module === require.main) {
     db.didSync
-    .then(() => db.sync({ force: true }))
-    .then(seedEverything)
-    .finally(() => process.exit(0))
+        .then(() => db.sync({ force: true }))
+        .then(seedEverything)
+        .finally(() => process.exit(0))
 }
 class BadRow extends Error {
     constructor(key, row, error) {
@@ -154,37 +191,37 @@ function seed(Model, rows) {
     return (others = {}) => {
         if (typeof rows === 'function') {
             rows = Promise.props(
-        mapValues(others,
-          other =>
-          // Is other a function? If so, call it. Otherwise, leave it alone.
-          typeof other === 'function' ? other() : other)
-      ).then(rows)
+                mapValues(others,
+                    other =>
+                        // Is other a function? If so, call it. Otherwise, leave it alone.
+                        typeof other === 'function' ? other() : other)
+            ).then(rows)
         }
         return Promise.resolve(rows)
-      .then(rows => Promise.props(
-        Object.keys(rows)
+            .then(rows => Promise.props(
+                Object.keys(rows)
 
-        .map(key => {
-            const row = rows[key]
-            return {
-                key,
-                value: Promise.props(row)
-              .then(row => Model.create(row)
-                .catch(error => { throw new BadRow(key, row, error) })
-              )
-            }
-        }).reduce(
-          (all, one) => Object.assign({}, all, {
-              [one.key]: one.value
-          }), {}
-        )
-      ))
-      .then(seeded => {
-          console.log(`Seeded ${Object.keys(seeded).length} ${Model.name} OK`)
-          return seeded
-      }).catch(error => {
-          console.error(`Error seeding ${Model.name}: ${error} \n${error.stack}`)
-      })
+                    .map(key => {
+                        const row = rows[key]
+                        return {
+                            key,
+                            value: Promise.props(row)
+                                .then(row => Model.create(row)
+                                    .catch(error => { throw new BadRow(key, row, error) })
+                                )
+                        }
+                    }).reduce(
+                    (all, one) => Object.assign({}, all, {
+                        [one.key]: one.value
+                    }), {}
+                    )
+            ))
+            .then(seeded => {
+                console.log(`Seeded ${Object.keys(seeded).length} ${Model.name} OK`)
+                return seeded
+            }).catch(error => {
+                console.error(`Error seeding ${Model.name}: ${error} \n${error.stack}`)
+            })
     }
 }
 
