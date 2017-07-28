@@ -32,7 +32,8 @@ const users = seed(User, ({
     truman: {
         name: 'Truman Purnell',
         email: 'truman@example.gov',
-        password_digest: '1233j4'
+        password_digest: '1233j4',
+        password: '1234'
     },
 
     eli: {
