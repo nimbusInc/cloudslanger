@@ -6,24 +6,24 @@ const db = require('APP/db'),
 
 function seedEverything() {
     const seeded = {
-        users: users()
+        users: users(),
+        categories: categories()
     }
 
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
-    seeded.categories = categories(seeded)
-
+    
     return Promise.props(seeded)
 }
 
 const categories = seed(Category, ({
     storm: { category: 'storm' },
     fog: { category: 'fog' },
-    preciptation: { category: 'precipitation' },
+    precipitation: { category: 'precipitation' },
     frost: { category: 'frost' },
     dry: { category: 'dry' },
-    clouds: { category: 'clouds' }
+    cloud: { category: 'clouds' }
 }))
 
 const users = seed(User, ({
@@ -64,15 +64,13 @@ const users = seed(User, ({
     }
 }))
 
-const products = seed(Product, (categories) => ({
-
+const products = seed(Product, ({ categories })  => ({
     storm: {
         name: 'storm',
         description: 'its loud',
         category_id: categories.storm.id,
         img: 'https://s-media-cache-ak0.pinimg.com/originals/37/6d/44/376d442176f0af9dd2112cf8e5ea4937.jpg',
         price: 100,
-        id: 1,
         quantity: 4
     },
     cloud: {
@@ -81,7 +79,6 @@ const products = seed(Product, (categories) => ({
         category_id: categories.cloud.id,
         img: 'https://cdn.pixabay.com/photo/2011/06/21/14/13/cloud-8075_960_720.jpg',
         price: 50,
-        id: 2,
         quantity: 45
     },
     cumulonimbus: {
@@ -90,7 +87,7 @@ const products = seed(Product, (categories) => ({
         category_id: categories.cloud.id,
         img: 'https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
         price: 500,
-        id: 3,
+
         quantity: 25
     },
     Cirrostratus: {
@@ -99,7 +96,6 @@ const products = seed(Product, (categories) => ({
         category_id: categories.cloud.id,
         img: 'https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg#/media/File:Cirrostratus_with_mock_sun.jpg',
         price: 200,
-        id: 4,
         quantity: 5
     },
     rain: {
@@ -108,7 +104,6 @@ const products = seed(Product, (categories) => ({
         category_id: categories.precipitation.id,
         img: 'http://dreamicus.com/data/rain/rain-01.jpg',
         price: 50,
-        id: 5,
         quantity: 3
     },
     haboob: {
@@ -117,7 +112,6 @@ const products = seed(Product, (categories) => ({
         category_id: categories.precipitation.id,
         img: 'https://commons.wikimedia.org/wiki/File:Haboob_Ransom_Canyon_Texas_2009.jpg#/media/File:Haboob_Ransom_Canyon_Texas_2009.jpg',
         price: 50,
-        id: 5,
         quantity: 3
     }
 
@@ -225,4 +219,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { users, products, reviews, orders })
+module.exports = Object.assign(seed, {  products,reviews, orders ,users, categories })
