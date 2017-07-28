@@ -13,9 +13,11 @@ import {connect} from 'react-redux'
 */
 
 function AllProducts(props) {
+    let category ='all'
+    console.log(category)
+    console.log(props)
     return (
         <div>
-            <Sidebar/>
             <div className="col-lg-9">
                 <section id="gallery" className="gallery margin-top-120 bg-grey">
                     <div className="container">
@@ -31,16 +33,28 @@ function AllProducts(props) {
 
                                 <div className="col-md-12 m-bottom-60">
                                     <div className="filters-button-group text-right sm-text-center">
-                                        <button className="button is-checked" data-filter="*">View all</button>
-                                        <button className="button" data-filter=".metal">Catwalk</button>
-                                        <button className="button" data-filter=".transition">Advertisement</button>
-                                        <button className="button" data-filter=".alkali">Fashionista</button>
-                                        <button className="button" data-filter=".ar">Model Photo</button>
+                                        <button className="button is-checked" onClick={() => category='all'}>View all</button>
+                                        <button className="button" onClick={(evt) => {
+                                            console.log('this is working', category)
+                                            return category='clouds'
+                                        }}>Clouds</button>
+                                        <button className="button" onClick={() => category='fog'}>Fog</button>
+                                        <button className="button" onClick={() => category='storms'}>Storms</button>
+                                        <button className="button" onClick={() => category='rain'}>Rain</button>
                                     </div>
                                 </div>
 
                                 <div className="grid text-center">
-                                    {props.products.map(
+                                    {props.products.filter((product) => {
+                                        console.log(category)
+                                        console.log(category!=='all')
+                                        if (category!=='all') {
+                                            console.log(product.category===category)
+                                            return product.category===category
+                                        } else {
+                                            return true
+                                        }
+                                    }).map(
                                         (product) => (
                                             <NavLink to={`/products/${product.id}`} key={ product.id }>
                                                 <div className="grid-item transition metal ium">
@@ -54,7 +68,8 @@ function AllProducts(props) {
                                                     </div>
                                                 </div>
                                             </NavLink>
-                                        ))
+                                        )
+                                    )
                                     }
                                 </div>
 
