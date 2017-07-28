@@ -22,24 +22,35 @@ const users = seed(User, ({
         email: 'god@example.com',
         name: 'So many names',
         password_digest: '1234',
+        role: 'admin'
     },
     barack: {
         name: 'Barack Obama',
         email: 'barack@example.gov',
-        password_digest: '12334'
+        password_digest: '12334',
+        role: 'admin'
 
     },
     truman: {
         name: 'Truman Purnell',
         email: 'truman@example.gov',
         password_digest: '1233j4',
-        password: '1234'
+        password: '1234',
+        role: 'user'
     },
 
     eli: {
         name: 'Eli Mauskopf',
         email: 'eli@head.gov',
         password_digest: '123lkjlk34',
+        role: 'user'
+    },
+
+    andrew: {
+        name: 'andrew atkinson',
+        email: 'andrew@blue.dog',
+        password_digest: '123lkmkjkjlk34',
+        role: 'guest'
     }
 }))
 

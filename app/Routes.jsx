@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
-console.log('foo')
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import Thumbnail from './components/Thumbnail'
+
 import Login from './components/Login'
+import Footer from './components/Footer'
 
 
 class Routes extends Component {
@@ -25,6 +26,7 @@ class Routes extends Component {
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/' component={Home} />
+                <Footer />
                 </div>
             </Router>
         )
