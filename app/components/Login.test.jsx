@@ -11,8 +11,8 @@ import {Login} from './Login'
 describe('<Login />', () => {
     let root
     beforeEach('render the root', () =>
-    root = shallow(<Login/>)
-  )
+        root = shallow(<Login/>)
+    )
 
     it('shows a login form', () => {
         expect(root.find('input[name="username"]')).to.have.length(1)
@@ -49,9 +49,9 @@ describe('<Login />', () => {
 
         it('calls props.login with credentials', () => {
             expect(login).to.have.been.calledWith(
-        submitEvent.target.username.value,
-        submitEvent.target.password.value,
-      )
+                submitEvent.target.username.value,
+                submitEvent.target.password.value,
+            )
         })
 
         it('calls preventDefault', () => {

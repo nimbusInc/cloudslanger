@@ -22,10 +22,6 @@ module.exports = db => db.define('products', {
     price: {
         type: INTEGER,
         allowNull: false
-    },
-    category: {
-        type: STRING,
-        allowNull: false
     }
 }, {
     getterMethods: {
