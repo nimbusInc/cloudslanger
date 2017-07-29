@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import Thumbnail from './components/Thumbnail'
+import singleProduct from './components/SingleProduct'
 
 import Login from './components/Login'
 import Footer from './components/Footer'
@@ -22,8 +23,9 @@ class Routes extends Component {
                 <div className='culmn'>
                     {''}{/* this is the way god wants it... */}
                     <Navbar />
-                    <Route exact path='/thumbnail' component={Thumbnail} />
+                    <Route exact path='/thumbnail/' component={Thumbnail} />
                     <Route exact path='/products' component={AllProducts} />
+                    <Route exact path='/products/:id' component={singleProduct} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/' component={Home} />
                 <Footer />
