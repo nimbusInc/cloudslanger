@@ -5,62 +5,62 @@
  **/
 
 const app = require('.')
-    , chalk = require('chalk'), {bold} = chalk
-    , {red, green, blue, cyan, yellow} = bold
-    , dev = module.exports = () => run({
-      server: task(app.package.scripts['start-watch'], {color: blue}),
-      build: task(app.package.scripts['build-watch'], {color: green}),
-      lint: task(app.package.scripts['lint-watch'], {color: cyan}),
-      test: task(app.package.scripts['test-watch'], {color: yellow})
-    })
-
-const taskEnvironment = (path=require('path')) => {
-  const env = {}
-  for (const key in process.env) {
-    env[key] = process.env[key]
-  }
-  Object.assign(env, {
-    NODE_ENV: 'development',
-    PATH: [ path.join(app.root, 'node_modules', '.bin')
-          , process.env.PATH ].join(path.delimiter)
+  , chalk = require('chalk'), { bold } = chalk
+  , { red, green, blue, cyan, yellow } = bold
+  , dev = module.exports = () => run({
+      server: task(app.package.scripts['start-watch'], { color: blue }),
+      build: task(app.package.scripts['build-watch'], { color: green }),
+      lint: task(app.package.scripts['lint-watch'], { color: cyan }),
+    //   test: task(app.package.scripts['test-watch'], { color: yellow })
   })
-  return env
+
+const taskEnvironment = (path = require('path')) => {
+    const env = {}
+    for (const key in process.env) {
+        env[key] = process.env[key]
+    }
+    Object.assign(env, {
+        NODE_ENV: 'development',
+        PATH: [path.join(app.root, 'node_modules', '.bin')
+      , process.env.PATH].join(path.delimiter)
+    })
+    return env
 }
 
 function run(tasks) {
-  Object.keys(tasks)
+    Object.keys(tasks)
     .map(name => tasks[name](name))
 }
 
 function task(command, {
-  spawn=require('child_process').spawn,
-  path=require('path'),
+  spawn = require('child_process').spawn,
+  path = require('path'),
   color
-}={}) {
-  return name => {
-    const stdout = log({name, color}, process.stdout)
-        , stderr = log({name, color, text: red}, process.stderr)
-        , proc = spawn(command, {
+} = {}) {
+    return name => {
+        const stdout = log({ name, color }, process.stdout)
+      , stderr = log({ name, color, text: red }, process.stderr)
+      , proc = spawn(command, {
           shell: true,
           stdio: 'pipe',
           env: taskEnvironment(),
-        }).on('error', stderr)
-          .on('exit', (code, signal) => {
+      }).on('error', stderr)
+        .on('exit', (code, signal) => {
             stderr(`Exited with code ${code}`)
             if (signal) stderr(`Exited with signal ${signal}`)
-          })
-    proc.stdout.on('data', stdout)
-    proc.stderr.on('data', stderr)
-  }
+        })
+        proc.stdout.on('data', stdout)
+        proc.stderr.on('data', stderr)
+    }
 }
 
 function log({
   name,
-  ts=timestamp,
-  color=none,
-  text=none,
-}, out=process.stdout) {
-  return data => data.toString()
+  ts = timestamp,
+  color = none,
+  text = none,
+}, out = process.stdout) {
+    return data => data.toString()
     // Strip out screen-clearing control sequences, which really
     // muck up the output.
     .replace('\u001b[2J', '')
@@ -71,7 +71,7 @@ function log({
 
 const dateformat = require('dateformat')
 function timestamp() {
-  return dateformat('yyyy-mm-dd HH:MM:ss (Z)')
+    return dateformat('yyyy-mm-dd HH:MM:ss (Z)')
 }
 
 function none(x) { return x }

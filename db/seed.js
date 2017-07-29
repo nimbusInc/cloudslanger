@@ -13,7 +13,7 @@ function seedEverything() {
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
-    
+
     return Promise.props(seeded)
 }
 
@@ -63,7 +63,7 @@ const users = seed(User, ({
     }
 }))
 
-const products = seed(Product, ({ categories })  => ({
+const products = seed(Product, ({ categories }) => ({
     storm: {
         name: 'storm',
         description: 'its loud',
@@ -218,4 +218,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, {  products,reviews, orders ,users, categories })
+module.exports = Object.assign(seed, { products, reviews, orders, users, categories })

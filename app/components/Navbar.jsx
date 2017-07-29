@@ -1,9 +1,10 @@
+
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {logout} from '../reducers/user'
+import { logout } from '../reducers/user'
 
-const Navbar = ({user, logout}) => {
+const Navbar = ({ user, logout }) => {
     return (
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
 
@@ -33,9 +34,9 @@ const Navbar = ({user, logout}) => {
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li>{ user.info && <Link to="/">profile</Link> }</li>
-                        <li onClick={(e) => { logout }}>{ user.info && <Link to="/">logout</Link> }</li>
-                        <li>{ !user.info && <Link to="/login">login</Link>}</li>
+                        <li>{user.info && <Link to="/">profile</Link>}</li>
+                        <li onClick={(e) => { logout }}>{user.info && <Link to="/">logout</Link>}</li>
+                        <li>{!user.info && <Link to="/login">login</Link>}</li>
                     </ul>
                 </div>
 
@@ -46,7 +47,7 @@ const Navbar = ({user, logout}) => {
     )
 }
 
-const mapProps = ({user}) => ({ user })
-const mapDispatch = ({logout}) => ({ logout })
+const mapProps = ({ user }) => ({ user })
+const mapDispatch = ({ logout }) => ({ logout })
 
 export default connect(mapProps, mapDispatch)(Navbar)

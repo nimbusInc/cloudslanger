@@ -22,16 +22,12 @@ function SingleProduct({ products, match }) {
                             </div>
 
                             <div className="feature_content wow fadeIn m-top-40">
-                                <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores
-                                        legere me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate
-                                        velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-                                        accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                                <p></p>
 
-                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                                        vel illum dolore feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim</p>
+                                <p></p>
 
                                 <div className="feature_btns m-top-30">
-                                    <a href="" className="btn btn-default text-uppercase">more about us <i className="fa fa-long-arrow-right"></i></a>
+                                    <a href="" className="btn btn-default text-uppercase">Add to cart <i className="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -48,8 +44,6 @@ function SingleProduct({ products, match }) {
                 </div>
             </div>
         </section>
-
-
     ) : <h1></h1>
 }
 
@@ -57,5 +51,3 @@ const mapProps = ({ products }) => ({ products })
 const mapDispatch = null
 
 export default connect(mapProps, mapDispatch)(SingleProduct)
-
-
