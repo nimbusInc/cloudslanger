@@ -1,48 +1,47 @@
 import axios from 'axios'
 
-const reducer = (state = { info: {}, cart: {} }, action) => {
-    const newState = Object.assign({}, state)
-    const cart = newState.cart
-    const item = action.item
+const reducer = (user = { info: {}, cart: {} }, action) => {
+    const updatedUser = Object.assign({}, user)
+    const cart = updatedUser.cart
     switch (action.type) {
     case AUTHENTICATED:
-        newState.info = action.info
-        return newState
+        updatedUser.info = action.info
+        return updatedUser
 
     case ADD_TO_CART:
-        cart[item.id]
-        ? cart[item.id] += item.quantity
-        : cart[item.id] = item.quantity
-        return newState
+        cart[action.item.id]
+        ? cart[action.item.id] += action.item.quantity
+        : cart[action.item.id] = action.item.quantity
+        return updatedUser
 
     case REMOVE_FROM_CART:
         cart[action.item.id] = null
-        return newState
+        return updatedUser
 
-    case UPDATE_ITEM:
+    case UPDATE_CART:
         cart[action.item.id] = action.item.newQuantity
-        return newState
+        return updatedUser
     }
 
-    return newState
+    return updatedUser
 }
 
-const ADD_TO_CART = 'atc'
+const ADD_TO_CART = 'ADD_TO_CART'
 export const addToCart = item => ({
-    type: ADD_TO_CART, action: item
+    type: ADD_TO_CART, item
 })
 
-const REMOVE_FROM_CART = 'rfc'
+const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const removeFromCart = item => ({
-    type: REMOVE_FROM_CART, action: item
+    type: REMOVE_FROM_CART, item
 })
 
-const UPDATE_ITEM = 'ui'
+const UPDATE_CART = 'UPDATE_CART'
 export const updateItem = item => ({
-    type: UPDATE_ITEM, action: item
+    type: UPDATE_CART, item
 })
 
-const CHECKOUT = 'co'
+const CHECKOUT = 'CHECKOUT_CART'
 
 const AUTHENTICATED = 'AUTHENTICATED'
 export const authenticated = info => ({

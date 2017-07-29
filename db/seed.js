@@ -1,29 +1,34 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Product, Review, Order, Category, Promise } = db,
+    { User, Product, Review, Order, Category, Promise, Cart } = db,
+    OrderProduct = db.model('OrderProduct'),
+    CartProduct = db.model('CartProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
     const seeded = {
         users: users(),
-        categories: categories()
+        categories: categories(),
+        
     }
-
+    seeded.carts = carts(seeded)
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
+    seeded.orderProducts = orderProducts(seeded)
+    seeded.cartProducts = cartProducts(seeded)
 
     return Promise.props(seeded)
 }
 
 const categories = seed(Category, ({
-    storm: { category: 'storm' },
-    fog: { category: 'fog' },
-    precipitation: { category: 'precipitation' },
-    frost: { category: 'frost' },
-    dry: { category: 'dry' },
-    cloud: { category: 'clouds' }
+    storm: { name: 'storm' },
+    fog: { name: 'fog' },
+    precipitation: { name: 'precipitation' },
+    frost: { name: 'frost' },
+    dry: { name: 'dry' },
+    cloud: { name: 'clouds' }
 }))
 
 const users = seed(User, ({
@@ -116,6 +121,21 @@ const products = seed(Product, ({ categories }) => ({
 
 }))
 
+const carts = seed(Cart, ({ users }) => ({
+    cart2: {
+        user_id: users.god.id,
+    },
+    cart1: {
+        user_id: users.barack.id,
+    },
+    cart3: {
+        user_id: users.truman.id,
+    },
+    cart4: {
+        user_id: users.eli.id,
+    }
+}))
+
 const orders = seed(Order, ({ users, products }) => ({
     order1: {
         user_id: users.god.id,
@@ -150,6 +170,24 @@ const reviews = seed(Review, ({ users, products }) => ({
         star: 5,
         user_id: users.eli.id,
         product_id: products.cloud.id
+    }
+}))
+
+const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
+    orderProduct1: {
+        order_id: orders.order1.id,
+        product_id: products.rain.id,
+    }
+}))
+
+const cartProducts = seed(CartProduct, ({ products, carts }) => ({
+    'Eli cart: storm': {
+        product_id: products.storm.id,
+        cart_id: carts.cart4.id
+    },
+    'Eli cart: rain': {
+        product_id: products.rain.id,
+        cart_id: carts.cart4.id
     }
 }))
 
@@ -199,8 +237,10 @@ function seed(Model, rows) {
                         return {
                             key,
                             value: Promise.props(row)
-                                .then(row => Model.create(row)
-                                    .catch(error => { throw new BadRow(key, row, error) })
+                                .then(row => {
+                                    return Model.create(row)
+                                        .catch(error => { throw new BadRow(key, row, error) })
+                                }
                                 )
                         }
                     }).reduce(
@@ -218,4 +258,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { products, reviews, orders, users, categories })
+module.exports = Object.assign(seed, { products, carts, reviews, orders, users, categories, orderProducts, cartProducts })

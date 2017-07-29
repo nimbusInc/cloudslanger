@@ -24,7 +24,7 @@ const Navbar = ({ user, logout }) => {
                         <li>
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                 <i className="fa fa-shopping-bag"></i>
-                                <span className="badge">3</span>
+                                <span className="badge">{Object.keys(user.cart).length}</span>
                             </a>
                         </li>
 

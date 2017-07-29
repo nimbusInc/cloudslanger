@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addToCart } from '../reducers/user'
 
-function SingleProduct({ products, match }) {
+function SingleProduct({ products, match, addToCart }) {
     const product = products.find(p => p.id === +match.params.id)
 
     return product ? (
@@ -27,7 +28,11 @@ function SingleProduct({ products, match }) {
                                 <p></p>
 
                                 <div className="feature_btns m-top-30">
-                                    <a href="" className="btn btn-default text-uppercase">Add to cart <i className="fa fa-long-arrow-right"></i></a>
+                                    <button
+                                        onClick={() => { addToCart(product) }}
+                                        className="btn btn-default text-uppercase">Add to cart
+                                        <i className="fa fa-long-arrow-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -48,6 +53,6 @@ function SingleProduct({ products, match }) {
 }
 
 const mapProps = ({ products }) => ({ products })
-const mapDispatch = null
+const mapDispatch = ({ addToCart })
 
 export default connect(mapProps, mapDispatch)(SingleProduct)
