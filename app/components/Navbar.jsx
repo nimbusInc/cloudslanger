@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {logout} from '../reducers/user'
 
+<<<<<<< Updated upstream
 
 const Navbar = ({user}) => {
 
     return (
+=======
+const Navbar = ({user, logout}) => (
+    <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
+>>>>>>> Stashed changes
 
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
         <div className="top-search">
             <div className="container">
+<<<<<<< Updated upstream
                 <div onClick={(e) => { $('.top-search').slideToggle() }} className="attr-nav">
                     <ul>
                         <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
@@ -33,6 +40,12 @@ const Navbar = ({user}) => {
                             }
                         </li>
                     </ul>
+=======
+                <div className="input-group">
+                    <span className="input-group-addon"><i className="fa fa-search"></i></span>
+                    <input type="text" className="form-control" placeholder="Search"></input>
+                    <span className="input-group-addon close-search"><i className="fa fa-times"></i></span>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -53,17 +66,26 @@ const Navbar = ({user}) => {
                 <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                     <li><Link to="/">home</Link></li>
                     <li><Link to="/products">products</Link></li>
-                    <li><Link to="">our models</Link></li>
-                    <li><Link to="">blog</Link></li>
-                    <li><Link to="">contact</Link></li>
+                    <li>{ user.info && <Link to="/">profile</Link> }</li>
+                    <li onClick={(e) => { logout }}>{ user.info && <Link to="/">logout</Link> }</li>
+                    <li>{ !user.info && <Link to="/login">login</Link>}</li>
                 </ul>
             </div>
+<<<<<<< Updated upstream
         </nav>
 
 )
 }
+=======
 
-const mapProps = ({auth}) => ({ user: auth })
-const mapDispatch = null
+        </div>
+
+    </nav>
+
+)
+>>>>>>> Stashed changes
+
+const mapProps = ({user}) => ({ user })
+const mapDispatch = ({logout}) => ({ logout })
 
 export default connect(mapProps, mapDispatch)(Navbar)
