@@ -5,16 +5,14 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
-import {create} from './reducers/categories'
+import {fetchCategories} from './reducers/categories'
 import Thumbnail from './components/Thumbnail'
-
 import Login from './components/Login'
 import Footer from './components/Footer'
 
 class Routes extends Component {
     componentDidMount() {
         this.props.fetchInitialData()
-        this.props.products.map((product) => this.props.fetchCategories(product.category))
     }
 
     render() {
@@ -36,14 +34,13 @@ class Routes extends Component {
     }
 }
 const mapProps= (state) => ({
-    products: state.products
+    products: state.products,
+    categories: state.categories
 })
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchProducts())
-    },
-    fetchCategories: (category) => {
-        dispatch(create(category))
+        dispatch(fetchCategories())
     }
 })
 
