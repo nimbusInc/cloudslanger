@@ -33,10 +33,7 @@ class Routes extends Component {
         )
     }
 }
-const mapProps= (state) => ({
-    products: state.products,
-    categories: state.categories
-})
+
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchProducts())
@@ -44,4 +41,4 @@ const mapDispatch = dispatch => ({
     }
 })
 
-export default connect(mapProps, mapDispatch)(Routes)
+export default connect(null, mapDispatch)(Routes)
