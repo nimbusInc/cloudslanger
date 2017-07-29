@@ -85,7 +85,7 @@ const products = seed(Product, ({ categories })  => ({
         name: 'cumulonimbus',
         description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
         category_id: categories.cloud.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
         price: 500,
 
         quantity: 25
@@ -94,7 +94,7 @@ const products = seed(Product, ({ categories })  => ({
         name: 'Cirrostratus',
         description: 'Cirrostratus /ˌsɪroʊˈstrɑːtəs/ is a high-level, very thin, generally uniform stratiform genus-type of cloud, composed of ice-crystals. It is difficult to detect and is capable of forming halos when the cloud takes the form of thin cirrostratus nebulosus. The cloud has a fibrous texture with no halos if it is thicker cirrostratus fibratus. On the approach of a frontal system, the cirrostratus often begins as nebulosus and turns to fibratus. If the cirrostratus begins as fragmented fibratus it often means the front is weak. Cirrostratus is usually located above 5.5 km (18,000 ft). Its presence indicates a large amount of moisture in the upper atmosphere.',
         category_id: categories.cloud.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg#/media/File:Cirrostratus_with_mock_sun.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Cirrostratus_with_mock_sun.jpg/1920px-Cirrostratus_with_mock_sun.jpg',
         price: 200,
         quantity: 5
     },
@@ -110,7 +110,7 @@ const products = seed(Product, ({ categories })  => ({
         name: 'haboob',
         description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
         category_id: categories.precipitation.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Haboob_Ransom_Canyon_Texas_2009.jpg#/media/File:Haboob_Ransom_Canyon_Texas_2009.jpg',
+        img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Haboob_Ransom_Canyon_Texas_2009.jpg/2560px-Haboob_Ransom_Canyon_Texas_2009.jpg',
         price: 50,
         quantity: 3
     }
