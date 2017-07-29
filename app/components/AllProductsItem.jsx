@@ -16,7 +16,7 @@ export default function Item(props) {
                                         <h5 className="text-white">
                                             <em>{product.description}</em>
                                         </h5>
-                                        <img src="assets/images/porfolio-01.jpg" className="popup-img text-white m-top-40"/>See more
+                                        <img className="popup-img text-white m-top-40"/>See more
                                         <i className="fa fa-cloud"></i>
                                     </div>
                                 </div>

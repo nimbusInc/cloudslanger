@@ -4,18 +4,20 @@ import { NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 
 function Categories(props) {
-    let filter
+    var filter
     return (
-        <div className="col-md-12 m-bottom-60">
-            <div className="filters-button-group text-right sm-text-center">
-                <button className="button is-checked" onClick={() => filter='all'}>View all</button>
-                {props.categories.map((category) => (
-                    <button className="button" onClick={() => filter= category}>{category}</button>
-                )
-                )
-                }
+        <div>
+            <div className="col-md-12 m-bottom-60">
+                <div className="filters-button-group text-right sm-text-center">
+                    <button className="button is-checked" onClick={() => filter='all'}>View all</button>
+                    {props.categories.map((cat) => (
+                        <button className="button" key={cat.id} onClick={() => filter= cat.category}>{cat.category}</button>
+                                )
+                        )
+                    }
+                </div>
             </div>
-            <Items products={props.products} category={filter} />
+        <Items products={props.products} category={filter} />
         </div>
     )
 }
