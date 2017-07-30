@@ -2,6 +2,7 @@
 
 const db = require('APP/db')
 const router = require('express').Router()
+const {Product, OAuth} = require('APP/db')
 
 router.get('/', (req, res, next) => {
     if (req.session.isNew) req.session.cart = {}
