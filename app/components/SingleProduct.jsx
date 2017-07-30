@@ -18,7 +18,7 @@ function SingleProduct({ products, match, addToCart }) {
                                 </div>
                                 <div className="blog_fashion_content">
                                     <ol className="breadcrumb">
-                                        <li><a href="#" className="text-black">{product.category}</a></li>
+                                        <li><a href="#" className="text-black">{product.category.name}</a></li>
                                     </ol>
                                     <a href="blog-details.html"><h2>{product.name}</h2></a>
                                     <p>{product.description}</p>
