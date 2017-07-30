@@ -5,7 +5,6 @@ import { addToCart } from '../reducers/cart'
 
 function SingleProduct({ products, match, addToCart }) {
     const product = products.find(p => p.id === +match.params.id)
-    console.log('product', this)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
@@ -32,6 +31,10 @@ function SingleProduct({ products, match, addToCart }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
+
+
+{/*place the map here... */}
+
                                 <div className="fashion_test text-center">
                                     <img className="img-circle" src="/assets/images/blog-test-img1.jpg" alt=""></img>
 
@@ -42,13 +45,9 @@ function SingleProduct({ products, match, addToCart }) {
                                     <img className="m-top-20" src="/assets/images/blog-sign.png" alt="" ></img>
                                 </div>
 
-                                <div className="fashion_praspect m-top-40">
-                                    <div className="fashion_praspect_inner bg-black">
-                                        <p className="text-white">Good design is making something intelligible and memorable.
-                                                Great design is making something memorable and meaningful.</p>
-                                        <p className="text-white">_ Dieter Rams</p>
-                                    </div>
-                                </div>
+
+
+                                
                             </div>
                         </div>
                     </div>
