@@ -17,16 +17,10 @@ function SingleProduct({ products, match, addToCart }) {
                                 </div>
                                 <div className="blog_fashion_content">
                                     <ol className="breadcrumb">
-                                        <li><a href="#" className="text-black">Fashion</a></li>
-                                        <li><a href="#" className="text-black">Feb 28th 2015</a></li>
-                                        <li><a href="#" className="text-black">2 comments</a></li>
+                                        <li><a href="#" className="text-black">{product.category.name}</a></li>
                                     </ol>
-                                    <a href="blog-details.html"><h2>International Fashion week 2015</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                                            nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-                                            suscipit lobortis nisl aliquip commodo consequat.Duis autem vel
-                                            eum iriure dolor...</p>
+                                    <a href="blog-details.html"><h2>{product.name}</h2></a>
+                                    <p>{product.description}</p>
                                     <button
                                         onClick={() => { addToCart(product) }}
                                         className="btn btn-default text-uppercase">Add to cart
@@ -37,6 +31,10 @@ function SingleProduct({ products, match, addToCart }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
+
+
+{/*place the map here... */}
+
                                 <div className="fashion_test text-center">
                                     <img className="img-circle" src="/assets/images/blog-test-img1.jpg" alt=""></img>
 
@@ -47,13 +45,9 @@ function SingleProduct({ products, match, addToCart }) {
                                     <img className="m-top-20" src="/assets/images/blog-sign.png" alt="" ></img>
                                 </div>
 
-                                <div className="fashion_praspect m-top-40">
-                                    <div className="fashion_praspect_inner bg-black">
-                                        <p className="text-white">Good design is making something intelligible and memorable.
-                                                Great design is making something memorable and meaningful.</p>
-                                        <p className="text-white">_ Dieter Rams</p>
-                                    </div>
-                                </div>
+
+
+                                
                             </div>
                         </div>
                     </div>

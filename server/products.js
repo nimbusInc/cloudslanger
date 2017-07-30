@@ -2,12 +2,16 @@
 
 const db = require('APP/db')
 const Product = db.model('products')
+const Category = db.model('categories')
+const Review = db.model('reviews')
 const router = require('express').Router()
 const { mustBeLoggedIn, forbidden } = require('./auth.filters')
 
+console.log('here Review', Review)
+
 // All products route
 router.get('/', (req, res, next) => {
-    Product.findAll()
+    Category.findAll({ include: { model: Product, include: { model: Review } } })
         .then(products => res.json(products))
         .catch(next)
 })
@@ -37,7 +41,7 @@ router.put('/:id', (req, res, next) => {
             id: req.params.id
         }
     })
-        .then(function(unupdatedProduct) {
+        .then(function (unupdatedProduct) {
             if (unupdatedProduct) {
                 return unupdatedProduct.update(req.body)
             }

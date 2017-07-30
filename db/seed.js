@@ -90,7 +90,6 @@ const products = seed(Product, ({ categories }) => ({
         category_id: categories.cloud.id,
         img: 'https://i.pinimg.com/736x/91/52/d8/9152d84686e30abe15dcfb714eb1ddf4--painting-clouds-cloud-it.jpg',
         price: 500,
-
         quantity: 25
     },
     Cirrostratus: {

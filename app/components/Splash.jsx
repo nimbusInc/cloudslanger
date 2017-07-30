@@ -3,7 +3,8 @@ import React from 'react'
 export default function splash(props) {
     return (
         <section id="hello" className="home bg-mega">
-            <div className="overlay"></div>
+            <div className="overlay">
+            </div>
             <div className="container">
                 <div className="row">
                     <div className="main_home text-center">
