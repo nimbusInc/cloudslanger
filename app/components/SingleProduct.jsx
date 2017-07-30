@@ -5,6 +5,7 @@ import { addToCart } from '../reducers/cart'
 
 function SingleProduct({ products, match, addToCart }) {
     const product = products.find(p => p.id === +match.params.id)
+    console.log('product', this)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
@@ -17,16 +18,10 @@ function SingleProduct({ products, match, addToCart }) {
                                 </div>
                                 <div className="blog_fashion_content">
                                     <ol className="breadcrumb">
-                                        <li><a href="#" className="text-black">Fashion</a></li>
-                                        <li><a href="#" className="text-black">Feb 28th 2015</a></li>
-                                        <li><a href="#" className="text-black">2 comments</a></li>
+                                        <li><a href="#" className="text-black">{product.category}</a></li>
                                     </ol>
-                                    <a href="blog-details.html"><h2>International Fashion week 2015</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                                            nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
-                                            suscipit lobortis nisl aliquip commodo consequat.Duis autem vel
-                                            eum iriure dolor...</p>
+                                    <a href="blog-details.html"><h2>{product.name}</h2></a>
+                                    <p>{product.description}</p>
                                     <button
                                         onClick={() => { addToCart(product) }}
                                         className="btn btn-default text-uppercase">Add to cart
