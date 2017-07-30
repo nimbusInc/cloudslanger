@@ -2,12 +2,14 @@ import { combineReducers } from 'redux'
 import products from './products'
 import orders from './orders'
 import reviews from './reviews'
+import cart from './cart'
 
 const rootReducer = combineReducers({
-    auth: require('./auth').default,
+    user: require('./user').default,
     products,
     orders,
-    reviews
+    reviews,
+    cart
 })
 
 export default rootReducer

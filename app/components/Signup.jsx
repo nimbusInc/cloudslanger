@@ -1,6 +1,8 @@
 import React from 'react'
 
-export const Login = ({ login }) => (
+import { signup } from '../reducers/user'
+
+export const Signup = ({ login, signup }) => (
     <section id="contact" className="contact fix">
         <div className="container">
             <div className="row">
@@ -9,9 +11,16 @@ export const Login = ({ login }) => (
                     <div className="col-lg-12 sm-m-top-30">
                         <form onSubmit={evt => {
                             evt.preventDefault()
-                            login(evt.target.email.value, evt.target.password.value)
+                            signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
                         }}>
                             <div className="row">
+
+                                <div className="col-sm-12">
+                                    <div className="form-group">
+                                        <label>Name *</label>
+                                        <input name="name" type="text" className="form-control"></input>
+                                    </div>
+                                </div>
 
                                 <div className="col-sm-12">
                                     <div className="form-group">
@@ -29,7 +38,7 @@ export const Login = ({ login }) => (
 
                                 <div className="col-sm-12">
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-default">Login <i className="fa fa-long-arrow-right"></i></button>
+                                        <button type="submit" className="btn btn-default">Signup <i className="fa fa-long-arrow-right"></i></button>
                                     </div>
                                 </div>
 
@@ -49,5 +58,5 @@ import { connect } from 'react-redux'
 
 export default connect(
     state => ({}),
-    { login },
-)(Login)
+    { login, signup },
+)(Signup)

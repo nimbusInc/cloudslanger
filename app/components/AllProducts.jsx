@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Thumbnail from "./Thumbnail.jsx";
-import { connect     } from "react-redux";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -10,24 +9,18 @@ import { connect     } from "react-redux";
   4. Maps through products and creates thumbnail for each product that are list elements inside a greater
   unordered list
 */
-
-
-
-const mapProps = ({ products }) => ({ allProducts: products });
-
-
-
+const mapProps = ({ products }) => ({ allProducts: products })
 function AllProducts(props) {
     return (
-      <div className={`container`}>
-        <div className={`row`}>
-          <Sidebar props={props}/>
-          <div className={`col-lg-9`}>
-            <ul className={`list-unstyled`}>
-            </ul>
-          </div>
+    <div className={`container`}>
+      <div className={`row`}>
+        <Sidebar props={props} />
+        <div className={`col-lg-9`}>
+          <ul className={`list-unstyled`}>
+          </ul>
         </div>
       </div>
+    </div>
 
     )
 }

@@ -7,7 +7,7 @@ function CheckoutPage(props) {
                 <h3>Clouds</h3>
                     <hr/>
             </div>
-        <div className="row">
+            <div className="row">
                 PlaceHolder //each purchased item with image and increase and decrease buttons
             </div>
         </div>

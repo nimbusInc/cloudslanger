@@ -5,11 +5,12 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
-import Thumbnail from './components/Thumbnail'
-
+import { fetchCart, createCart } from './reducers/cart'
 import Login from './components/Login'
+import Signup from './components/Signup'
+import Checkout from './components/Checkout'
 import Footer from './components/Footer'
-
+import SingleProduct from './components/SingleProduct'
 
 class Routes extends Component {
     componentDidMount() {
@@ -22,11 +23,13 @@ class Routes extends Component {
                 <div className='culmn'>
                     {''}{/* this is the way god wants it... */}
                     <Navbar />
-                    <Route exact path='/thumbnail' component={Thumbnail} />
                     <Route exact path='/products' component={AllProducts} />
+                    <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/signup' component={Signup} />
+                    <Route exact path='/checkout' component={Checkout} />
                     <Route exact path='/' component={Home} />
-                <Footer />
+                    <Footer />
                 </div>
             </Router>
         )
@@ -39,4 +42,6 @@ const mapDispatch = dispatch => ({
     }
 })
 
-export default connect(null, mapDispatch)(Routes)
+const mapProps = ({ user }) => ({ user })
+
+export default connect(mapProps, mapDispatch)(Routes)

@@ -1,13 +1,14 @@
+
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { logout } from '../reducers/user'
+import { emptyCart } from '../reducers/cart'
 
-const Navbar = ({user}) => {
-
+const Navbar = ({ cart, user, logout, emptyCart }) => {
+    const cartSize = Object.values(cart).reduce((sum, cur) => sum + cur, 0)
     return (
-            
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
-
             <div className="top-search">
                 <div className="container">
                     <div className="input-group">
@@ -24,7 +25,7 @@ const Navbar = ({user}) => {
                         <li>
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                 <i className="fa fa-shopping-bag"></i>
-                                <span className="badge">3</span>
+                                <span className="badge">{cartSize}</span>
                             </a>
                         </li>
 
@@ -34,23 +35,19 @@ const Navbar = ({user}) => {
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li>
-                            { user 
-                                ? <Link to="/">profile</Link>
-                                : <Link to="/login">login</Link>
-                            }
-                        </li>
+                        <li>{user && <Link to="/">orders</Link>}</li>
+                        <li>{cartSize ? <Link to="/checkout">checkout</Link> : null}</li>
+                        <li onClick={(e) => { emptyCart(); logout() }}>{user && <Link to="/">logout</Link>}</li>
+                        <li>{!user && <Link to="/login">login</Link>}</li>
+                        <li>{!user && <Link to="/signup">signup</Link>}</li>
                     </ul>
                 </div>
-
             </div>
-
         </nav>
-        
-)
-}
 
-const mapProps = ({auth}) => ({ user: auth })
-const mapDispatch = null
+    )
+}
+const mapProps = ({ user, cart }) => ({ user, cart })
+const mapDispatch = ({ logout, emptyCart })
 
 export default connect(mapProps, mapDispatch)(Navbar)
