@@ -80,7 +80,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'cloud',
         description: 'a nice ol cloud',
         category_id: categories.cloud.id,
-        img: 'https://cdn.pixabay.com/photo/2011/06/21/14/13/cloud-8075_960_720.jpg',
+        img: 'http://www.itworldcanada.com/wp-content/uploads/2017/05/cp1_0111.jpg',
         price: 50,
         quantity: 45
     },
@@ -113,7 +113,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'haboob',
         description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
         category_id: categories.precipitation.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Haboob_Ransom_Canyon_Texas_2009.jpg#/media/File:Haboob_Ransom_Canyon_Texas_2009.jpg',
+        img: 'https://www.cloudfoundry.org/wp-content/uploads/2017/01/cloud-foundry-blog-image.gif',
         price: 50,
         quantity: 3
     }
