@@ -7,5 +7,5 @@ module.exports = db => db.define('categories', {
 })
 
 module.exports.associations = (Category, { Product }) => {
-    Category.hasOne(Product)
+    Category.hasMany(Product)
 }
