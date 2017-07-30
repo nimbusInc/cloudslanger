@@ -8,6 +8,7 @@ import { fetchProducts } from './reducers/products'
 import { fetchCart, createCart } from './reducers/cart'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import Checkout from './components/Checkout'
 import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
 
@@ -26,6 +27,7 @@ class Routes extends Component {
                     <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={Signup} />
+                    <Route exact path='/checkout' component={Checkout} />
                     <Route exact path='/' component={Home} />
                     <Footer />
                 </div>

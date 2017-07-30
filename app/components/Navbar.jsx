@@ -5,7 +5,9 @@ import { connect } from 'react-redux'
 import { logout } from '../reducers/user'
 import { emptyCart } from '../reducers/cart'
 
-const Navbar = ({ cart, user, logout, emptyCart }) => (
+const Navbar = ({ cart, user, logout, emptyCart }) => {
+    const cartSize = Object.values(cart).reduce((sum, cur) => sum + cur, 0)
+    return (
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
             <div className="top-search">
                 <div className="container">
@@ -23,7 +25,7 @@ const Navbar = ({ cart, user, logout, emptyCart }) => (
                         <li>
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                 <i className="fa fa-shopping-bag"></i>
-                                <span className="badge">{Object.values(cart).reduce((sum, cur) => sum + cur, 0)}</span>
+                                <span className="badge">{cartSize}</span>
                             </a>
                         </li>
 
@@ -34,6 +36,7 @@ const Navbar = ({ cart, user, logout, emptyCart }) => (
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
                         <li>{user && <Link to="/">orders</Link>}</li>
+                        <li>{cartSize ? <Link to="/checkout">checkout</Link> : null}</li>
                         <li onClick={(e) => { emptyCart(); logout() }}>{user && <Link to="/">logout</Link>}</li>
                         <li>{!user && <Link to="/login">login</Link>}</li>
                         <li>{!user && <Link to="/signup">signup</Link>}</li>
@@ -43,7 +46,7 @@ const Navbar = ({ cart, user, logout, emptyCart }) => (
         </nav>
 
     )
-
+}
 const mapProps = ({ user, cart }) => ({ user, cart })
 const mapDispatch = ({ logout, emptyCart })
 

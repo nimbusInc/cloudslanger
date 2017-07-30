@@ -11,7 +11,7 @@ export const Signup = ({ login, signup }) => (
                     <div className="col-lg-12 sm-m-top-30">
                         <form onSubmit={evt => {
                             evt.preventDefault()
-                            signup(evt.target.name.value, evt.target.email.value, evt.target.email.value)
+                            signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
                         }}>
                             <div className="row">
 
