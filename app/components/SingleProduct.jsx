@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../reducers/cart'
+import { updateCart } from '../reducers/cart'
 
-function SingleProduct({ products, match, addToCart }) {
+function SingleProduct({ products, match, updateCart }) {
     const product = products.find(p => p.id === +match.params.id)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
@@ -28,7 +28,7 @@ function SingleProduct({ products, match, addToCart }) {
                                             suscipit lobortis nisl aliquip commodo consequat.Duis autem vel
                                             eum iriure dolor...</p>
                                     <button
-                                        onClick={() => { addToCart(product) }}
+                                        onClick={() => { updateCart(product, 'add') }}
                                         className="btn btn-default text-uppercase">Add to cart
                                         <i className="fa fa-long-arrow-right"></i>
                                     </button>
@@ -64,6 +64,6 @@ function SingleProduct({ products, match, addToCart }) {
 }
 
 const mapProps = ({ products }) => ({ products })
-const mapDispatch = ({ addToCart })
+const mapDispatch = ({ updateCart })
 
 export default connect(mapProps, mapDispatch)(SingleProduct)

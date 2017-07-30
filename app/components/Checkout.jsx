@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { emptyCart } from '../reducers/cart'
+import { emptyCart, updateCart } from '../reducers/cart'
 
-const Checkout = ({ cart, products }) => {
+const Checkout = ({ cart, products, updateCart }) => {
     return (
         <section id="feature" className="feature p-top-100">
             <div className="container">
                 {
                     cart && products && Object.keys(cart).map(id => {
                         let item = products.find(p => p.id === +id)
-                        return (
+                        return item ? (
                             <div className="row">
                                 <div className="main_feature">
 
                                     <div className="col-md-6 m-top-120">
 
                                         <div className="head_title">
-                                            <h2>{item.name}</h2>
-                                            <h5><em>{item.description}</em></h5>
+                                            <h2>{item && item.name}</h2>
+                                            <h5><em>{item && item.description}</em></h5>
                                             <div className="separator_left"></div>
                                         </div>
 
@@ -31,8 +31,22 @@ const Checkout = ({ cart, products }) => {
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
                                         vel illum dolore feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim</p>
 
-                                            <div className="feature_btns m-top-30">
-                                                <a href="" className="btn btn-default text-uppercase">more about us <i className="fa fa-long-arrow-right"></i></a>
+                                            <div className="feature_btns m-top-60">
+                                                <button
+                                                    onClick={() => {
+                                                        cart[item.id] > 1
+                                                            ? updateCart(item, 'subtract')
+                                                            : updateCart(item, 'delete')
+                                                    }}
+                                                    className="btn btn-default text-uppercase">
+                                                    <i className="fa fa-long-arrow-left"></i>
+                                                </button>
+                                                <h2 className="statistic-counter"> {cart[id]} </h2>
+                                                <button
+                                                    onClick={() => { updateCart(item, 'add') }}
+                                                    className="btn btn-default text-uppercase">
+                                                    <i className="fa fa-long-arrow-right"></i>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -41,14 +55,14 @@ const Checkout = ({ cart, products }) => {
                                         <div className="feature_photo wow fadeIn sm-m-top-40">
                                             <div className="photo_border"></div>
                                             <div className="feature_img">
-                                                <img src={item.img} alt="" />
+                                                <img src={item && item.img} alt="" />
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                        )
+                        ) : null
                     })
 
                 }
@@ -59,5 +73,5 @@ const Checkout = ({ cart, products }) => {
 }
 
 const mapProps = ({ cart, products }) => ({ cart, products })
-const mapDispatch = null
+const mapDispatch = ({ updateCart })
 export default connect(mapProps, mapDispatch)(Checkout)
