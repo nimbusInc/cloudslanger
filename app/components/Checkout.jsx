@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { emptyCart, updateCart } from '../reducers/cart'
 
 const Checkout = ({ cart, products, updateCart }) => {
-    return (
+    return Object.keys(cart).length ? (
         <section id="feature" className="feature p-top-100">
             <div className="container">
                 {
@@ -69,7 +69,23 @@ const Checkout = ({ cart, products, updateCart }) => {
 
             </div>
         </section>
-    )
+    ) : <section id="simple" className="simple bg-grey roomy-80">
+            <div className="container">
+                <div className="row">
+                    <div className="main_simple text-center">
+                        <div className="col-md-12">
+                            <h2>Your cart is empty!</h2>
+                            <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere
+                                    me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse
+                                    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan blandit
+                                    praesent luptatum.</p>
+
+                            <Link to='/products/1' className="btn btn-default m-top-40">Get Shopping <i className="fa fa-long-arrow-right"></i></Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 }
 
 const mapProps = ({ cart, products }) => ({ cart, products })
