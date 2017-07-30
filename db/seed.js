@@ -9,8 +9,7 @@ const db = require('APP/db'),
 function seedEverything() {
     const seeded = {
         users: users(),
-        categories: categories(),
-        
+        categories: categories()
     }
     seeded.carts = carts(seeded)
     seeded.orders = orders(seeded)
@@ -89,7 +88,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'cumulonimbus',
         description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
         category_id: categories.cloud.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
+        img: 'https://i.pinimg.com/736x/91/52/d8/9152d84686e30abe15dcfb714eb1ddf4--painting-clouds-cloud-it.jpg',
         price: 500,
 
         quantity: 25
@@ -131,9 +130,7 @@ const carts = seed(Cart, ({ users }) => ({
     cart3: {
         user_id: users.truman.id,
     },
-    cart4: {
-        user_id: users.eli.id,
-    }
+    cart4: {}
 }))
 
 const orders = seed(Order, ({ users, products }) => ({
@@ -237,10 +234,8 @@ function seed(Model, rows) {
                         return {
                             key,
                             value: Promise.props(row)
-                                .then(row => {
-                                    return Model.create(row)
+                                .then(row => Model.create(row)
                                         .catch(error => { throw new BadRow(key, row, error) })
-                                }
                                 )
                         }
                     }).reduce(

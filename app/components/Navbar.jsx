@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../reducers/user'
 
-const Navbar = ({ user, logout }) => {
+const Navbar = ({ cart, user, logout }) => {
+
     return (
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
 
@@ -24,7 +25,7 @@ const Navbar = ({ user, logout }) => {
                         <li>
                             <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                 <i className="fa fa-shopping-bag"></i>
-                                <span className="badge">{Object.keys(user.cart).length}</span>
+                                <span className="badge">{Object.values(cart).reduce((sum, cur) => sum + cur, 0)}</span>
                             </a>
                         </li>
 
@@ -34,9 +35,9 @@ const Navbar = ({ user, logout }) => {
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li>{user.info && <Link to="/">profile</Link>}</li>
-                        <li onClick={(e) => { logout }}>{user.info && <Link to="/">logout</Link>}</li>
-                        <li>{!user.info && <Link to="/login">login</Link>}</li>
+                        <li>{user && <Link to="/">profile</Link>}</li>
+                        <li onClick={(e) => { logout }}>{user && <Link to="/">logout</Link>}</li>
+                        <li>{!user && <Link to="/login">login</Link>}</li>
                     </ul>
                 </div>
 
@@ -47,7 +48,7 @@ const Navbar = ({ user, logout }) => {
     )
 }
 
-const mapProps = ({ user }) => ({ user })
+const mapProps = ({ user, cart }) => ({ user, cart })
 const mapDispatch = ({ logout }) => ({ logout })
 
 export default connect(mapProps, mapDispatch)(Navbar)

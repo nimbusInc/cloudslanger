@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../reducers/user'
+import { addToCart } from '../reducers/cart'
 
 function SingleProduct({ products, match, addToCart }) {
     const product = products.find(p => p.id === +match.params.id)

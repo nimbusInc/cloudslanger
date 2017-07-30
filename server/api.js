@@ -7,6 +7,7 @@ api
   .use('/auth', require('./auth'))
   .use('/users', require('./users'))
   .use('/products', require('./products'))
+  .use('/cart', require('./cart'))
   .use('/orders', require('./orders'))
   .use('/reviews', require('./reviews'))
 

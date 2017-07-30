@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
-
+import { fetchCart, createCart } from './reducers/cart'
 import Login from './components/Login'
 import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
@@ -13,6 +13,7 @@ import SingleProduct from './components/SingleProduct'
 class Routes extends Component {
     componentDidMount() {
         this.props.fetchInitialData()
+        this.props.findOrCreateCart(this.props.user)
     }
 
     render() {
@@ -25,7 +26,7 @@ class Routes extends Component {
                     <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/' component={Home} />
-                <Footer />
+                    <Footer />
                 </div>
             </Router>
         )
@@ -35,7 +36,12 @@ class Routes extends Component {
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchProducts())
+    },
+    findOrCreateCart: (user, cart) => {
+        // if (user) dispatch(fetchCart(user.id))
     }
 })
 
-export default connect(null, mapDispatch)(Routes)
+const mapProps = ({ user, cart }) => ({ user })
+
+export default connect(mapProps, mapDispatch)(Routes)
