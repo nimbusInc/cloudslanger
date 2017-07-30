@@ -47,7 +47,7 @@ const users = seed(User, ({
     },
     truman: {
         name: 'Truman Purnell',
-        email: 'truman@example.gov',
+        email: 'truman.purnell@gmail.com',
         password: '1234',
         role: 'user'
     },
