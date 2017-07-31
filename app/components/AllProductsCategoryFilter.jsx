@@ -4,26 +4,33 @@ import { NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {select, deselect} from '../reducers/currentcategory'
 
-function Categories(props) {
-    return (
-        <div>
+class Categories extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state ={
+            currentState: this.props.currentCategory
+        }
+    }
+
+    render() {
+        return (<div>
             <div className="col-md-12 m-bottom-60">
                 <div className="filters-button-group text-right sm-text-center">
-                    <button className="button is-checked" onClick={() => props.catSelect({})}>View all</button>
-                    {props && props.categories.map((cat) => (
-                        <button className="button" key={cat.id} onClick={() => props.catSelect(cat)}
+                    <button className="button is-checked" onClick={() => this.props.catSelect({})}>View all</button>
+                    {this.props.categories && this.props.categories.map((cat) => (
+                        <button className="button" key={cat.id} onClick={() => {
+                            this.props.catSelect(cat)
+                        }}
                         >{cat.name}</button>
                     )
                     )
                     }
                 </div>
             </div>
-            { props.products.map((product) => {
-                return (<Items key={product.id} product={product}/>)
-            })
-            }
+            <Items currentCategory={this.state.currentState}/>
         </div>
-    )
+        )
+    }
 }
 
 const mapProps= (state) => ({

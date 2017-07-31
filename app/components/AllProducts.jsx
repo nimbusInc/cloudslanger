@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
   unordered list
 */
 
-function AllProducts(props) {
+const AllProducts = function(props) {
     return (
         <div>
             <div className="col-lg-9">
@@ -26,6 +26,7 @@ function AllProducts(props) {
                                         <div className="separator_left"></div>
                                         <Categories/>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -35,9 +36,10 @@ function AllProducts(props) {
         </div>
     )
 }
-
 const mapProps= (state) => ({
-    products: state.products
+    categories: state.categories,
+    products: state.products,
+    currentCategory: state.currentCategory
 })
 
 export default connect(mapProps)(AllProducts)
