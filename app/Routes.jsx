@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
-import {fetchCategories} from './reducers/categories'
+import { fetchCategories } from './reducers/categories'
 import { fetchCart, createCart } from './reducers/cart'
 import Login from './components/Login'
 import Signup from './components/Signup'
@@ -39,8 +39,8 @@ class Routes extends Component {
 
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
-        dispatch(fetchProducts())
         dispatch(fetchCategories())
+        dispatch(fetchProducts())
     }
 })
 

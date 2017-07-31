@@ -4,6 +4,7 @@ import orders from './orders'
 import reviews from './reviews'
 import categories from './categories'
 import currentcategory from './currentcategory'
+import cart from './cart'
 
 const rootReducer = combineReducers({
     user: require('./user').default,
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     orders,
     reviews,
     categories,
-    currentcategory
+    currentcategory,
+    cart
 })
 
 export default rootReducer
