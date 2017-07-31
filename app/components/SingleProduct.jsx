@@ -6,7 +6,6 @@ import { updateCart } from '../reducers/cart'
 function SingleProduct({ products, match, updateCart, categories }) {
     const product = products.find(p => p.id === +match.params.id)
     const category = categories.find(c => c.id === +product.category_id)
-    console.log('product', product)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">

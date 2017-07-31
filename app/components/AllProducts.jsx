@@ -14,7 +14,6 @@ function AllProducts(props) {
     return (
     <div className={`container`}>
       <div className={`row`}>
-        <Sidebar props={props} />
         <div className={`col-lg-9`}>
           <ul className={`list-unstyled`}>
           </ul>
