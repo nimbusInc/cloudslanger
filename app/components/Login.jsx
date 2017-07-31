@@ -11,6 +11,7 @@ export const Login = ({ login }) => (
                             evt.preventDefault()
                             login(evt.target.email.value, evt.target.password.value)
                         }}>
+
                             <div className="row">
 
                                 <div className="col-sm-12">
@@ -38,6 +39,7 @@ export const Login = ({ login }) => (
                         </form>
                     </div>
 
+
                 </div>
             </div>
         </div>
@@ -51,3 +53,4 @@ export default connect(
     state => ({}),
     { login },
 )(Login)
+

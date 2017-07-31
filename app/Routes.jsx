@@ -6,7 +6,6 @@ import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import { fetchCategories } from './reducers/categories'
-import { fetchCart, createCart } from './reducers/cart'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Checkout from './components/Checkout'
@@ -22,7 +21,6 @@ class Routes extends Component {
         return (
             <Router>
                 <div className='culmn'>
-                    {''}{/* this is the way god wants it... */}
                     <Navbar />
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/products/:id' component={SingleProduct} />

@@ -2,19 +2,24 @@ import axios from 'axios'
 
 /* -----------------  ACTIONS ------------------ */
 
+
 const INITIALIZE = 'INITIALIZE_CATEGORIES'
 const CREATE = 'CREATE_CATEGORY'
 const UPDATE = 'UPDATE_CATEGORY'
 const REMOVE = 'REMOVE_CATEGORY'
 
+
 /* ------------ACTION CREATORS ------------------ */
+
 
 const init = categories => ({ type: INITIALIZE, categories })
 const create = category => ({ type: CREATE, category })
 const remove = id => ({ type: REMOVE, id })
 const update = category => ({ type: UPDATE, category })
 
+
 /* ------------ REDUCERS ------------------ */
+
 
 export default function reducer(categories = [], action) {
     switch (action.type) {
@@ -32,12 +37,15 @@ export default function reducer(categories = [], action) {
                 action.category.id === category.id ? action.category : category
             ))
 
+
     default:
         return categories
     }
 }
 
+
 /* ------------ THUNK CREATORS ------------------ */
+
 
 export const fetchCategories = () => dispatch => {
     axios.get('/api/categories')

@@ -61,4 +61,5 @@ const mapDispatch = ({ updateCart })
 const mapProps = ({ products, categories }) => ({ products, categories })
 
 
+
 export default connect(mapProps, mapDispatch)(SingleProduct)

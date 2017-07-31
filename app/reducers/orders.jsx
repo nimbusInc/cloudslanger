@@ -29,8 +29,8 @@ export default function reducer(orders = [], action) {
 
     case UPDATE:
         return orders.map(order => (
-        action.order.id === order.id ? action.order : order
-      ))
+            action.order.id === order.id ? action.order : order
+        ))
 
     default:
         return orders
@@ -41,31 +41,31 @@ export default function reducer(orders = [], action) {
 
 export const fetchOrders = () => dispatch => {
     axios.get('/api/orders')
-       .then(res => dispatch(init(res.data)))
-       .catch(err => console.error('Fetching orders unsuccessful', err))
+        .then(res => dispatch(init(res.data)))
+        .catch(err => console.error('Fetching orders unsuccessful', err))
 }
 
 export const fetchOrder = (id) => dispatch => {
     axios.get(`/api/orders/${id}`)
-       .then(res => dispatch(update(res.data)))
-       .catch(err => console.error('Fetching order unsuccessful', err))
+        .then(res => dispatch(update(res.data)))
+        .catch(err => console.error('Fetching order unsuccessful', err))
 }
 
 // optimistic
 export const removeOrder = id => dispatch => {
     dispatch(remove(id))
     axios.delete(`/api/orders/${id}`)
-       .catch(err => console.error(`Removing order: ${id} unsuccessful`, err))
+        .catch(err => console.error(`Removing order: ${id} unsuccessful`, err))
 }
 
 export const addOrder = order => dispatch => {
     axios.post('/api/orders', order)
-       .then(res => dispatch(create(res.data)))
-       .catch(err => console.error(`Creating order: ${order} unsuccessful`, err))
+        .then(res => dispatch(create(res.data)))
+        .catch(err => console.error(`Creating order: ${order} unsuccessful`, err))
 }
 
 export const updateOrder = (id, order) => dispatch => {
     axios.put(`/api/orders/${id}`, order)
-       .then(res => dispatch(update(res.data)))
-       .catch(err => console.error(`Updating order: ${order} unsuccessful`, err))
+        .then(res => dispatch(update(res.data)))
+        .catch(err => console.error(`Updating order: ${order} unsuccessful`, err))
 }
