@@ -8,8 +8,7 @@ class Categories extends React.Component {
     constructor(props) {
         super(props)
         this.state ={
-            currentState: this.props.currentCategory,
-            counter: 0
+            currentState: this.props.currentCategory
         }
     }
 
@@ -21,9 +20,6 @@ class Categories extends React.Component {
                     {this.props.categories && this.props.categories.map((cat) => (
                         <button className="button" key={cat.id} onClick={() => {
                             this.props.catSelect(cat)
-                            console.log('here')
-                            this.setState({counter: this.state.counter++})
-                            console.log(this.state.counter)
                         }}
                         >{cat.name}</button>
                     )
