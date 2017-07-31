@@ -16,11 +16,15 @@ describe('The User Model', () => {
             email: 'some@example.com'
         })
 
-        afterEach(function () {
-            return Promise.all([
-                User.truncate({ cascade: true })
-            ])
-        })
+    })
+
+    // SJB/OB: nesting afterEach inside beforeEach is strange style, might not be working
+    // afterEach *registers* another afterEach
+    afterEach(function () {
+        // only one Promise
+        return Promise.all([
+            User.truncate({ cascade: true })
+        ])
     })
 
     describe('attributes definition', function () {

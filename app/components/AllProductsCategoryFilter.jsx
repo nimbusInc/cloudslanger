@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {select, deselect} from '../reducers/currentcategory'
 
+// beautify me!
 function Categories(props) {
     return (
         <div>
@@ -32,6 +33,8 @@ const mapProps= (state) => ({
     currentCategory: state.currentCategory
 })
 
+// SJB/OB: the more obvious the naming, the better
+// use shorthand, mapDispatch can be an object instead of a function
 const mapDispatch = dispatch => ({
     catSelect: (newCat) => {
         dispatch(select(newCat))
