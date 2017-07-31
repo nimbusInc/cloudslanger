@@ -5,25 +5,25 @@ import {connect} from 'react-redux'
 import {select, deselect} from '../reducers/currentcategory'
 
 function Categories(props) {
+    console.log(props)
     return (
         <div>
             <div className="col-md-12 m-bottom-60">
                 <div className="filters-button-group text-right sm-text-center">
                     <button className="button is-checked" onClick={() => props.catSelect({})}>View all</button>
-                    {props && props.categories.map((cat) => (
-                        <button className="button" key={cat.id} onClick={() => props.catSelect(cat)}
-                        >{cat.category}</button>
-                    )
+                    {props.categories && props.categories.map((cat) => {
+                        console.log(cat)
+                        return (
+                            <button className="button" key={cat.id} onClick={() => props.catSelect(cat)}
+                            >{cat.name}</button>
+                        )
+                    }
                     )
                     }
                 </div>
             </div>
-            {props.currentcategory && props.products.map((product) => {
-                if (props.currentcategory.id===product.category) {
-                    return (<Items key={product.id} product={product}/>)
-                }
-            })
-            }
+            <Items />
+
         </div>
     )
 }

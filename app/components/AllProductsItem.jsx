@@ -1,25 +1,64 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default function Item(props) {
-    const product = props.product
-    return (
-        <div className="grid text-center">
-            <NavLink to={`/products/${product.id}`} key={product.id}>
-                <div className="grid-item transition metal ium">
-                    <img alt="" src={product.img}></img>
-                    <div className="grid_hover_area text-center">
-                        <div className="grid_hover_text m-top-110">
-                            <h4 className="text-white">{product.name}</h4>
-                            <h5 className="text-white">
-                                <em>{product.description}</em>
-                            </h5>
-                            <img className="popup-img text-white m-top-40"/>See more
-                            <i className="fa fa-cloud"></i>
-                        </div>
+class Item extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state ={
+            productList: this.props.products
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('HERE', nextProps)
+        this.setState({productList: nextProps.products.filter((product) => {
+            console.log('is all', !nextProps.currentCategory)
+            console.log('is newcategory', product.category_id === nextProps.currentCategory.id)
+            if (!Object.keys(nextProps.currentCategory).length) {
+                console.log('here 1')
+                return true
+            } else {
+                console.log('here 2')
+                return product.category_id === nextProps.currentCategory.id
+            }
+        })})
+    }
+
+    render() {
+        console.log('productList', this.state.productList)
+        console.log('products', this.props.products)
+        return (
+
+            <div>
+                {this.state.productList.map((product) => (
+                    <div className="grid text-center" key={product.id}>
+                        <NavLink to={`/products/${product.id}`} >
+                            <div className="grid-item transition metal ium">
+                                <img alt="" src={product.img}></img>
+                                <div className="grid_hover_area text-center">
+                                    <div className="grid_hover_text m-top-110">
+                                        <h4 className="text-white">{product.name}</h4>
+                                        <h5 className="text-white">
+                                            <em>{product.description}</em>
+                                        </h5>
+                                        <img className="popup-img text-white m-top-40"/>See more
+                                        <i className="fa fa-cloud"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </NavLink>
                     </div>
-                </div>
-            </NavLink>
-        </div>
-    )
+                ))}
+            </div>
+        )
+    }
 }
+
+const mapProps= (state) => ({
+    categories: state.categories,
+    products: state.products,
+    currentCategory: state.currentCategory
+})
+
+export default connect(mapProps)(Item)
