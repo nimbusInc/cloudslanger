@@ -9,8 +9,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const category = product && categories.find(category => category.id === +product.category_id)
     const productReview = category && reviews.filter(review => review.product_id === +product.id)
     const averageReview = productReview && Math.ceil(productReview.reduce((acc, cur) => { return acc + cur.star }, 0)/productReview.length)
-    console.log(averageReview)
-    const AverageStars = Array.apply(null, Array(averageReview)).map(star => null)
+    const AverageStars = averageReview && Array.apply(null, Array(averageReview)).map(star => null)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
