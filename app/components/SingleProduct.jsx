@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCart } from '../reducers/cart'
+import Review from './Review'
 
-function SingleProduct({ products, match, updateCart, categories }) {
+function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(p => p.id === +match.params.id)
-    const category = categories.find(c => c.id === +product.category_id)
+    const category = product ? categories.find(c => c.id === +product.category_id) : null
+    const productReview = reviews.filter(r => r.product_id === +product.id)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
@@ -32,21 +34,10 @@ function SingleProduct({ products, match, updateCart, categories }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
+                                <h4>Reviews for {product.name}</h4>
                                 {
-                                product && product.reviews.map(rev => {
-                                    return (
-                                    <div>
-                                        <div className="fashion_test text-center">
-                                            <img className="img-circle" src="/assets/images/blog-test-img1.jpg" alt=""></img>
-
-                                            <h6 className="m-top-20">Pouseidon - From OCean</h6>
-                                            <p className="m-top-20">{rev.body}</p>
-                                            <img className="m-top-20" src="/assets/images/blog-sign.png" alt="" ></img>
-                                        </div>
-                                    </div>
-                                    )
-                                }
-                                )
+                                    productReview && productReview.map(rev => (<Review review={rev} key={rev.id}/>
+                                    ))
                                 }
                             </div>
                         </div>
@@ -58,8 +49,6 @@ function SingleProduct({ products, match, updateCart, categories }) {
 }
 
 const mapDispatch = ({ updateCart })
-const mapProps = ({ products, categories }) => ({ products, categories })
-
-
+const mapProps = ({ products, categories, reviews }) => ({ products, categories, reviews })
 
 export default connect(mapProps, mapDispatch)(SingleProduct)

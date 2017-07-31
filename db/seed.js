@@ -1,9 +1,8 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Product, Review, Order, Category, Promise, Cart } = db,
+    { User, Product, Review, Order, Category, Promise } = db,
     OrderProduct = db.model('OrderProduct'),
-    CartProduct = db.model('CartProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -11,12 +10,10 @@ function seedEverything() {
         users: users(),
         categories: categories()
     }
-    seeded.carts = carts(seeded)
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
     seeded.orderProducts = orderProducts(seeded)
-    seeded.cartProducts = cartProducts(seeded)
 
     return Promise.props(seeded)
 }
@@ -120,19 +117,6 @@ const products = seed(Product, ({ categories }) => ({
 
 }))
 
-const carts = seed(Cart, ({ users }) => ({
-    cart2: {
-        user_id: users.god.id,
-    },
-    cart1: {
-        user_id: users.barack.id,
-    },
-    cart3: {
-        user_id: users.truman.id,
-    },
-    cart4: {}
-}))
-
 const orders = seed(Order, ({ users, products }) => ({
     order1: {
         user_id: users.god.id,
@@ -166,7 +150,7 @@ const reviews = seed(Review, ({ users, products }) => ({
         body: `Ethical kickstarter enamel pin intelligentsia wayfarers, waistcoat taiyaki pok pok selfies mustache. Kogi sriracha pabst, kale chips slow-carb jean shorts humblebrag glossier pok pok chicharrones pinterest PBR&B lomo. Helvetica church-key celiac YOLO vape umami. Banh mi microdosing cold-pressed gentrify hot chicken. Cronut truffaut humblebrag kogi kickstarter shaman shoreditch biodiesel tumblr. Artisan affogato pug tacos. Af tumeric small batch locavore you probably haven't heard of them lyft photo booth microdosing asymmetrical literally pork belly. Kitsch waistcoat semiotics YOLO literally, pickled activated charcoal vexillologist humblebrag mixtape cred everyday carry meditation. VHS affogato taxidermy succulents, venmo occupy austin bespoke keffiyeh flexitarian tattooed pok pok man bun pabst. Cloud bread XOXO before they sold out chambray slow-carb VHS subway tile whatever selfies kitsch yuccie flexitarian. Intelligentsia scenester chia palo santo hammock. Master cleanse pitchfork cornhole meditation selfies scenester franzen waistcoat fixie etsy mixtape wolf schlitz tattooed. Mumblecore hella mustache, cronut wayfarers portland slow-carb. Snackwave asymmetrical ugh single-origin coffee narwhal truffaut selvage pork belly kickstarter 90's iPhone poutine succulents leggings locavore. Ethical letterpress salvia distillery seitan narwhal.`,
         star: 5,
         user_id: users.eli.id,
-        product_id: products.cloud.id
+        product_id: products.rain.id
     },
 
     r4: {
@@ -179,19 +163,19 @@ const reviews = seed(Review, ({ users, products }) => ({
         body: `Chillwave echo park trust fund, sartorial celiac seitan thundercats squid shabby chic irony. Schlitz kickstarter echo park gluten-free leggings blog. `,
         star: 2,
         user_id: users.andrew.id,
-        product_id: products.precipitation.id
+        product_id: products.rain.id
     },
     r6: {
         body: `sartorial celiac seitan thundercats squid shabby chic irony.`,
         star: 4,
         user_id: users.eli.id,
-        product_id: products.frost.id
+        product_id: products.haboob.id
     },
     r7: {
         body: `Celiac literally tbh street art humblebrag, single-origin coffee tumeric ramps synth meggings +1 hot chicken 3 wolf moon. Plaid vice jean shorts four dollar toast fashion axe deep v. Kombucha brooklyn vinyl trust fund gastropub wayfarers wolf small batch distillery tumblr poutine you probably haven't heard of them bushwick. Gastropub affogato mumblecore, quinoa bespoke keffiyeh enamel pin single-origin coffee beard tumeric vaporware la croix. Vinyl butcher affogato everyday carry hot chicken bicycle rights locavore pork belly viral gastropub brunch crucifix literally.`,
         star: 4,
         user_id: users.eli.id,
-        product_id: products.fog.id
+        product_id: products.haboob.id
     }
 }))
 
@@ -202,16 +186,6 @@ const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
     }
 }))
 
-const cartProducts = seed(CartProduct, ({ products, carts }) => ({
-    'Eli cart: storm': {
-        product_id: products.storm.id,
-        cart_id: carts.cart4.id
-    },
-    'Eli cart: rain': {
-        product_id: products.rain.id,
-        cart_id: carts.cart4.id
-    }
-}))
 
 if (module === require.main) {
     db.didSync
@@ -278,4 +252,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { products, carts, reviews, orders, users, categories, orderProducts, cartProducts })
+module.exports = Object.assign(seed, { products, reviews, orders, users, categories, orderProducts })

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
 import { fetchCategories } from './reducers/categories'
+import { fetchReviews } from './reducers/reviews'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Checkout from './components/Checkout'
@@ -39,6 +40,7 @@ const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchCategories())
         dispatch(fetchProducts())
+        dispatch(fetchReviews())
     }
 })
 
