@@ -8,8 +8,7 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
     // All reviews route
 router.get('/', (req, res, next) => {
-    console.log('User', User)
-    Review.findAll({include: [User]})
+    Review.findAll({include: {model: User, attributes: ['name']}})
         .then(reviews => res.json(reviews))
         .catch(next)
 })
