@@ -70,15 +70,15 @@ const users = seed(User, ({
 const products = seed(Product, ({ categories }) => ({
     storm: {
         name: 'storm',
-        description: 'its loud',
+        description: `A storm is any disturbed state of an environment or astronomical body's atmosphere especially affecting its surface, and strongly implying severe weather. It may be marked by significant disruptions to normal conditions such as strong wind, Tornadoes, hail, thunder and lightning (a thunderstorm), heavy precipitation (snowstorm, rainstorm), heavy freezing rain (ice storm), strong winds (tropical cyclone, windstorm), or wind transporting some substance through the atmosphere as in a dust storm, blizzard, sandstorm, etc.`,
         category_id: categories.storm.id,
         img: 'https://s-media-cache-ak0.pinimg.com/originals/37/6d/44/376d442176f0af9dd2112cf8e5ea4937.jpg',
         price: 100,
         quantity: 4
     },
-    cloud: {
-        name: 'cloud',
-        description: 'a nice ol cloud',
+    Nimbostratus: {
+        name: 'Nimbostratus',
+        description: `Nimbostratus is a stratiform genus formerly classified as "Family C" low-level, but now considered by the World Meteorological Organization (WMO) to be a middle- or multi-level stratus type. Although it is usually a low-based cloud, it actually forms most commonly in the middle level of the troposphere and then spreads vertically into the low and high levels. This change in classification would once have made it a "Family D" cloud, but this style of nomenclature was discontinued by the WMO in 1956. Nimbostratus usually produces precipitation over a wide area. Nimbo- is from the Latin word nimbus, which denotes precipitation. It has a diffuse cloud base generally found anywhere from near surface in the low levels to about 3,000 m (9,800 ft) in the middle level of the troposphere. Although usually dark at its base, it often appears illuminated from within to a surface observer.`,
         category_id: categories.cloud.id,
         img: 'http://www.itworldcanada.com/wp-content/uploads/2017/05/cp1_0111.jpg',
         price: 50,
@@ -167,6 +167,31 @@ const reviews = seed(Review, ({ users, products }) => ({
         star: 5,
         user_id: users.eli.id,
         product_id: products.cloud.id
+    },
+
+    r4: {
+        body: `Shabby chic distillery tacos kickstarter plaid 90's pug godard migas tousled freegan 3 wolf moon affogato selfies. Retro raw denim four loko, post-ironic prism edison bulb truffaut blue bottle. Heirloom tumeric 3 wolf moon gluten-free next level artisan mumblecore vice man braid taxidermy plaid cliche affogato. Jean shorts prism listicle neutra green juice hell of aesthetic. IPhone austin single-origin coffee umami woke chillwave. Semiotics food truck flexitarian, bushwick pug hammock everyday carry ennui artisan. Selfies enamel pin synth distillery meggings narwhal. `,
+        star: 3,
+        user_id: users.god.id,
+        product_id: products.storm.id
+    },
+    r5: {
+        body: `Chillwave echo park trust fund, sartorial celiac seitan thundercats squid shabby chic irony. Schlitz kickstarter echo park gluten-free leggings blog. `,
+        star: 2,
+        user_id: users.andrew.id,
+        product_id: products.precipitation.id
+    },
+    r6: {
+        body: `sartorial celiac seitan thundercats squid shabby chic irony.`,
+        star: 4,
+        user_id: users.eli.id,
+        product_id: products.frost.id
+    },
+    r7: {
+        body: `Celiac literally tbh street art humblebrag, single-origin coffee tumeric ramps synth meggings +1 hot chicken 3 wolf moon. Plaid vice jean shorts four dollar toast fashion axe deep v. Kombucha brooklyn vinyl trust fund gastropub wayfarers wolf small batch distillery tumblr poutine you probably haven't heard of them bushwick. Gastropub affogato mumblecore, quinoa bespoke keffiyeh enamel pin single-origin coffee beard tumeric vaporware la croix. Vinyl butcher affogato everyday carry hot chicken bicycle rights locavore pork belly viral gastropub brunch crucifix literally.`,
+        star: 4,
+        user_id: users.eli.id,
+        product_id: products.fog.id
     }
 }))
 
