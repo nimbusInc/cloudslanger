@@ -6,6 +6,7 @@ import { emptyCart, updateCart } from '../reducers/cart'
 const Checkout = ({ cart, products, updateCart }) => {
     let price
     const cartItems = Object.keys(cart)
+
     if (cartItems.length) {
         price = (cartItems.reduce((total, itemId) => {
             const productInCart = products.find(product => product.id === +itemId)
@@ -13,6 +14,8 @@ const Checkout = ({ cart, products, updateCart }) => {
             return productInCart ? +productInCart.price * quantity + total : total
         }, 0)).toFixed(2)
     }
+
+    
     return Object.keys(cart).length ? (
         <section id="feature" className="feature p-top-100">
             <div className="container">
