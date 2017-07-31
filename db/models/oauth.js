@@ -26,6 +26,8 @@ module.exports = db => {
         indexes: [{fields: ['uid'], unique: true}],
     })
 
+    // add scopes if you need them!
+    // here is the end of the OAuth flow, the cb function that is called
   // OAuth.V2 is a default argument for the OAuth.setupStrategy method - it's our callback function that will execute when the user has successfully logged in
     OAuth.V2 = (accessToken, refreshToken, profile, done) =>
     OAuth.findOrCreate({

@@ -5,9 +5,13 @@ import { updateCart } from '../reducers/cart'
 import Review from './Review'
 
 function SingleProduct({ products, match, updateCart, categories, reviews }) {
+    // SJB/OB -- look up Redux Selections
+    // improve readability
     const product = products.find(p => p.id === +match.params.id)
     const category = product ? categories.find(c => c.id === +product.category_id) : null
     const productReview = reviews.filter(r => r.product_id === +product.id)
+
+    // && is easier to read than ternaries
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">

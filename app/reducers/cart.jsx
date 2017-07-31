@@ -16,12 +16,12 @@ export const emptyCart = () => ({ type: EMPTY_CART })
 
 /* ------------       REDUCERS     ------------------ */
 
+// SJB/OB: use default case, and the different actions are all doing the same thing
+// chain cases, take advantage of fall through :D
 export default function reducer(cart = {}, action) {
     switch (action.type) {
     case FETCH_CART:
-        return action.newCart
     case UPDATE_CART:
-        return action.newCart
     case REMOVE_ITEM:
         return action.newCart
     case EMPTY_CART:
@@ -38,7 +38,8 @@ export const fetchCart = () => dispatch => {
         .catch(err => console.error('Fetching cart unsuccessful', err))
 }
 
-// optimistic
+// pessimistic
+// remember to return within promises in case you need those values later
 export const deleteFromCart = item => dispatch => {
     axios.delete(`/api/cart`, {
         data: item
@@ -48,6 +49,7 @@ export const deleteFromCart = item => dispatch => {
      .catch(err => console.error(`Removing ${item} unsuccessful`, err))
 }
 
+// rename action, this is not a reducer action
 export const updateCart = (item, action) => dispatch => {
     axios.put('/api/cart', Object.assign({}, item, { action }))
         .then(res => dispatch(update(res.data)))
