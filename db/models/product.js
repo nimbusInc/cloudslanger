@@ -35,5 +35,5 @@ module.exports.associations = (Product, { Order, Category, Cart, Review }) => {
     Product.belongsToMany(Order, {through: 'OrderProduct'})
     Product.belongsToMany(Cart, {through: 'CartProduct'})
     Product.belongsTo(Category)
-    Product.hasOne(Review)
+    Product.hasMany(Review)
 }
