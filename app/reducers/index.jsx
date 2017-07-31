@@ -6,7 +6,7 @@ import categories from './categories'
 import currentcategory from './currentcategory'
 
 const rootReducer = combineReducers({
-    auth: require('./auth').default,
+    user: require('./user').default,
     products,
     orders,
     reviews,
