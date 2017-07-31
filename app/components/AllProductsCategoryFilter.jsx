@@ -18,12 +18,8 @@ function Categories(props) {
                     }
                 </div>
             </div>
-            {!props.currentCategory ? props.products.map((product) => {
-                console.log("I'm reading this as true", !props.currentCategory)
-                return (<Items key={product.id} product={product}/>)
-            }) : props.products.map((product) => {
-                console.log("I'm reading this as false", !props.currentCategory)
-                if (product.category_id === props.currentCategory.id) {
+            {props.currentcategory && props.products.map((product) => {
+                if (props.currentcategory.id===product.category) {
                     return (<Items key={product.id} product={product}/>)
                 }
             })
