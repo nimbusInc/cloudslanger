@@ -6,9 +6,8 @@ import Review from './Review'
 
 function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(p => p.id === +match.params.id)
-    const category = categories.find(c => c.id === +product.category_id)
+    const category = product ? categories.find(c => c.id === +product.category_id) : null
     const productReview = reviews.filter(r => r.product_id === +product.id)
-    console.log('productReview', productReview)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
@@ -37,7 +36,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                             <div className="blog_fashion_right">
                                 <h4>Reviews for {product.name}</h4>
                                 {
-                                    productReview && productReview.map(rev => (<Review review={rev} />
+                                    productReview && productReview.map(rev => (<Review review={rev} key={rev.id}/>
                                     ))
                                 }
                             </div>

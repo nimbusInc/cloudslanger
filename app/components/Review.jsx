@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 export default function Review(rev) {
-    console.log('here', rev)
     return (
         <div>
             <h5>{rev.review.user.name}</h5>
