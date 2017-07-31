@@ -140,6 +140,7 @@ auth.get('/login/:strategy', (req, res, next) => {
 
 auth.post('/logout', (req, res) => {
     req.logout()
+    req.session.cart = {}
     res.redirect('/api/auth/whoami')
 })
 

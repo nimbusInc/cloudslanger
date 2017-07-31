@@ -49,31 +49,31 @@ export default function reducer(categories = [], action) {
 
 export const fetchCategories = () => dispatch => {
     axios.get('/api/categories')
-        .then(res => dispatch(init(res.data)))
-        .catch(err => console.error('Fetching categories unsuccessful', err))
+    .then(res => dispatch(init(res.data)))
+    .catch(err => console.error('Fetching categories unsuccessful', err))
 }
 
 export const fetchCategory = (id) => dispatch => {
     axios.get(`/api/categories/${id}`)
-        .then(res => dispatch(update(res.data)))
-        .catch(err => console.error('Fetching category unsuccessful', err))
+    .then(res => dispatch(update(res.data)))
+    .catch(err => console.error('Fetching category unsuccessful', err))
 }
 
 // optimistic
 export const removeCategory = id => dispatch => {
     dispatch(remove(id))
     axios.delete(`/api/categories/${id}`)
-        .catch(err => console.error(`Removing category: ${id} unsuccessful`, err))
+    .catch(err => console.error(`Removing category: ${id} unsuccessful`, err))
 }
 
 export const addCategory = category => dispatch => {
     axios.post('/api/categories', category)
-        .then(res => dispatch(create(res.data)))
-        .catch(err => console.error(`Creating category: ${category} unsuccessful`, err))
+    .then(res => dispatch(create(res.data)))
+    .catch(err => console.error(`Creating category: ${category} unsuccessful`, err))
 }
 
 export const updateCategory = (id, category) => dispatch => {
     axios.put(`/api/categories/${id}`, category)
-        .then(res => dispatch(update(res.data)))
-        .catch(err => console.error(`Updating category: ${category} unsuccessful`, err))
+    .then(res => dispatch(update(res.data)))
+    .catch(err => console.error(`Updating category: ${category} unsuccessful`, err))
 }
