@@ -14,25 +14,23 @@ import {connect} from 'react-redux'
 const AllProducts = function(props) {
     return (
         <div>
-            <div className="col-lg-9">
-                <section id="gallery" className="gallery margin-top-120 bg-grey">
-                    <div className="container">
-                        <div className="row">
-                            <div className="main-gallery roomy-80">
-                                <div className="col-md-12">
-                                    <div className="head_title text-left sm-text-center wow fadeInDown">
-                                        <h2>Selection</h2>
-                                        <h5><em>Get your head in the clouds</em></h5>
-                                        <div className="separator_left"></div>
-                                        <Categories/>
-                                    </div>
-
+            <section id="gallery" className="gallery margin-top-120 bg-grey">
+                <div className="container">
+                    <div className="row">
+                        <div className="main-gallery roomy-80">
+                            <div className="col-md-12">
+                                <div className="head_title text-left sm-text-center wow fadeInDown">
+                                    <h2>Selection</h2>
+                                    <h5><em>Get your head in the clouds</em></h5>
+                                    <div className="separator_left"></div>
+                                    <Categories/>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     )
 }
