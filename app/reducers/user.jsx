@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const reducer = (user = null, action) => {
     switch (action.type) {
-        case AUTHENTICATED:
-            return action.user
+    case AUTHENTICATED:
+        return action.user
     }
     return user
 }
