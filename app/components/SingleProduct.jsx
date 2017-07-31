@@ -2,10 +2,13 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCart } from '../reducers/cart'
+import Review from './Review'
 
-function SingleProduct({ products, match, updateCart, categories }) {
+function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(p => p.id === +match.params.id)
     const category = categories.find(c => c.id === +product.category_id)
+    const productReview = reviews.filter(r => r.product_id === +product.id)
+    console.log('productReview', productReview)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
@@ -32,6 +35,10 @@ function SingleProduct({ products, match, updateCart, categories }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
+                                {
+                                    productReview && productReview.map(rev => (<Review review={rev} />
+                                    ))
+                                }
                             </div>
                         </div>
                     </div>
@@ -42,8 +49,6 @@ function SingleProduct({ products, match, updateCart, categories }) {
 }
 
 const mapDispatch = ({ updateCart })
-const mapProps = ({ products, categories }) => ({ products, categories })
-
-
+const mapProps = ({ products, categories, reviews }) => ({ products, categories, reviews })
 
 export default connect(mapProps, mapDispatch)(SingleProduct)
