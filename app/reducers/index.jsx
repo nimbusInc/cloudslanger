@@ -5,6 +5,7 @@ import reviews from './reviews'
 import categories from './categories'
 import currentcategory from './currentcategory'
 import cart from './cart'
+import searchInput from './search'
 
 const rootReducer = combineReducers({
     user: require('./user').default,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     reviews,
     categories,
     currentcategory,
-    cart
+    cart,
+    searchInput
 })
 
 export default rootReducer
