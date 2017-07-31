@@ -35,7 +35,7 @@ class Routes extends Component {
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
         dispatch(fetchProducts())
-        dispatch(fetchCategories())
+        // dispatch(fetchCategories())
     }
 })
 
