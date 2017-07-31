@@ -35,6 +35,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
+                                <h4>Reviews for {product.name}</h4>
                                 {
                                     productReview && productReview.map(rev => (<Review review={rev} />
                                     ))

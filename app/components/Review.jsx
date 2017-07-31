@@ -6,8 +6,12 @@ export default function Review(rev) {
     console.log('here', rev)
     return (
         <div>
-            <h4>{rev.review.user.name}</h4>
+            <h5>{rev.review.user.name}</h5>
             <p>{rev.review.body}</p>
+            {
+            <i className="fa fa-star"></i>
+            }
+            <hr />
         </div>
     )
 }
