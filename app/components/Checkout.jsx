@@ -4,14 +4,27 @@ import { connect } from 'react-redux'
 import { emptyCart, updateCart } from '../reducers/cart'
 
 const Checkout = ({ cart, products, updateCart }) => {
+    let price
+    const cartItems = Object.keys(cart)
+
+    if (cartItems.length) {
+        price = (cartItems.reduce((total, itemId) => {
+            const productInCart = products.find(product => product.id === +itemId)
+            const quantity = +cart[itemId]
+            return productInCart ? +productInCart.price * quantity + total : total
+        }, 0)).toFixed(2)
+    }
+
+    
     return Object.keys(cart).length ? (
         <section id="feature" className="feature p-top-100">
             <div className="container">
                 {
-                    cart && products && Object.keys(cart).map(id => {
+
+                    cart && products && Object.keys(cart).map((id, i) => {
                         let item = products.find(p => p.id === +id)
                         return item ? (
-                            <div className="row">
+                            <div key={id} className="row">
                                 <div className="main_feature">
 
                                     <div className="col-md-6 m-top-120">
@@ -23,14 +36,6 @@ const Checkout = ({ cart, products, updateCart }) => {
                                         </div>
 
                                         <div className="feature_content wow fadeIn m-top-40">
-                                            <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores
-                                        legere me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate
-                                        velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et
-                                        accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
-
-                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-                                        vel illum dolore feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim</p>
-
                                             <div className="feature_btns m-top-60">
                                                 <button
                                                     onClick={() => {
@@ -59,6 +64,22 @@ const Checkout = ({ cart, products, updateCart }) => {
                                             </div>
                                         </div>
                                     </div>
+
+                                    {!i &&
+                                        <div className="col-md-4">
+                                            <div className="blog_fashion_right">
+                                                <div className="fashion_test text-center">
+                                                    <h1>${price}</h1>
+
+                                                    <h6 className="m-top-20">Take it and run</h6>
+                                                    <p className="m-top-20">With the waves from somewhere so far.
+                                            We comes with elegants and beautiful.
+                                            Just do what we love and always love what we do</p>
+                                                    <button className="btn btn-default">Checkout</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
 
                                 </div>
                             </div>
