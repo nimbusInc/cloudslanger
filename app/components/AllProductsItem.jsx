@@ -11,6 +11,7 @@ class Item extends React.Component {
         console.log('props in cons', props)
     }
 
+    // SJB/OB: function that we call in render instead of lifecycle
     componentWillReceiveProps(nextProps) {
         // console.log('HERE', nextProps)
         // console.log(this.state.productList)
@@ -35,6 +36,9 @@ class Item extends React.Component {
     }
 
     render() {
+        // CALL FUNCTION HERE :D
+        // newProductsList = the result of calling the function, or just put it on the instance
+
         // console.log('productList', this.state.productList)
         // console.log('products', this.props.products)
         return (
