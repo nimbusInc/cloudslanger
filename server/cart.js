@@ -2,7 +2,7 @@
 
 const db = require('APP/db')
 const router = require('express').Router()
-const {Product, OAuth} = require('APP/db')
+const { Product, OAuth } = require('APP/db')
 
 router.get('/', (req, res, next) => {
     if (req.session.isNew) req.session.cart = {}
@@ -11,12 +11,19 @@ router.get('/', (req, res, next) => {
 
 router.put('/', (req, res, next) => {
     const item = req.body
+    const itemExistsInCart = req.session.cart[item.id]
 
-    req.session.cart[item.id]
-        ? req.session.cart[item.id]++
-        : req.session.cart[item.id] = 1
+    if (itemExistsInCart) {
+        if (item.action === 'add') req.session.cart[item.id]++
+        else if (item.action === 'subtract') req.session.cart[item.id]--
+        else if (item.action === 'delete') delete req.session.cart[item.id]
+    } else req.session.cart[item.id] = 1
 
-    res.send({ [item.id]: req.session.cart[item.id] })
+    res.send(req.session.cart)
+})
+
+router.delete('/', (req, res, next) => {
+    res.send(req.session.cart = {})
 })
 
 module.exports = router

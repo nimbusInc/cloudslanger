@@ -2,55 +2,49 @@ import axios from 'axios'
 
 /* -----------------    ACTIONS     ------------------ */
 
-const RETRIEVE = 'RETRIEVE_CART'
-const ADD_ITEM = 'ADD_ITEM'
-const UPDATE = 'UPDATE_CART'
+const UPDATE_CART = 'UPDATE_CART'
 const REMOVE_ITEM = 'REMOVE_ITEM'
+const FETCH_CART = 'FETCH_CART'
 const EMPTY_CART = 'EMPTY_CART'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
-const init = carts => ({ type: RETRIEVE, carts })
-const add = item => ({ type: ADD_ITEM, item })
-const remove = id => ({ type: REMOVE_ITEM, id })
-const update = cart => ({ type: UPDATE, cart })
-export const emptyCart = () => ({type: EMPTY_CART})
+const update = newCart => ({ type: UPDATE_CART, newCart })
+const remove = newCart => ({ type: REMOVE_ITEM, newCart })
+const fetched = newCart => ({ type: FETCH_CART, newCart })
+export const emptyCart = () => ({ type: EMPTY_CART })
 
 /* ------------       REDUCERS     ------------------ */
 
 export default function reducer(cart = {}, action) {
-    const newCart = Object.assign({}, cart)
     switch (action.type) {
-    case UPDATE:
-        return action.cart
-    case ADD_ITEM:
-        const [id] = Object.keys(action.item)
-        const quantity = action.item[id]
-        newCart[id] = quantity
-        break
+    case FETCH_CART:
+    case UPDATE_CART:
+    case REMOVE_ITEM:
+        return action.newCart
     case EMPTY_CART:
         return {}
     }
-    return newCart
+    return cart
 }
 
 /* ------------   THUNK CREATORS     ------------------ */
 
 export const fetchCart = () => dispatch => {
     axios.get(`/api/cart/`)
-        .then(res => dispatch(update(res.data)))
-        .catch(err => console.error('Fetching cart unsuccessful', err))
+    .then(res => dispatch(fetched(res.data)))
+    .catch(err => console.error('Fetching cart unsuccessful', err))
 }
 
-// optimistic
-export const removeItem = id => dispatch => {
-    dispatch(remove(id))
-    axios.delete(`/api/carts/${id}`)
-        .catch(err => console.error(`Removing cart: ${id} unsuccessful`, err))
+// pessimistic
+export const deleteFromCart = item => dispatch => {
+    return axios.delete(`/api/cart`, { data: item })
+           .then(res => { dispatch(remove(res.data)) })
+           .catch(err => console.error(`Removing ${item} unsuccessful`, err))
 }
 
-export const addToCart = (item) => dispatch => {
-    axios.put('/api/cart', item)
-        .then(res => dispatch(add(res.data)))
-        .catch(err => console.error(`Adding to cart cart: unsuccessful`, err))
+export const updateCart = (item, action) => dispatch => {
+    return axios.put('/api/cart', Object.assign({}, item, { action }))
+           .then(res => dispatch(update(res.data)))
+           .catch(err => console.error(`Adding ${item}: unsuccessful`, err))
 }

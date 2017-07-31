@@ -5,7 +5,8 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import AllProducts from './components/AllProducts'
 import { fetchProducts } from './reducers/products'
-import { fetchCart, createCart } from './reducers/cart'
+import { fetchCategories } from './reducers/categories'
+import { fetchReviews } from './reducers/reviews'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Checkout from './components/Checkout'
@@ -21,7 +22,6 @@ class Routes extends Component {
         return (
             <Router>
                 <div className='culmn'>
-                    {''}{/* this is the way god wants it... */}
                     <Navbar />
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/products/:id' component={SingleProduct} />
@@ -38,7 +38,9 @@ class Routes extends Component {
 
 const mapDispatch = dispatch => ({
     fetchInitialData: () => {
+        dispatch(fetchCategories())
         dispatch(fetchProducts())
+        dispatch(fetchReviews())
     }
 })
 

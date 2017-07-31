@@ -1,9 +1,8 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Product, Review, Order, Category, Promise, Cart } = db,
+    { User, Product, Review, Order, Category, Promise } = db,
     OrderProduct = db.model('OrderProduct'),
-    CartProduct = db.model('CartProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -11,12 +10,10 @@ function seedEverything() {
         users: users(),
         categories: categories()
     }
-    seeded.carts = carts(seeded)
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
     seeded.orderProducts = orderProducts(seeded)
-    seeded.cartProducts = cartProducts(seeded)
 
     return Promise.props(seeded)
 }
@@ -47,7 +44,7 @@ const users = seed(User, ({
     },
     truman: {
         name: 'Truman Purnell',
-        email: 'truman.purnell@gmail.com',
+        email: 'truman.purnell@gmail.co',
         password: '1234',
         role: 'user'
     },
@@ -70,15 +67,15 @@ const users = seed(User, ({
 const products = seed(Product, ({ categories }) => ({
     storm: {
         name: 'storm',
-        description: 'its loud',
+        description: `A storm is any disturbed state of an environment or astronomical body's atmosphere especially affecting its surface, and strongly implying severe weather. It may be marked by significant disruptions to normal conditions such as strong wind, Tornadoes, hail, thunder and lightning (a thunderstorm), heavy precipitation (snowstorm, rainstorm), heavy freezing rain (ice storm), strong winds (tropical cyclone, windstorm), or wind transporting some substance through the atmosphere as in a dust storm, blizzard, sandstorm, etc.`,
         category_id: categories.storm.id,
         img: 'https://s-media-cache-ak0.pinimg.com/originals/37/6d/44/376d442176f0af9dd2112cf8e5ea4937.jpg',
         price: 100,
         quantity: 4
     },
-    cloud: {
-        name: 'cloud',
-        description: 'a nice ol cloud',
+    Nimbostratus: {
+        name: 'Nimbostratus',
+        description: `Nimbostratus is a stratiform genus formerly classified as "Family C" low-level, but now considered by the World Meteorological Organization (WMO) to be a middle- or multi-level stratus type. Although it is usually a low-based cloud, it actually forms most commonly in the middle level of the troposphere and then spreads vertically into the low and high levels. This change in classification would once have made it a "Family D" cloud, but this style of nomenclature was discontinued by the WMO in 1956. Nimbostratus usually produces precipitation over a wide area. Nimbo- is from the Latin word nimbus, which denotes precipitation. It has a diffuse cloud base generally found anywhere from near surface in the low levels to about 3,000 m (9,800 ft) in the middle level of the troposphere. Although usually dark at its base, it often appears illuminated from within to a surface observer.`,
         category_id: categories.cloud.id,
         img: 'http://www.itworldcanada.com/wp-content/uploads/2017/05/cp1_0111.jpg',
         price: 50,
@@ -120,19 +117,6 @@ const products = seed(Product, ({ categories }) => ({
 
 }))
 
-const carts = seed(Cart, ({ users }) => ({
-    cart2: {
-        user_id: users.god.id,
-    },
-    cart1: {
-        user_id: users.barack.id,
-    },
-    cart3: {
-        user_id: users.truman.id,
-    },
-    cart4: {}
-}))
-
 const orders = seed(Order, ({ users, products }) => ({
     order1: {
         user_id: users.god.id,
@@ -166,7 +150,32 @@ const reviews = seed(Review, ({ users, products }) => ({
         body: `Ethical kickstarter enamel pin intelligentsia wayfarers, waistcoat taiyaki pok pok selfies mustache. Kogi sriracha pabst, kale chips slow-carb jean shorts humblebrag glossier pok pok chicharrones pinterest PBR&B lomo. Helvetica church-key celiac YOLO vape umami. Banh mi microdosing cold-pressed gentrify hot chicken. Cronut truffaut humblebrag kogi kickstarter shaman shoreditch biodiesel tumblr. Artisan affogato pug tacos. Af tumeric small batch locavore you probably haven't heard of them lyft photo booth microdosing asymmetrical literally pork belly. Kitsch waistcoat semiotics YOLO literally, pickled activated charcoal vexillologist humblebrag mixtape cred everyday carry meditation. VHS affogato taxidermy succulents, venmo occupy austin bespoke keffiyeh flexitarian tattooed pok pok man bun pabst. Cloud bread XOXO before they sold out chambray slow-carb VHS subway tile whatever selfies kitsch yuccie flexitarian. Intelligentsia scenester chia palo santo hammock. Master cleanse pitchfork cornhole meditation selfies scenester franzen waistcoat fixie etsy mixtape wolf schlitz tattooed. Mumblecore hella mustache, cronut wayfarers portland slow-carb. Snackwave asymmetrical ugh single-origin coffee narwhal truffaut selvage pork belly kickstarter 90's iPhone poutine succulents leggings locavore. Ethical letterpress salvia distillery seitan narwhal.`,
         star: 5,
         user_id: users.eli.id,
-        product_id: products.cloud.id
+        product_id: products.rain.id
+    },
+
+    r4: {
+        body: `Shabby chic distillery tacos kickstarter plaid 90's pug godard migas tousled freegan 3 wolf moon affogato selfies. Retro raw denim four loko, post-ironic prism edison bulb truffaut blue bottle. Heirloom tumeric 3 wolf moon gluten-free next level artisan mumblecore vice man braid taxidermy plaid cliche affogato. Jean shorts prism listicle neutra green juice hell of aesthetic. IPhone austin single-origin coffee umami woke chillwave. Semiotics food truck flexitarian, bushwick pug hammock everyday carry ennui artisan. Selfies enamel pin synth distillery meggings narwhal. `,
+        star: 3,
+        user_id: users.god.id,
+        product_id: products.storm.id
+    },
+    r5: {
+        body: `Chillwave echo park trust fund, sartorial celiac seitan thundercats squid shabby chic irony. Schlitz kickstarter echo park gluten-free leggings blog. `,
+        star: 2,
+        user_id: users.andrew.id,
+        product_id: products.rain.id
+    },
+    r6: {
+        body: `sartorial celiac seitan thundercats squid shabby chic irony.`,
+        star: 4,
+        user_id: users.eli.id,
+        product_id: products.haboob.id
+    },
+    r7: {
+        body: `Celiac literally tbh street art humblebrag, single-origin coffee tumeric ramps synth meggings +1 hot chicken 3 wolf moon. Plaid vice jean shorts four dollar toast fashion axe deep v. Kombucha brooklyn vinyl trust fund gastropub wayfarers wolf small batch distillery tumblr poutine you probably haven't heard of them bushwick. Gastropub affogato mumblecore, quinoa bespoke keffiyeh enamel pin single-origin coffee beard tumeric vaporware la croix. Vinyl butcher affogato everyday carry hot chicken bicycle rights locavore pork belly viral gastropub brunch crucifix literally.`,
+        star: 4,
+        user_id: users.eli.id,
+        product_id: products.haboob.id
     }
 }))
 
@@ -174,17 +183,6 @@ const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
     orderProduct1: {
         order_id: orders.order1.id,
         product_id: products.rain.id,
-    }
-}))
-
-const cartProducts = seed(CartProduct, ({ products, carts }) => ({
-    'Eli cart: storm': {
-        product_id: products.storm.id,
-        cart_id: carts.cart4.id
-    },
-    'Eli cart: rain': {
-        product_id: products.rain.id,
-        cart_id: carts.cart4.id
     }
 }))
 
@@ -253,4 +251,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { products, carts, reviews, orders, users, categories, orderProducts, cartProducts })
+module.exports = Object.assign(seed, { products, reviews, orders, users, categories, orderProducts })

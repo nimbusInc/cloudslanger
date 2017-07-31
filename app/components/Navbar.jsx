@@ -14,19 +14,24 @@ const Navbar = ({ cart, user, logout, emptyCart }) => {
                     <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-search"></i></span>
                         <input type="text" className="form-control" placeholder="Search"></input>
-                        <span className="input-group-addon close-search"><i className="fa fa-times"></i></span>
+                        <span onClick={(e) => { $('.top-search').slideToggle() }} className="input-group-addon close-search"><i className="fa fa-times"></i></span>
                     </div>
                 </div>
             </div>
+
             <div className="container">
-                <div onClick={(e) => { $('.top-search').slideToggle() }} className="attr-nav">
+                <div className="attr-nav">
                     <ul>
-                        <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
+                        <li
+                            onClick={(e) => { $('.top-search').slideToggle() }}
+                            className="search"><a href="#"><i className="fa fa-search"></i></a>
+                        </li>
+
                         <li>
-                            <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                            <Link to="/checkout">
                                 <i className="fa fa-shopping-bag"></i>
                                 <span className="badge">{cartSize}</span>
-                            </a>
+                            </Link>
                         </li>
 
                     </ul>
@@ -36,7 +41,6 @@ const Navbar = ({ cart, user, logout, emptyCart }) => {
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
                         <li>{user && <Link to="/">orders</Link>}</li>
-                        <li>{cartSize ? <Link to="/checkout">checkout</Link> : null}</li>
                         <li onClick={(e) => { emptyCart(); logout() }}>{user && <Link to="/">logout</Link>}</li>
                         <li>{!user && <Link to="/login">login</Link>}</li>
                         <li>{!user && <Link to="/signup">signup</Link>}</li>

@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const reducer = (user = null, action) => {
     switch (action.type) {
-        case AUTHENTICATED:
-            return action.user
+    case AUTHENTICATED:
+        return action.user
     }
     return user
 }
@@ -26,6 +26,8 @@ export const logout = () =>
             .then(() => dispatch(whoami()))
             .catch(() => dispatch(whoami()))
 
+{ /*signup vs createAUser
+sometimes admin can createAUser, be aware of this */ }
 export const signup = (name, email, password) =>
     dispatch =>
         axios.post('/api/users/', { name, email, password })

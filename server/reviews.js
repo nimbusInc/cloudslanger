@@ -2,12 +2,13 @@
 
 const db = require('APP/db')
 const Review = db.model('reviews')
+const User = db.model('users')
 const router = require('express').Router()
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
     // All reviews route
 router.get('/', (req, res, next) => {
-    Review.findAll()
+    Review.findAll({include: {model: User, attributes: ['name']}})
         .then(reviews => res.json(reviews))
         .catch(next)
 })
