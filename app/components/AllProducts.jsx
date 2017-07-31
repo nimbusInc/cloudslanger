@@ -14,7 +14,7 @@ import {connect} from 'react-redux'
 function AllProducts(props) {
     return (
         <div>
-            <div className="col-lg-9">
+            
                 <section id="gallery" className="gallery margin-top-120 bg-grey">
                     <div className="container">
                         <div className="row">
@@ -31,7 +31,7 @@ function AllProducts(props) {
                         </div>
                     </div>
                 </section>
-            </div>
+            
         </div>
     )
 }

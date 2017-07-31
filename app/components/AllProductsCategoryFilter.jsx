@@ -12,16 +12,14 @@ function Categories(props) {
                     <button className="button is-checked" onClick={() => props.catSelect({})}>View all</button>
                     {props && props.categories.map((cat) => (
                         <button className="button" key={cat.id} onClick={() => props.catSelect(cat)}
-                        >{cat.category}</button>
+                        >{cat.name}</button>
                     )
                     )
                     }
                 </div>
             </div>
-            {props.currentcategory && props.products.map((product) => {
-                if (props.currentcategory.id===product.category) {
-                    return (<Items key={product.id} product={product}/>)
-                }
+            { props.products.map((product) => {
+                return (<Items key={product.id} product={product}/>)
             })
             }
         </div>
