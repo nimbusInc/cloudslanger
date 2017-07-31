@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {NavLink, withRouter} from 'react-router-dom'
-import {addCategory} from './reducers/categories'
+import {updateProduct} from './reducers/products'
 
 class adminAddCategory extends React.Component {
     constructor(props) {
@@ -50,6 +50,6 @@ const mapProps= (state) => ({
     categories: state.categories
 })
 
-const mapDispatch = {addCategory}
+const mapDispatch = {updateProduct}
 
 export default connect(mapProps, mapDispatch)(adminAddCategory)
