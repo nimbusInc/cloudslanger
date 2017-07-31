@@ -10,6 +10,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.put('/', (req, res, next) => {
+    console.log(req.user.role)
     const item = req.body
     const itemExistsInCart = req.session.cart[item.id]
 

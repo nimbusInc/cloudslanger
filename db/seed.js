@@ -44,7 +44,7 @@ const users = seed(User, ({
     },
     truman: {
         name: 'Truman Purnell',
-        email: 'truman.purnell@gmail.com',
+        email: 'truman.purnell@gmail.co',
         password: '1234',
         role: 'user'
     },
@@ -185,7 +185,6 @@ const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
         product_id: products.rain.id,
     }
 }))
-
 
 if (module === require.main) {
     db.didSync
