@@ -14,7 +14,7 @@ class Categories extends React.Component {
     }
 
     render() {
-        const curCat = this.props.currentCategory
+        const thisCategory = this.props.currentCategory
         return (
             <div>
                 <div className="col-md-12 m-bottom-60">
@@ -22,17 +22,17 @@ class Categories extends React.Component {
                         <button className="button is-checked" onClick={() => {
                             const emptyCurrentCategory = {id: 0}
                             this.setState({currentState: emptyCurrentCategory})
-                            return (this.props.catSelect({}))
-                        }}>View all</button>
-                        {this.props.categories && this.props.categories.map((cat) => (
-                            <button className="button" key={cat.id} onClick={() => {
-                                this.setState({currentState: cat})
-                                return (this.props.catSelect(cat))
-                            }}
-                            >{cat.name}</button>
-                        )
-                        )
-                        }
+                            return (this.props.categorySelect({})) }}>
+                        View all
+                        </button>
+                        {
+                            this.props.categories && this.props.categories.map((thisCategory) => (
+                            <button className="button" key={thisCategory.id} onClick={() => {
+                                this.setState({currentState: thisCategory})
+                                return (this.props.categorySelect(thisCategory))}}>
+                            {thisCategory.name}
+                            </button>
+                        ))}
                     </div>
                 </div>
                 <Items currentCategory={this.state.currentState}/>
@@ -41,14 +41,10 @@ class Categories extends React.Component {
     }
 }
 
-const mapProps= (state) => ({
-    categories: state.categories,
-    products: state.products,
-    currentCategory: state.currentCategory
-})
+const mapProps= ({ categories, products, currentCategory }) => ({ categories, products, currentCategory })
 
 const mapDispatch = dispatch => ({
-    catSelect: (newCat) => {
+    categorySelect: (newCat) => {
         dispatch(select(newCat))
     }
 })

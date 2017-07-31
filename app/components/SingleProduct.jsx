@@ -5,9 +5,9 @@ import { updateCart } from '../reducers/cart'
 import Review from './Review'
 
 function SingleProduct({ products, match, updateCart, categories, reviews }) {
-    const product = products.find(p => p.id === +match.params.id)
-    const category = product ? categories.find(c => c.id === +product.category_id) : null
-    const productReview = reviews.filter(r => r.product_id === +product.id)
+    const product = products.find(product => product.id === +match.params.id)
+    const category = product && categories.find(category => category.id === +product.category_id)
+    const productReview = reviews.filter(review => review.product_id === +product.id)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
             <div className="container">
