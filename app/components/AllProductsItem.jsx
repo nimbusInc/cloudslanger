@@ -8,26 +8,35 @@ class Item extends React.Component {
         this.state ={
             productList: this.props.products
         }
+        console.log('props in cons', props)
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('HERE', nextProps)
-        this.setState({productList: nextProps.products.filter((product) => {
-            console.log('is all', !nextProps.currentCategory)
-            console.log('is newcategory', product.category_id === nextProps.currentCategory.id)
-            if (!Object.keys(nextProps.currentCategory).length) {
+        // console.log('HERE', nextProps)
+        // console.log(this.state.productList)
+        // console.log('PROPS', this.props)
+        const newProductList = nextProps.products.filter((product) => {
+            // console.log('is all', !Object.keys(nextProps.currentCategory).length)
+            // console.log('PRODUCTS', nextProps.products)
+            // console.log('is newcategory', product.category_id === nextProps.currentCategory.id)
+            console.log('pre if CurrCat', nextProps.currentCategory)
+            console.log('VALIDATOR', nextProps.currentCategory === undefined)
+            if (nextProps.currentCategory === undefined) {
                 console.log('here 1')
                 return true
             } else {
                 console.log('here 2')
+                console.log('PRODUCT', product)
+                console.log('CAT', nextProps.currentCategory)
                 return product.category_id === nextProps.currentCategory.id
             }
-        })})
+        })
+        this.setState({productList: newProductList})
     }
 
     render() {
-        console.log('productList', this.state.productList)
-        console.log('products', this.props.products)
+        // console.log('productList', this.state.productList)
+        // console.log('products', this.props.products)
         return (
 
             <div>

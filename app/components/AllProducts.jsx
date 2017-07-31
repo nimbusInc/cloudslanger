@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Categories from './AllProductsCategoryFilter.jsx'
+import {connect} from 'react-redux'
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -10,7 +11,7 @@ import Categories from './AllProductsCategoryFilter.jsx'
   unordered list
 */
 
-export default function AllProducts(props) {
+const AllProducts = function(props) {
     return (
         <div>
             <section id="gallery" className="gallery margin-top-120 bg-grey">
@@ -32,3 +33,10 @@ export default function AllProducts(props) {
         </div>
     )
 }
+const mapProps= (state) => ({
+    categories: state.categories,
+    products: state.products,
+    currentCategory: state.currentCategory
+})
+
+export default connect(mapProps)(AllProducts)
