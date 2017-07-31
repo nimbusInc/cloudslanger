@@ -20,7 +20,7 @@ class Routes extends Component {
             <Router>
                 <div className='culmn'>
                     {''}{/* this is the way god wants it... */}
-                   
+
                     <Route exact path='/thumbnail' component={Thumbnail} />
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/login' component={Login} />
