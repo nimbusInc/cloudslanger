@@ -37,7 +37,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
                                 <h4>Reviews for {product.name}</h4>
-                                <small>average review {AverageStars && AverageStars.map(star => (<i className={`fa fa-cloud`} ></i>))}</small>
+                                <small>average review {AverageStars && AverageStars.map((star, i) => (<i className={`fa fa-cloud`} key={i}></i>))}</small>
                                 <hr/>
                                 {
                                     productReview && productReview.map(rev => (<Review review={rev} key={rev.id}/>
