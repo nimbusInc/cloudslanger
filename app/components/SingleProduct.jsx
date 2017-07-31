@@ -32,22 +32,6 @@ function SingleProduct({ products, match, updateCart, categories }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
-                                {
-                                product && product.reviews.map(rev => {
-                                    return (
-                                    <div>
-                                        <div className="fashion_test text-center">
-                                            <img className="img-circle" src="/assets/images/blog-test-img1.jpg" alt=""></img>
-
-                                            <h6 className="m-top-20">Pouseidon - From OCean</h6>
-                                            <p className="m-top-20">{rev.body}</p>
-                                            <img className="m-top-20" src="/assets/images/blog-sign.png" alt="" ></img>
-                                        </div>
-                                    </div>
-                                    )
-                                }
-                                )
-                                }
                             </div>
                         </div>
                     </div>
