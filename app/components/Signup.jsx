@@ -1,6 +1,8 @@
 import React from 'react'
 
-export const Login = ({ login }) => (
+import { signup } from '../reducers/user'
+
+export const Signup = ({ login, signup }) => (
     <section id="contact" className="contact fix">
         <div className="container">
             <div className="row">
@@ -9,23 +11,21 @@ export const Login = ({ login }) => (
                     <div className="col-lg-12 sm-m-top-30">
                         <form onSubmit={evt => {
                             evt.preventDefault()
-<<<<<<< HEAD
-                            login(evt.target.username.value, evt.target.password.value)
-                        } }>
-=======
-                            login(evt.target.email.value, evt.target.password.value)
+                            signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
                         }}>
->>>>>>> origin/user-actions
                             <div className="row">
 
                                 <div className="col-sm-12">
                                     <div className="form-group">
+                                        <label>Name *</label>
+                                        <input name="name" type="text" className="form-control"></input>
+                                    </div>
+                                </div>
+
+                                <div className="col-sm-12">
+                                    <div className="form-group">
                                         <label>Email *</label>
-<<<<<<< HEAD
-                                        <input name="username" type="text" className="form-control"></input>
-=======
                                         <input name="email" type="text" className="form-control"></input>
->>>>>>> origin/user-actions
                                     </div>
                                 </div>
 
@@ -38,7 +38,7 @@ export const Login = ({ login }) => (
 
                                 <div className="col-sm-12">
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-default">Login <i className="fa fa-long-arrow-right"></i></button>
+                                        <button type="submit" className="btn btn-default">Signup <i className="fa fa-long-arrow-right"></i></button>
                                     </div>
                                 </div>
 
@@ -46,14 +46,6 @@ export const Login = ({ login }) => (
 
                         </form>
                     </div>
-<<<<<<< HEAD
-
-                </div>
-            </div>
-        </div>
-    </section>
-=======
->>>>>>> origin/user-actions
 
                 </div>
             </div>
@@ -66,19 +58,5 @@ import { connect } from 'react-redux'
 
 export default connect(
     state => ({}),
-<<<<<<< HEAD
-    {login},
-)(Login)
-
-{ /* <form onSubmit={evt => {
-      evt.preventDefault()
-      login(evt.target.username.value, evt.target.password.value)
-  } }>
-    <input name="username" />
-    <input name="password" type="password" />
-    <input type="submit" value="Login" />
-  </form>  */ }
-=======
-    { login },
-)(Login)
->>>>>>> origin/user-actions
+    { login, signup },
+)(Signup)

@@ -1,7 +1,9 @@
 'use strict'
 
 const db = require('APP/db'),
-    { User, Product, Review, Order, Category, Promise } = db,
+    { User, Product, Review, Order, Category, Promise, Cart } = db,
+    OrderProduct = db.model('OrderProduct'),
+    CartProduct = db.model('CartProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -9,21 +11,23 @@ function seedEverything() {
         users: users(),
         categories: categories()
     }
-
+    seeded.carts = carts(seeded)
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
-    
+    seeded.orderProducts = orderProducts(seeded)
+    seeded.cartProducts = cartProducts(seeded)
+
     return Promise.props(seeded)
 }
 
 const categories = seed(Category, ({
-    storm: { category: 'storm' },
-    fog: { category: 'fog' },
-    precipitation: { category: 'precipitation' },
-    frost: { category: 'frost' },
-    dry: { category: 'dry' },
-    cloud: { category: 'clouds' }
+    storm: { name: 'storm' },
+    fog: { name: 'fog' },
+    precipitation: { name: 'precipitation' },
+    frost: { name: 'frost' },
+    dry: { name: 'dry' },
+    cloud: { name: 'clouds' }
 }))
 
 const users = seed(User, ({
@@ -37,14 +41,13 @@ const users = seed(User, ({
     barack: {
         name: 'Barack Obama',
         email: 'barack@example.gov',
-        password_digest: '12334',
+        password: '12334',
         role: 'admin'
 
     },
     truman: {
         name: 'Truman Purnell',
-        email: 'truman@example.gov',
-        password_digest: '1233j4',
+        email: 'truman.purnell@gmail.com',
         password: '1234',
         role: 'user'
     },
@@ -52,19 +55,19 @@ const users = seed(User, ({
     eli: {
         name: 'Eli Mauskopf',
         email: 'eli@head.gov',
-        password_digest: '123lkjlk34',
-        role: 'user'
+        role: 'user',
+        password: '1234'
     },
 
     andrew: {
         name: 'andrew atkinson',
         email: 'andrew@blue.dog',
-        password_digest: '123lkmkjkjlk34',
-        role: 'guest'
+        role: 'guest',
+        password: '1234'
     }
 }))
 
-const products = seed(Product, ({ categories })  => ({
+const products = seed(Product, ({ categories }) => ({
     storm: {
         name: 'storm',
         description: 'its loud',
@@ -77,7 +80,7 @@ const products = seed(Product, ({ categories })  => ({
         name: 'cloud',
         description: 'a nice ol cloud',
         category_id: categories.cloud.id,
-        img: 'https://cdn.pixabay.com/photo/2011/06/21/14/13/cloud-8075_960_720.jpg',
+        img: 'http://www.itworldcanada.com/wp-content/uploads/2017/05/cp1_0111.jpg',
         price: 50,
         quantity: 45
     },
@@ -85,7 +88,7 @@ const products = seed(Product, ({ categories })  => ({
         name: 'cumulonimbus',
         description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
         category_id: categories.cloud.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg#/media/File:Fly00890_-_Flickr_-_NOAA_Photo_Library.jpg',
+        img: 'https://i.pinimg.com/736x/91/52/d8/9152d84686e30abe15dcfb714eb1ddf4--painting-clouds-cloud-it.jpg',
         price: 500,
 
         quantity: 25
@@ -110,11 +113,24 @@ const products = seed(Product, ({ categories })  => ({
         name: 'haboob',
         description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
         category_id: categories.precipitation.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Haboob_Ransom_Canyon_Texas_2009.jpg#/media/File:Haboob_Ransom_Canyon_Texas_2009.jpg',
+        img: 'https://www.cloudfoundry.org/wp-content/uploads/2017/01/cloud-foundry-blog-image.gif',
         price: 50,
         quantity: 3
     }
 
+}))
+
+const carts = seed(Cart, ({ users }) => ({
+    cart2: {
+        user_id: users.god.id,
+    },
+    cart1: {
+        user_id: users.barack.id,
+    },
+    cart3: {
+        user_id: users.truman.id,
+    },
+    cart4: {}
 }))
 
 const orders = seed(Order, ({ users, products }) => ({
@@ -151,6 +167,24 @@ const reviews = seed(Review, ({ users, products }) => ({
         star: 5,
         user_id: users.eli.id,
         product_id: products.cloud.id
+    }
+}))
+
+const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
+    orderProduct1: {
+        order_id: orders.order1.id,
+        product_id: products.rain.id,
+    }
+}))
+
+const cartProducts = seed(CartProduct, ({ products, carts }) => ({
+    'Eli cart: storm': {
+        product_id: products.storm.id,
+        cart_id: carts.cart4.id
+    },
+    'Eli cart: rain': {
+        product_id: products.rain.id,
+        cart_id: carts.cart4.id
     }
 }))
 
@@ -201,7 +235,7 @@ function seed(Model, rows) {
                             key,
                             value: Promise.props(row)
                                 .then(row => Model.create(row)
-                                    .catch(error => { throw new BadRow(key, row, error) })
+                                        .catch(error => { throw new BadRow(key, row, error) })
                                 )
                         }
                     }).reduce(
@@ -219,4 +253,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, {  products,reviews, orders ,users, categories })
+module.exports = Object.assign(seed, { products, carts, reviews, orders, users, categories, orderProducts, cartProducts })

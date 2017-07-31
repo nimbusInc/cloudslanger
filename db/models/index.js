@@ -16,6 +16,7 @@ const app = require('APP')
         User: require('./user'),
         Product: require('./product'),
         Review: require('./review'),
+        Cart: require('./cart'),
         Order: require('./order'),
         Category: require('./category')
       // ---------- Add new models here ----------
