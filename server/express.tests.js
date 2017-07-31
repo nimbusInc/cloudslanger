@@ -31,7 +31,10 @@ describe('/api/products', () => {
             })
 
             return product.save().then(() => {
-                request(app)
+                // SJB and OB test was spuriously passing, mocha wasn't waiting for
+                // request to finish
+                // promise that is returned on line 33 wasn't rejecting
+                return request(app)
                 .get(`/api/products`)
                 .then(res => {
                     expect(res.body).to.be.an.instanceOf(Array)

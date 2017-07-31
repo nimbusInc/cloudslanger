@@ -32,18 +32,19 @@ router.post('/', (req, res, next) => {
 
 // Update Product Route
 router.put('/:id', (req, res, next) => {
+    // SJB usually .then is indented to the same place as the promise it chains off of
     Product.findOne({
         where: {
             id: req.params.id
         }
     })
-        .then(function(unupdatedProduct) {
-            if (unupdatedProduct) {
-                return unupdatedProduct.update(req.body)
-            }
-        })
-        .then(updatedProduct => res.status(201).json(updatedProduct))
-        .catch(next)
+    .then(function(unupdatedProduct) {
+        if (unupdatedProduct) {
+            return unupdatedProduct.update(req.body)
+        }
+    })
+    .then(updatedProduct => res.status(201).json(updatedProduct))
+    .catch(next)
 })
 
 // Delete product route
