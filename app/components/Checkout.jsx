@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Categories from './AllProductsCategoryFilter.jsx'
 import { connect } from 'react-redux'
+import { addOrder } from '../reducers/orders'
 
 /* EXPLANATION
   1.Renders a container that wraps the sidebar and all the product thumbnails
@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
   unordered list
 */
 
-const Checkout = ({ cart, products }) => {
+const Checkout = ({ cart, products, user, addOrder }) => {
     const productIds = Object.keys(cart)
     return (
         <section id="testimonial" className="testimonial fix roomy-100">
@@ -195,12 +195,24 @@ const Checkout = ({ cart, products }) => {
                         <div className="main_contact p-top-100">
 
                             <div className="col-lg-12 sm-m-top-30">
-                                <form className="" action="subcribe.php">
+                                <form onSubmit={(event) => {
+                                    event.preventDefault()
+                                    addOrder({
+                                        info: {
+                                            email: event.target.email.value,
+                                            name: event.target.name.value,
+                                            payment: event.target.payment.value,
+                                            address: event.target.address.value
+                                        },
+                                        user,
+                                        cart
+                                    })
+                                }}>
                                     <div className="row">
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Name *</label>
-                                                <input id="first_name" name="name" type="text" className="form-control" required=""></input>
+                                                <input id="name" name="name" type="text" className="form-control" required=""></input>
                                             </div>
                                         </div>
 
@@ -214,20 +226,20 @@ const Checkout = ({ cart, products }) => {
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Credit Card *</label>
-                                                <input id="email" name="email" type="text" className="form-control"></input>
+                                                <input id="payment" name="payment" type="text" className="form-control"></input>
                                             </div>
                                         </div>
 
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Address *</label>
-                                                <input id="email" name="email" type="text" className="form-control"></input>
+                                                <input id="address" name="address" type="text" className="form-control"></input>
                                             </div>
                                         </div>
 
                                         <div className="col-sm-12">
                                             <div className="form-group">
-                                                <a href="" className="btn btn-default">PURCHASE <i className="fa fa-long-arrow-right"></i></a>
+                                                <button type="submit" className="btn btn-default">PURCHASE <i className="fa fa-long-arrow-right"></i></button>
                                             </div>
                                         </div>
 
@@ -238,10 +250,10 @@ const Checkout = ({ cart, products }) => {
                     </div>
                 </div>
             </section>
-        </section>
+        </section >
     )
 }
 
-const mapProps = ({ cart, products }) => ({ cart, products })
-const mapDispatch = null
+const mapProps = ({ cart, products, user }) => ({ cart, products, user })
+const mapDispatch = ({ addOrder })
 export default connect(mapProps, mapDispatch)(Checkout)
