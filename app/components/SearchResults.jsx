@@ -12,37 +12,21 @@ class SearchResults extends Component {
         console.log('PRODUCTBS', productsBySearch)
         return (
             <div>
-                <h1> FILLER </h1>
-                <h1> FILLER </h1>
-                <h1> FILLER </h1>
-                    <div className="container">
-                        <div className="attr-nav">
-                            <ul>
-                                <li className="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-                                     <i className="fa fa-search"> </i>
-                                    </a>
-                                    <ul className="dropdown-menu cart-list">
-                                    {productsBySearch && productsBySearch.map((product) => (
-                                        <li>
-                                            <div className="col-xs-12">
-                                                <img src={product.img} className="cart-thumb" alt="" />
-                                            </div>
-                                            <h6><a href="#"> {product.name} </a></h6>
-                                            <p className="m-top-10"><span className="price">{product.price}</span></p>
-                                        </li>
-                                    ))}
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </div>
+                {productsBySearch && productsBySearch.map((product) => (
+                    <div className="grid text-left" key={product.id}>
+                        <NavLink to={`/products/${product.id}`} >
+                            <div className="feature_btns" style={{ marginLeft: 65, color: 'white' }}>
+                                 <span className="btn btn-default text-white text-uppercase"> {product.name} <i className="fa fa-long-arrow-right"></i></span>
+                            </div>
+                        </NavLink>
                     </div>
+                ))}
+
             </div>
         )
     }
-                }
+}
 
-const mapProps = ({products}) => ({products})
+const mapProps = ({ products }) => ({ products })
 
 export default connect(mapProps)(SearchResults)

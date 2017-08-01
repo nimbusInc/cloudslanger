@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { logout } from '../reducers/user'
 import { emptyCart } from '../reducers/cart'
 import { updateSearch } from '../reducers/search'
+import SearchResults from './SearchResults'
 
 const Navbar = ({ cart, user, logout, emptyCart, searchInput, updateSearch }) => {
     const cartSize = Object.values(cart).reduce((sum, cur) => sum + cur, 0)
@@ -16,8 +17,11 @@ const Navbar = ({ cart, user, logout, emptyCart, searchInput, updateSearch }) =>
                         <span className="input-group-addon"><i className="fa fa-search"></i></span>
                         <input value={searchInput} type="text" className="form-control" placeholder="Search" onChange={(event) => { updateSearch(event.target.value) } }></input>
                         <span onClick={(e) => { $('.top-search').slideToggle() }} className="input-group-addon close-search"><i className="fa fa-times"></i></span>
+
                     </div>
                 </div>
+                    <SearchResults searchInput={ searchInput } />
+
             </div>
 
             <div className="container">

@@ -24,7 +24,6 @@ class Routes extends Component {
             <Router>
                 <div className='culmn'>
                     <Navbar />
-                    <SearchResults searchInput={ this.props.searchInput } />
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
