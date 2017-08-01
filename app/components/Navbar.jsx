@@ -28,7 +28,7 @@ const Navbar = ({ cart, user, logout, emptyCart }) => {
                         </li>
 
                         <li>
-                            <Link to="/checkout">
+                            <Link to="/cart">
                                 <i className="fa fa-shopping-bag"></i>
                                 <span className="badge">{cartSize}</span>
                             </Link>

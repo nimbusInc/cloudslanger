@@ -1,114 +1,247 @@
+import React from 'react'
 import { Link } from 'react-router-dom'
-import React, { Component } from 'react'
+import Categories from './AllProductsCategoryFilter.jsx'
 import { connect } from 'react-redux'
-import { emptyCart, updateCart } from '../reducers/cart'
 
-const Checkout = ({ cart, products, updateCart }) => {
-    let price
-    const cartItems = Object.keys(cart)
+/* EXPLANATION
+  1.Renders a container that wraps the sidebar and all the product thumbnails
+  2.Sidebar and thumbnails are then wrapped in bootstrap row
+  3. Within that row we create a new col-lg-9(bootstrap stuff) which will hold all our thumbnails
+  4. Maps through products and creates thumbnail for each product that are list elements inside a greater
+  unordered list
+*/
 
-    if (cartItems.length) {
-        price = (cartItems.reduce((total, itemId) => {
-            const productInCart = products.find(product => product.id === +itemId)
-            const quantity = +cart[itemId]
-            return productInCart ? +productInCart.price * quantity + total : total
-        }, 0)).toFixed(2)
-    }
-
-    
-    return Object.keys(cart).length ? (
-        <section id="feature" className="feature p-top-100">
+const Checkout = ({ cart, products }) => {
+    const productIds = Object.keys(cart)
+    return (
+        <section id="testimonial" className="testimonial fix roomy-100">
             <div className="container">
-                {
+                <div className="row">
 
-                    cart && products && Object.keys(cart).map((id, i) => {
-                        let item = products.find(p => p.id === +id)
-                        return item ? (
-                            <div key={id} className="row">
-                                <div className="main_feature">
 
-                                    <div className="col-md-6 m-top-120">
+                    <div className="service_content_area">
 
-                                        <div className="head_title">
-                                            <h2>{item && item.name}</h2>
-                                            <h5><em>{item && item.description}</em></h5>
-                                            <div className="separator_left"></div>
-                                        </div>
+                        <div className="col-md-4 service_left wow fadeInLeft">
 
-                                        <div className="feature_content wow fadeIn m-top-40">
-                                            <div className="feature_btns m-top-60">
-                                                <button
-                                                    onClick={() => {
-                                                        cart[item.id] > 1
-                                                            ? updateCart(item, 'subtract')
-                                                            : updateCart(item, 'delete')
-                                                    }}
-                                                    className="btn btn-default text-uppercase">
-                                                    <i className="fa fa-long-arrow-left"></i>
-                                                </button>
-                                                <h2 className="statistic-counter"> {cart[id]} </h2>
-                                                <button
-                                                    onClick={() => { updateCart(item, 'add') }}
-                                                    className="btn btn-default text-uppercase">
-                                                    <i className="fa fa-long-arrow-right"></i>
-                                                </button>
+
+                            <div className="service_items">
+                                <div className="row">
+
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-leaf"></span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="col-sm-2 m-top-100">
-                                        <div className="feature_photo wow fadeIn sm-m-top-40">
-                                            <div className="photo_border"></div>
-                                            <div className="feature_img">
-                                                <img src={item && item.img} alt="" />
-                                            </div>
+                                    <div className="col-xs-9">
+                                        <div className="text-left service_left_text">
+                                            <h4 className="main-color">Free Shipping</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
-                                    {!i &&
-                                        <div className="col-md-4">
-                                            <div className="blog_fashion_right">
-                                                <div className="fashion_test text-center">
-                                                    <h1>${price}</h1>
-
-                                                    <h6 className="m-top-20">Take it and run</h6>
-                                                    <p className="m-top-20">With the waves from somewhere so far.
-                                            We comes with elegants and beautiful.
-                                            Just do what we love and always love what we do</p>
-                                                    <button className="btn btn-default">Checkout</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
 
                                 </div>
                             </div>
-                        ) : null
-                    })
 
-                }
 
-            </div>
-        </section>
-    ) : <section id="simple" className="simple bg-grey roomy-80">
-            <div className="container">
-                <div className="row">
-                    <div className="main_simple text-center">
-                        <div className="col-md-12">
-                            <h2>Your cart is empty!</h2>
-                            <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere
-                                    me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse
-                                    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan blandit
-                                    praesent luptatum.</p>
 
-                            <Link to='/products/1' className="btn btn-default m-top-40">Get Shopping <i className="fa fa-long-arrow-right"></i></Link>
+                            <div className="service_items">
+                                <div className="row">
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-diamond"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-xs-9">
+                                        <div className="text-left service_left_text">
+                                            <h4 className="main-color">Garaunteed Delivery</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div className="service_items">
+                                <div className="row">
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-android"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-xs-9">
+                                        <div className="text-left service_left_text">
+                                            <h4 className="main-color">Pore Cleansing</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        <div className="col-md-4 sm-m-top-40 sm-text-center">
+                            <div className="service-img wow bounceIn">
+                                <img src='https://booster.io/wp-content/uploads/checkout-custom-fields-e1438367928930.png' alt="Architect Img"></img>
+                            </div>
+                        </div>
+
+
+                        <div className="col-md-4 service_right wow fadeInRight sm-m-top-40" >
+
+
+                            <div className="service_items">
+                                <div className="row">
+
+                                    <div className="col-xs-9">
+                                        <div className="service_right_text p-l-15 text-right">
+                                            <h4 className="main-color">Rain & Shine</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-cut"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div className="service_items">
+                                <div className="row">
+
+                                    <div className="col-xs-9">
+                                        <div className="service_right_text p-l-15 text-right">
+                                            <h4 className="main-color">God is you</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-bullhorn"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div className="service_items">
+                                <div className="row">
+
+
+                                    <div className="col-xs-9">
+                                        <div className="service_right_text p-l-15 text-right">
+                                            <h4 className="main-color">And much more</h4>
+                                            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-xs-3">
+                                        <div className="hexagon">
+                                            <div className="about-content">
+                                                <span className="fa fa-paper-plane"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+            <section id="contact" className="contact fix">
+                <div className="container">
+                    <div className="row">
+                        <div className="main_contact p-top-100">
+
+                            <div className="col-lg-12 sm-m-top-30">
+                                <form className="" action="subcribe.php">
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label>Your Name *</label>
+                                                <input id="first_name" name="name" type="text" className="form-control" required=""></input>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label>Your Email *</label>
+                                                <input id="email" name="email" type="text" className="form-control"></input>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label>Your Credit Card *</label>
+                                                <input id="email" name="email" type="text" className="form-control"></input>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <label>Your Address *</label>
+                                                <input id="email" name="email" type="text" className="form-control"></input>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-sm-12">
+                                            <div className="form-group">
+                                                <a href="" className="btn btn-default">PURCHASE <i className="fa fa-long-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
+    )
 }
 
 const mapProps = ({ cart, products }) => ({ cart, products })
-const mapDispatch = ({ updateCart })
+const mapDispatch = null
 export default connect(mapProps, mapDispatch)(Checkout)
