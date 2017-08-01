@@ -8,7 +8,6 @@ import { updateSearch } from '../reducers/search'
 
 const Navbar = ({ cart, user, logout, emptyCart, searchInput, updateSearch }) => {
     const cartSize = Object.values(cart).reduce((sum, cur) => sum + cur, 0)
-    console.log('HERE', searchInput)
     return (
         <nav className="navbar navbar-default navbar-fixed bootsnav text-uppercase">
             <div className="top-search">
