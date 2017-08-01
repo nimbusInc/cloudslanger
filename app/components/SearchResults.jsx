@@ -7,7 +7,7 @@ class SearchResults extends Component {
         console.log(this.props.searchInput)
         let productsBySearch = []
         if (this.props.searchInput) {
-            productsBySearch = this.props.products.filter(product => product.name.match(this.props.searchInput))
+            productsBySearch = this.props.products.filter(product => product.name.toLowerCase().match(this.props.searchInput))
         }
         console.log('PRODUCTBS', productsBySearch)
         return (
