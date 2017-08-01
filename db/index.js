@@ -7,7 +7,7 @@ const app = require('APP')
 
     , name = (app.env.DATABASE_NAME || app.name) +
              (app.isTesting ? '_test' : '')
-    , url = app.env.DATABASE_URL || `postgres://pjtarwqvvlwxvc:112afeee8675a59bf3b8a2125fc0365f1ba4a0d190f91fb29adb1bfc02a81829@ec2-107-20-188-239.compute-1.amazonaws.com:5432/dh99laosjha25`
+    , url = app.env.DATABASE_URL || `postgres://localhost:5432/${name}`
 
 debug(chalk.yellow(`Opening database connection to ${url}`))
 const db = module.exports = new Sequelize(url, {
