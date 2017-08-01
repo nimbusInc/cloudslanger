@@ -54,7 +54,7 @@ module.exports = {
         return env.NODE_ENV === 'development'
     },
     get baseUrl() {
-        return env.BASE_URL || `http://localhost:${module.exports.port}`
+        return env.BASE_URL || `http://nimbus-inc.heroku.com:${module.exports.port}`
     },
     get port() {
         return env.PORT || 1337
