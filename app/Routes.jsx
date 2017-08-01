@@ -12,6 +12,7 @@ import Signup from './components/Signup'
 import Checkout from './components/Checkout'
 import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
+import SearchResults from './components/SearchResults'
 
 class Routes extends Component {
     componentDidMount() {
@@ -44,6 +45,6 @@ const mapDispatch = dispatch => ({
     }
 })
 
-const mapProps = ({ user }) => ({ user })
+const mapProps = ({ user, searchInput }) => ({ user, searchInput })
 
 export default connect(mapProps, mapDispatch)(Routes)
