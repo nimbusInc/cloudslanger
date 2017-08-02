@@ -40,12 +40,10 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-#cart {
-    max-height: 10%;
-    max-width: 10%;
+
+#confirmation {
+    margin-top: 34px;
 }
-
-
 /*------------------------------------------------------------------*/
 
 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import { emptyCart } from './cart'
 /* -----------------    ACTIONS     ------------------ */
 
 const INITIALIZE = 'INITIALIZE_ORDERS'
@@ -29,8 +29,8 @@ export default function reducer(orders = [], action) {
 
     case UPDATE:
         return orders.map(order => (
-            action.order.id === order.id ? action.order : order
-        ))
+                action.order.id === order.id ? action.order : order
+            ))
 
     default:
         return orders
@@ -61,7 +61,7 @@ export const removeOrder = id => dispatch => {
 export const addOrder = order => dispatch => {
     console.log(order)
     axios.post('/api/orders', order)
-        .then(res => dispatch(create(res.data)))
+        .then(res => { dispatch(create(res.data)); dispatch(emptyCart()) })
         .catch(err => console.error(`Creating order: ${order} unsuccessful`, err))
 }
 

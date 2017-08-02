@@ -11,7 +11,7 @@ import { addOrder } from '../reducers/orders'
   unordered list
 */
 
-const Checkout = ({ cart, products, user, addOrder }) => {
+const Checkout = ({ cart, products, user, addOrder, history }) => {
     const productIds = Object.keys(cart)
     return (
         <section id="testimonial" className="testimonial fix roomy-100">
@@ -207,6 +207,7 @@ const Checkout = ({ cart, products, user, addOrder }) => {
                                         user,
                                         cart
                                     })
+                                    history.push('confirmation')
                                 }}>
                                     <div className="row">
                                         <div className="col-sm-6">
@@ -239,7 +240,10 @@ const Checkout = ({ cart, products, user, addOrder }) => {
 
                                         <div className="col-sm-12">
                                             <div className="form-group">
-                                                <button type="submit" className="btn btn-default">PURCHASE <i className="fa fa-long-arrow-right"></i></button>
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-default">PURCHASE <i className="fa fa-long-arrow-right"></i>
+                                                </button>
                                             </div>
                                         </div>
 

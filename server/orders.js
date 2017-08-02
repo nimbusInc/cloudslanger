@@ -2,6 +2,7 @@
 
 const db = require('APP/db')
 const Order = db.model('orders')
+const OrderProduct = db.model('orderProducts')
 const User = db.model('users')
 const Product = db.model('products')
 const router = require('express').Router()
@@ -9,7 +10,7 @@ const { mustBeLoggedIn, forbidden } = require('./auth.filters')
 
 // All orders route
 router.get('/', (req, res, next) => {
-    Order.findAll()
+    Order.findAll({ include: { model: Product } })
         .then(orders => res.json(orders))
         .catch(next)
 })
@@ -23,19 +24,22 @@ router.get('/:id', (req, res, next) => {
 
 // Add single order
 router.post('/', (req, res, next) => {
-    const order = req.body
+    const user = req.body.user
+    const cart = req.body.cart
     Promise.all(
-        Object.keys(order.cart).map(productId => {
+        Object.keys(cart).map(productId => {
             return Product.findById(+productId)
         })
     ).then(products => {
         Order.create().then(newOrder => {
             products.forEach(product => {
-                console.log(product.id)
-                newOrder.addProduct(product)
+                newOrder.addProduct(product, { quantity: cart[product.id] })
             })
+            req.session.cart = {}
+            if (user) newOrder.setUser(user.id)
+            res.status(202).json(newOrder)
         })
-    })
+    }).catch(next)
 })
 
 // Update single order
