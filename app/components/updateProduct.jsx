@@ -71,7 +71,7 @@ class adminUpdateProduct extends React.Component {
     render() {
         return (
             <div>
-                <h1>{this.state.campusName}</h1>
+                <h1>{this.state.name}</h1>
                 <form onSubmit= {this.handleSubmit}>
                     <div className="form-group">
                         <label>NAME</label>
