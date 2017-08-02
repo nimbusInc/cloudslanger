@@ -41,11 +41,12 @@ const Navbar = ({ cart, user, logout, emptyCart, searchInput, updateSearch }) =>
 
                     </ul>
                 </div>
+                <div className="navbar-brand">Nimbus, Inc </div>
                 <div className="collapse navbar-collapse" id="navbar-menu">
                     <ul className="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                         <li><Link to="/">home</Link></li>
                         <li><Link to="/products">products</Link></li>
-                        <li>{user && <Link to="/orders">orders</Link>}</li>
+                        <li>{user && <Link to="/orders">{`${user.name}`}</Link>}</li>
                         <li onClick={(e) => { emptyCart(); logout() }}>{user && <Link to="/">logout</Link>}</li>
                         <li>{!user && <Link to="/login">login</Link>}</li>
                         <li>{!user && <Link to="/signup">signup</Link>}</li>
