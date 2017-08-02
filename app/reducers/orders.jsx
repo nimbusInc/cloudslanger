@@ -21,9 +21,6 @@ export default function reducer(orders = [], action) {
     case INITIALIZE:
         return action.orders
 
-    case CREATE:
-        return [action.order, ...orders]
-
     case REMOVE:
         return orders.filter(order => order.id !== action.id)
 
@@ -31,7 +28,6 @@ export default function reducer(orders = [], action) {
         return orders.map(order => (
                 action.order.id === order.id ? action.order : order
             ))
-
     default:
         return orders
     }

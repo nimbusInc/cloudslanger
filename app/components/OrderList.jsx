@@ -4,15 +4,14 @@ import { connect } from 'react-redux'
 import { addOrder } from '../reducers/orders'
 
 const OrderList = ({ cart, products, user, addOrder, history, orders }) => {
+    const ordersForUser = orders.filter(order => order.user_id === user.id)
     return (
         <section id="feature" className="feature p-top-100">
-
-            <br /><br /><br /><br /><br /><br />
-
             {
-                orders && orders.map(order => {
-                    return order.user_id === user.id && order.products && order.products.length && (
+                ordersForUser.length ? ordersForUser.map(order => {
+                    return order.products && order.products.length && (
                         <div key={order.id} className="container">
+                            <br /><br /><br /><br /><br />
                             <div className="row">
                                 <div className="main_work">
                                     <div className="col-md-7 col-sm-12 col-xs-12">
@@ -43,7 +42,23 @@ const OrderList = ({ cart, products, user, addOrder, history, orders }) => {
                             <br /><br /><br /><br /><br />
                         </div>
                     )
-                })
+                }) : <section id="simple" className="simple bg-grey roomy-80">
+                        <div className="container">
+                            <div className="row">
+                                <div className="main_simple text-center">
+                                    <div className="col-md-12">
+                                        <h2>You have no orders!</h2>
+                                        <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere
+                                    me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse
+                                    molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan blandit
+                                    praesent luptatum.</p>
+
+                                        <Link to='/products' className="btn btn-default">Get Shopping <i className="fa fa-long-arrow-right"></i></Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
             }
         </section>
     )

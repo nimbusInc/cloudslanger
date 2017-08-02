@@ -97,14 +97,14 @@ const Cart = ({ cart, products, updateCart }) => {
             <div className="container">
                 <div className="row">
                     <div className="main_simple text-center">
-                        <div className="col-md-12">
+                        <div className="col-md-12 m-top-100">
                             <h2>Your cart is empty!</h2>
                             <p>Eusus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere
                                     me lius quod ii legunt saepius. Duis autem vel eum iriure dolor in hendrerit vulputate velit esse
                                     molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan blandit
                                     praesent luptatum.</p>
 
-                            <Link to='/products/1' className="btn btn-default m-top-40">Get Shopping <i className="fa fa-long-arrow-right"></i></Link>
+                            <Link to='/products' className="btn btn-default m-top-40">Get Shopping <i className="fa fa-long-arrow-right"></i></Link>
                         </div>
                     </div>
                 </div>
