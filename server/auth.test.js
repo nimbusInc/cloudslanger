@@ -4,6 +4,7 @@ const db = require('APP/db'), {User} = db
 const app = require('./start')
 
 const alice = {
+    name: 'alice',
     username: 'alice@secrets.org',
     password: '12345'
 }
@@ -15,6 +16,7 @@ describe('/api/auth', () => {
 
     beforeEach('create a user', () =>
     User.create({
+        name: alice.name,
         email: alice.username,
         password: alice.password
     })

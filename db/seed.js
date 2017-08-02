@@ -2,7 +2,6 @@
 
 const db = require('APP/db'),
     { User, Product, Review, Order, Category, Promise } = db,
-    OrderProduct = db.model('OrderProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -13,7 +12,6 @@ function seedEverything() {
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
-    seeded.orderProducts = orderProducts(seeded)
 
     return Promise.props(seeded)
 }
@@ -24,7 +22,8 @@ const categories = seed(Category, ({
     precipitation: { name: 'precipitation' },
     frost: { name: 'frost' },
     dry: { name: 'dry' },
-    cloud: { name: 'clouds' }
+    cloud: { name: 'clouds' },
+    weird: { name: 'weird' }
 }))
 
 const users = seed(User, ({
@@ -55,16 +54,93 @@ const users = seed(User, ({
         role: 'user',
         password: '1234'
     },
-
     andrew: {
         name: 'andrew atkinson',
         email: 'andrew@blue.dog',
         role: 'guest',
         password: '1234'
+    },
+    justin: {
+        name: 'Justin Pinero',
+        email: 'justin@pinero.gov',
+        role: 'user',
+        password: '1c234'
     }
 }))
 
 const products = seed(Product, ({ categories }) => ({
+    anticyclone: {
+        name: 'Anticyclone',
+        description: `An anticyclone (that is, opposite to a cyclone) is a weather phenomenon defined by the United States National Weather Service's glossary as "a large-scale circulation of winds around a central region of high atmospheric pressure, clockwise in the Northern Hemisphere, counterclockwise in the Southern Hemisphere". Effects of surface-based anticyclones include clearing skies as well as cooler, drier air. Fog can also form overnight within a region of higher pressure. Mid-tropospheric systems, such as the subtropical ridge, deflect tropical cyclones around their periphery and cause a temperature inversion inhibiting free convection near their center, building up surface-based haze under their base. Anticyclones aloft can form within warm core lows such as tropical cyclones, due to descending cool air from the backside of upper troughs such as polar highs, or from large scale sinking such as the subtropical ridge.`,
+        category_id: categories.precipitation.id,
+        img: '/assets/images/High_pressure_Area_Sep_08_2012.jpg',
+        price: 150,
+        quantity: 7
+    },
+    acidrain: {
+        name: 'Acid Rain',
+        description: `Acid rain is a rain or any other form of precipitation that is unusually acidic, meaning that it possesses elevated levels of hydrogen ions (low pH). It can have harmful effects on plants, aquatic animals and infrastructure. Acid rain is caused by emissions of sulfur dioxide and nitrogen oxide, which react with the water molecules in the atmosphere to produce acids. Some governments have made efforts since the 1970s to reduce the release of sulfur dioxide and nitrogen oxide into the atmosphere with positive results. Nitrogen oxides can also be produced naturally by lightning strikes, and sulfur dioxide is produced by volcanic eruptions. Acid rain has been shown to have adverse impacts on forests, freshwaters and soils, killing insect and aquatic life-forms, causing paint to peel, corrosion of steel structures such as bridges, and weathering of stone buildings and statues as well as having impacts on human health.`,
+        category_id: categories.precipitation.id,
+        img: '/assets/images/Cloud_formation_from_refinery_in_Curacao.jpg',
+        price: 2555,
+        quantity: 300
+    },
+    balllightning: {
+        name: 'Ball Lightning',
+        description: `Ball lightning is an unexplained atmospheric electrical phenomenon. The term refers to reports of luminous, spherical objects that vary from pea-sized to several meters in diameter. Though usually associated with thunderstorms, the phenomenon lasts considerably longer than the split-second flash of a lightning bolt. Many early reports claim that the ball eventually explodes, sometimes with fatal consequences, leaving behind the odor of sulfur.`,
+        category_id: categories.storm.id,
+        img: '/assets/images/Ball_lightning.png',
+        price: 1250,
+        quantity: 600
+    },
+    crowinstability: {
+        name: 'Crow Instability',
+        description: `In aerodynamics, the Crow Instability, or V.C.I. vortex crow instability, is an inviscid line-vortex instability, named after its discoverer S. C. Crow. The Crow instability is most commonly observed in the skies behind large aircraft such as the Boeing 747. It occurs when the wingtip vortices interact with contrails from the engines, producing visible distortions in the shape of the contrail.`,
+        category_id: categories.weird.id,
+        img: '/assets/images/Crow_instability_contrail_1-9-08.jpeg',
+        price: 8000,
+        quantity: 30
+    },
+    diamondDust: {
+        name: 'Diamond Dust',
+        description: `Diamond dust is a ground-level cloud composed of tiny ice crystals. This meteorological phenomenon is also referred to simply as ice crystals and is reported in the METAR code as IC. Diamond dust generally forms under otherwise clear or nearly clear skies, so it is sometimes referred to as clear-sky precipitation. It is most commonly observed in Antarctica and the Arctic, but it can occur anywhere with a temperature well below freezing. In polar regions diamond dust may continue for several days without interruption.`,
+        category_id: categories.frost.id,
+        img: '/assets/images/diamonddust.jpg',
+        price: 1250,
+        quantity: 306
+    },
+    extratropicalcyclone: {
+        name: 'Extratropical Cyclone',
+        description: `Extratropical cyclones, sometimes called mid-latitude cyclones or wave cyclones, are low-pressure areas which, along with the anticyclones of high-pressure areas, drive the weather over much of the Earth. Extratropical cyclones are capable of producing anything from cloudiness and mild showers to heavy gales, thunderstorms, blizzards, and tornadoes. These types of cyclones are defined as large scale (synoptic) low pressure weather systems that occur in the middle latitudes of the Earth. In contrast with tropical cyclones, extratropical cyclones produce rapid changes in temperature and dew point along broad lines, called weather fronts, about the center of the cyclone.`,
+        category_id: categories.storm.id,
+        img: '/assets/images/Northwest_Pacific_cyclone_2017-01-10_0300Z.jpg',
+        price: 1250,
+        quantity: 86
+    },
+    indianSummer: {
+        name: 'Indian Summer',
+        description: `Indian summer is a period of unseasonably warm, dry weather that sometimes occurs in autumn in the Northern Hemisphere. The US National Weather Service defines this as weather conditions that are sunny and clear with above normal temperatures, occurring late-September to mid-November.[1] It is usually described as occurring after a killing frost.`,
+        category_id: categories.dry.id,
+        img: '/assets/images/IndianSummer.jpg',
+        price: 667,
+        quantity: 6
+    },
+    Kelvin: {
+        name: 'Kelvin–Helmholtz instability',
+        description: `The Kelvin–Helmholtz instability (after Lord Kelvin and Hermann von Helmholtz) can occur when there is velocity shear in a single continuous fluid, or where there is a velocity difference across the interface between two fluids. An example is wind blowing over water: The instability manifests in waves on the water surface. More generally, clouds, the ocean, Saturn's bands, Jupiter's Red Spot, and the sun's corona show this instability`,
+        category_id: categories.cloud.id,
+        img: '/assets/images/Saturn_Kelvin_Helmholtz.jpg',
+        price: 667,
+        quantity: 6
+    },
+    animals: {
+        name: 'Rain of Animals',
+        description: `Raining animals is a rare meteorological phenomenon in which flightless animals fall from the sky. Such occurrences have been reported in many countries throughout history.[1] One hypothesis is that tornadic waterspouts sometimes pick up creatures such as fish or frogs, and carry them for up to several miles. However, this aspect of the phenomenon has never been witnessed by scientists.`,
+        category_id: categories.weird.id,
+        img: '/assets/images/frogs.jpg',
+        price: 666,
+        quantity: 13
+    },
     storm: {
         name: 'storm',
         description: `A storm is any disturbed state of an environment or astronomical body's atmosphere especially affecting its surface, and strongly implying severe weather. It may be marked by significant disruptions to normal conditions such as strong wind, Tornadoes, hail, thunder and lightning (a thunderstorm), heavy precipitation (snowstorm, rainstorm), heavy freezing rain (ice storm), strong winds (tropical cyclone, windstorm), or wind transporting some substance through the atmosphere as in a dust storm, blizzard, sandstorm, etc.`,
@@ -94,13 +170,13 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Cirrostratus',
         description: 'Cirrostratus /ˌsɪroʊˈstrɑːtəs/ is a high-level, very thin, generally uniform stratiform genus-type of cloud, composed of ice-crystals. It is difficult to detect and is capable of forming halos when the cloud takes the form of thin cirrostratus nebulosus. The cloud has a fibrous texture with no halos if it is thicker cirrostratus fibratus. On the approach of a frontal system, the cirrostratus often begins as nebulosus and turns to fibratus. If the cirrostratus begins as fragmented fibratus it often means the front is weak. Cirrostratus is usually located above 5.5 km (18,000 ft). Its presence indicates a large amount of moisture in the upper atmosphere.',
         category_id: categories.cloud.id,
-        img: 'https://commons.wikimedia.org/wiki/File:Cirrostratus_with_mock_sun.jpg#/media/File:Cirrostratus_with_mock_sun.jpg',
+        img: '/assets/images/Curious_Cirrostratus.JPG',
         price: 200,
         quantity: 5
     },
     rain: {
         name: 'rain',
-        description: 'water from clouds',
+        description: `Rain is liquid water in the form of droplets that have condensed from atmospheric water vapor and then precipitated—that is, become heavy enough to fall under gravity. Rain is a major component of the water cycle and is responsible for depositing most of the fresh water on the Earth. It provides suitable conditions for many types of ecosystems, as well as water for hydroelectric power plants and crop irrigation.The major cause of rain production is moisture moving along three-dimensional zones of temperature and moisture contrasts known as weather fronts. If enough moisture and upward motion is present, precipitation falls from convective clouds (those with strong upward vertical motion) such as cumulonimbus (thunder clouds) which can organize into narrow rainbands. In mountainous areas, heavy precipitation is possible where upslope flow is maximized within windward sides of the terrain at elevation which forces moist air to condense and fall out as rainfall along the sides of mountains. On the leeward side of mountains, desert climates can exist due to the dry air caused by downslope flow which causes heating and drying of the air mass. The movement of the monsoon trough, or intertropical convergence zone, brings rainy seasons to savannah climes. The urban heat island effect leads to increased rainfall, both in amounts and intensity, downwind of cities. Global warming is also causing changes in the precipitation pattern globally, including wetter conditions across eastern North America and drier conditions in the tropics.[citation needed] Antarctica is the driest continent. The globally averaged annual precipitation over land is 715 mm (28.1 in), but over the whole Earth it is much higher at 990 mm (39 in).[1] Climate classification systems such as the Köppen classification system use average annual rainfall to help differentiate between differing climate regimes. Rainfall is measured using rain gauges. Rainfall amounts can be estimated by weather radar.`,
         category_id: categories.precipitation.id,
         img: 'http://dreamicus.com/data/rain/rain-01.jpg',
         price: 50,
@@ -110,9 +186,17 @@ const products = seed(Product, ({ categories }) => ({
         name: 'haboob',
         description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
         category_id: categories.precipitation.id,
-        img: 'https://www.cloudfoundry.org/wp-content/uploads/2017/01/cloud-foundry-blog-image.gif',
+        img: '/assets/images/haboob-1.jpg',
         price: 50,
         quantity: 3
+    },
+    fog: {
+        name: 'Fog',
+        description: `Fog consists of visible cloud water droplets or ice crystals suspended in the air at or near the Earth's surface.[1] Fog can be considered a type of low-lying cloud and is heavily influenced by nearby bodies of water, topography, and wind conditions. In turn, fog has affected many human activities, such as shipping, travel, and warfare.`,
+        category_id: categories.fog.id,
+        img: '/assets/images/High_Desert_Fog.jpg',
+        price: 56,
+        quantity: 3000
     }
 
 }))
@@ -176,14 +260,50 @@ const reviews = seed(Review, ({ users, products }) => ({
         star: 4,
         user_id: users.eli.id,
         product_id: products.haboob.id
+    },
+    r8: {
+        body: `Kickstarter humblebrag freegan, slow-carb occupy poutine taiyaki cardigan pug. Godard kinfolk pop-up pug actually single-origin coffee hoodie salvia forage YOLO organic biodiesel farm-to-table four loko street art. Cliche irony chillwave leggings, skateboard knausgaard tote bag af tbh poutine hella YOLO vegan jianbing four loko. Shoreditch af copper mug pickled raclette, everyday carry plaid kale chips pinterest. Vape lomo echo park freegan. Raw denim pitchfork vegan waistcoat fingerstache cardigan. `,
+        star: 2,
+        user_id: users.andrew.id,
+        product_id: products.animals.id
+    },
+    r9: {
+        body: `Portland venmo four dollar toast dreamcatcher, XOXO tacos mixtape sustainable direct trade taiyaki pinterest art party helvetica 90's. `,
+        star: 5,
+        user_id: users.barack.id,
+        product_id: products.cumulonimbus.id
+    },
+    r10: {
+        body: `Roof party ethical franzen, farm-to-table organic celiac fam messenger bag pitchfork bespoke microdosing iPhone pickled waistcoat umami. Offal DIY wayfarers, meditation helvetica YOLO leggings copper mug glossier hella. `,
+        star: 1,
+        user_id: users.truman.id,
+        product_id: products.animals.id
+    },
+    r11: {
+        body: `Shoreditch tattooed wolf, meh artisan poutine man bun ugh meditation fashion axe fam vape coloring book kitsch plaid. Keytar listicle thundercats readymade, plaid drinking vinegar tousled green juice vexillologist seitan flannel organic humblebrag snackwave. Plaid four loko biodiesel man braid gluten-free gentrify chambray subway tile.`,
+        star: 4,
+        user_id: users.truman.id,
+        product_id: products.Kelvin.id
+    },
+    r12: {
+        body: `Man bun pok pok paleo food truck actually. Letterpress pour-over yr succulents dreamcatcher, flannel waistcoat hexagon hammock.`,
+        star: 2,
+        user_id: users.justin.id,
+        product_id: products.anticyclone.id
+    },
+    r13: {
+        body: `Tote bag taxidermy street art glossier unicorn. Art party neutra man braid messenger bag tilde lumbersexual church-key polaroid bicycle rights +1 health goth farm-to-table. Hashtag pok pok irony twee. Brunch intelligentsia deep v, four loko polaroid meh church-key pok pok mlkshk actually. Skateboard tacos quinoa bespoke taxidermy tousled umami chillwave twee sartorial YOLO you probably haven't heard of them migas shaman XOXO.`,
+        star: 5,
+        user_id: users.andrew.id,
+        product_id: products.balllightning.id
+    },
+    r14: {
+        body: `Tote bag street art glossier unicorn. Four loko polaroid meh Skateboard tacos quinoa bespoke taxidermy tousled umami chillwave twee sartorial YOLO you probably haven't heard of them migas shaman XOXO.`,
+        star: 5,
+        user_id: users.justin.id,
+        product_id: products.balllightning.id
     }
-}))
 
-const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
-    orderProduct1: {
-        order_id: orders.order1.id,
-        product_id: products.rain.id,
-    }
 }))
 
 if (module === require.main) {
@@ -251,4 +371,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { products, reviews, orders, users, categories, orderProducts })
+module.exports = Object.assign(seed, { products, reviews, orders, users, categories })
