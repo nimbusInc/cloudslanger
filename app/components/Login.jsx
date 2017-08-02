@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Login = ({ login, loginGoogle }) => (
+export const Login = ({ login, loginGoogle, history }) => (
     <section id="contact" className="contact fix">
         <div className="container">
             <div className="row">
@@ -10,6 +10,7 @@ export const Login = ({ login, loginGoogle }) => (
                         <form onSubmit={evt => {
                             evt.preventDefault()
                             login(evt.target.email.value, evt.target.password.value)
+                            history.push('/')
                         }}>
 
                             <div className="row">
@@ -24,7 +25,7 @@ export const Login = ({ login, loginGoogle }) => (
                                 <div className="col-sm-12">
                                     <div className="form-group">
                                         <label>Password *</label>
-                                        <input name="password" type="text" className="form-control"></input>
+                                        <input name="password" type="password" className="form-control"></input>
                                     </div>
                                 </div>
 

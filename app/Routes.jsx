@@ -9,9 +9,13 @@ import { fetchCategories } from './reducers/categories'
 import { fetchReviews } from './reducers/reviews'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import OrderList from './components/OrderList'
+import Cart from './components/Cart'
 import Checkout from './components/Checkout'
+import Confirmation from './components/Confirmation'
 import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
+import SearchResults from './components/SearchResults'
 
 class Routes extends Component {
     componentDidMount() {
@@ -27,7 +31,10 @@ class Routes extends Component {
                     <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/signup' component={Signup} />
+                    <Route exact path='/orders' component={OrderList} />
                     <Route exact path='/checkout' component={Checkout} />
+                    <Route exact path='/confirmation' component={Confirmation} />
+                    <Route exact path='/cart' component={Cart} />
                     <Route exact path='/' component={Home} />
                     <Footer />
                 </div>
@@ -44,6 +51,6 @@ const mapDispatch = dispatch => ({
     }
 })
 
-const mapProps = ({ user }) => ({ user })
+const mapProps = ({ user, searchInput }) => ({ user, searchInput })
 
 export default connect(mapProps, mapDispatch)(Routes)
