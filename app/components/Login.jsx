@@ -24,7 +24,7 @@ export const Login = ({ login, loginGoogle }) => (
                                 <div className="col-sm-12">
                                     <div className="form-group">
                                         <label>Password *</label>
-                                        <input name="password" type="text" className="form-control"></input>
+                                        <input name="password" type="password" className="form-control"></input>
                                     </div>
                                 </div>
 
