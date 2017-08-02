@@ -2,7 +2,6 @@
 
 const db = require('APP/db'),
     { User, Product, Review, Order, Category, Promise } = db,
-    OrderProduct = db.model('OrderProduct'),
     { mapValues } = require('lodash')
 
 function seedEverything() {
@@ -13,7 +12,6 @@ function seedEverything() {
     seeded.orders = orders(seeded)
     seeded.products = products(seeded)
     seeded.reviews = reviews(seeded)
-    seeded.orderProducts = orderProducts(seeded)
 
     return Promise.props(seeded)
 }
@@ -179,13 +177,6 @@ const reviews = seed(Review, ({ users, products }) => ({
     }
 }))
 
-const orderProducts = seed(OrderProduct, ({ orders, products }) => ({
-    orderProduct1: {
-        order_id: orders.order1.id,
-        product_id: products.rain.id,
-    }
-}))
-
 if (module === require.main) {
     db.didSync
         .then(() => db.sync({ force: true }))
@@ -251,4 +242,4 @@ function seed(Model, rows) {
     }
 }
 
-module.exports = Object.assign(seed, { products, reviews, orders, users, categories, orderProducts })
+module.exports = Object.assign(seed, { products, reviews, orders, users, categories })

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { signup } from '../reducers/user'
 
-export const Signup = ({ login, signup }) => (
+export const Signup = ({ login, signup, history }) => (
     <section id="contact" className="contact fix">
         <div className="container">
             <div className="row">
@@ -12,6 +12,7 @@ export const Signup = ({ login, signup }) => (
                         <form onSubmit={evt => {
                             evt.preventDefault()
                             signup(evt.target.name.value, evt.target.email.value, evt.target.password.value)
+                            history.push('/')
                         }}>
                             <div className="row">
 
