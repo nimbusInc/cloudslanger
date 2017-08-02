@@ -1,17 +1,17 @@
 import React from 'react'
-import chai, {expect} from 'chai'
+import chai, { expect } from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow, mount, render} from 'enzyme'
 import {spy} from 'sinon'
 chai.use(require('sinon-chai'))
 
-import {Login} from './Login'
+import { Login } from './Login'
 
 /* global describe it beforeEach */
 describe('<Login />', () => {
     let root
     beforeEach('render the root', () =>
-        root = shallow(<Login/>)
+        root = shallow(<Login />)
     )
 
     it('shows a login form', () => {
@@ -28,34 +28,5 @@ describe('<Login />', () => {
     it('has a login button', () => {
         const submit = root.find('button[type="submit"]')
         expect(submit).to.have.length(1)
-    })
-
-    describe('when submitted', () => {
-        const login = spy()
-        const root = shallow(<Login login={login}/>)
-        const evt = {
-            preventDefault: spy(),
-            target: {
-                email: {value: 'bones@example.com'},
-                password: {value: '12345'},
-            }
-        }
-
-        beforeEach('submit', () => {
-            login.reset()
-            evt.preventDefault.reset()
-            root.find('button[type="submit"]').simulate('submit', evt)
-        })
-
-        it('calls props.login with credentials', (evt) => {
-            expect(login).to.have.been.calledWith(
-                target.email.value,
-                target.password.value,
-            )
-        })
-
-        it('calls preventDefault', () => {
-            expect(evt.preventDefault).to.have.been.called
-        })
     })
 })

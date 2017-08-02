@@ -16,6 +16,7 @@ import Confirmation from './components/Confirmation'
 import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
 import SearchResults from './components/SearchResults'
+import UserReviews from './components/UserReviews'
 
 class Routes extends Component {
     componentDidMount() {
@@ -36,6 +37,7 @@ class Routes extends Component {
                     <Route exact path='/confirmation' component={Confirmation} />
                     <Route exact path='/cart' component={Cart} />
                     <Route exact path='/' component={Home} />
+                    <Route exact path='/userreviews/:id' component={UserReviews} />
                     <Footer />
                 </div>
             </Router>
