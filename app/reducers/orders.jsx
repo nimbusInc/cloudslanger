@@ -61,7 +61,7 @@ export const removeOrder = id => dispatch => {
 export const addOrder = order => dispatch => {
     console.log(order)
     axios.post('/api/orders', order)
-        .then(res => { dispatch(create(res.data)); dispatch(emptyCart()) })
+        .then(res => { dispatch(create(res.data)); dispatch(emptyCart()); dispatch(fetchOrders()) })
         .catch(err => console.error(`Creating order: ${order} unsuccessful`, err))
 }
 
