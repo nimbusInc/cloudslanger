@@ -8,7 +8,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(product => product.id === +match.params.id)
     const category = product && categories.find(category => category.id === +product.category_id)
     const productReview = category && reviews.filter(review => review.product_id === +product.id)
-    const averageReview = productReview && Math.ceil(productReview.reduce((acc, cur) => { return acc + cur.star }, 0)/productReview.length)
+    const averageReview = productReview && Math.ceil(productReview.reduce((acc, cur) => { return acc + cur.star }, 0) / productReview.length)
     const AverageStars = averageReview && Array.apply(null, Array(averageReview)).map(star => null)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
@@ -36,11 +36,15 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                         </div>
                         <div className="col-md-4">
                             <div className="blog_fashion_right">
-                                <h4>Reviews for {product.name}</h4>
-                                <small>average review {AverageStars && AverageStars.map((star, i) => (<i className={`fa fa-cloud`} key={i}></i>))}</small>
-                                <hr/>
+                                {AverageStars
+                                    ? (<div>
+                                        <h4>Reviews for {product.name}</h4>
+                                        <small>average review {AverageStars && AverageStars.map((star, i) => (<i className={`fa fa-cloud`} key={i}></i>))}</small>
+                                    </div>)
+                                    : null}
+                                <hr />
                                 {
-                                    productReview && productReview.map(rev => (<Review review={rev} key={rev.id}/>
+                                    productReview && productReview.map(rev => (<Review review={rev} key={rev.id} />
                                     ))
                                 }
                             </div>
