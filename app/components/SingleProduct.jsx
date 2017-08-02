@@ -24,7 +24,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                                     <ol className="breadcrumb">
                                         <li><a href="#" className="text-black">{category.name}</a></li>
                                     </ol>
-                                    <a href="blog-details.html"><h1>{product.name}</h1></a>
+                                    <h1>{product.name}</h1>
                                     <p>{product.description}</p>
                                     <button
                                         onClick={() => { updateCart(product, 'add') }}

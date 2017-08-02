@@ -4,8 +4,8 @@ import Categories from './AllProductsCategoryFilter.jsx'
 import {connect} from 'react-redux'
 
 /* EXPLANATION
-  1.Renders a container that wraps the sidebar and all the product thumbnails
-  2.Sidebar and thumbnails are then wrapped in bootstrap row
+  1.Renders a container displaying product thumbnails
+  2. Thumbnails are then wrapped in bootstrap row
   3. Within that row we create a new col-lg-9(bootstrap stuff) which will hold all our thumbnails
   4. Maps through products and creates thumbnail for each product that are list elements inside a greater
   unordered list
@@ -25,7 +25,6 @@ const AllProducts = function(props) {
                                     <div className="separator_left"></div>
                                     <Categories/>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -34,10 +33,5 @@ const AllProducts = function(props) {
         </div>
     )
 }
-const mapProps= (state) => ({
-    categories: state.categories,
-    products: state.products,
-    currentCategory: state.currentCategory
-})
 
-export default connect(mapProps)(AllProducts)
+export default AllProducts
