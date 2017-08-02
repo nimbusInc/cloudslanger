@@ -89,7 +89,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Ball Lightning',
         description: `Ball lightning is an unexplained atmospheric electrical phenomenon. The term refers to reports of luminous, spherical objects that vary from pea-sized to several meters in diameter. Though usually associated with thunderstorms, the phenomenon lasts considerably longer than the split-second flash of a lightning bolt. Many early reports claim that the ball eventually explodes, sometimes with fatal consequences, leaving behind the odor of sulfur.`,
         category_id: categories.storm.id,
-        img: '/assets/images/Ball_lightning.png',
+        img: '/assets/images/Ball_lightning.jpg',
         price: 1250,
         quantity: 600
     },
@@ -97,7 +97,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Crow Instability',
         description: `In aerodynamics, the Crow Instability, or V.C.I. vortex crow instability, is an inviscid line-vortex instability, named after its discoverer S. C. Crow. The Crow instability is most commonly observed in the skies behind large aircraft such as the Boeing 747. It occurs when the wingtip vortices interact with contrails from the engines, producing visible distortions in the shape of the contrail.`,
         category_id: categories.weird.id,
-        img: '/assets/images/Crow_instability_contrail_1-9-08.jpeg',
+        img: '/assets/images/Crow_instability_contrail_1-9-08.jpg',
         price: 8000,
         quantity: 30
     },
@@ -126,7 +126,7 @@ const products = seed(Product, ({ categories }) => ({
         quantity: 6
     },
     Kelvin: {
-        name: 'Kelvin–Helmholtz instability',
+        name: 'Kelvin–Helmholtz',
         description: `The Kelvin–Helmholtz instability (after Lord Kelvin and Hermann von Helmholtz) can occur when there is velocity shear in a single continuous fluid, or where there is a velocity difference across the interface between two fluids. An example is wind blowing over water: The instability manifests in waves on the water surface. More generally, clouds, the ocean, Saturn's bands, Jupiter's Red Spot, and the sun's corona show this instability`,
         category_id: categories.cloud.id,
         img: '/assets/images/Saturn_Kelvin_Helmholtz.jpg',
@@ -145,7 +145,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'storm',
         description: `A storm is any disturbed state of an environment or astronomical body's atmosphere especially affecting its surface, and strongly implying severe weather. It may be marked by significant disruptions to normal conditions such as strong wind, Tornadoes, hail, thunder and lightning (a thunderstorm), heavy precipitation (snowstorm, rainstorm), heavy freezing rain (ice storm), strong winds (tropical cyclone, windstorm), or wind transporting some substance through the atmosphere as in a dust storm, blizzard, sandstorm, etc.`,
         category_id: categories.storm.id,
-        img: 'https://s-media-cache-ak0.pinimg.com/originals/37/6d/44/376d442176f0af9dd2112cf8e5ea4937.jpg',
+        img: '/assets/images/storm.jpg',
         price: 100,
         quantity: 4
     },
@@ -153,7 +153,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Nimbostratus',
         description: `Nimbostratus is a stratiform genus formerly classified as "Family C" low-level, but now considered by the World Meteorological Organization (WMO) to be a middle- or multi-level stratus type. Although it is usually a low-based cloud, it actually forms most commonly in the middle level of the troposphere and then spreads vertically into the low and high levels. This change in classification would once have made it a "Family D" cloud, but this style of nomenclature was discontinued by the WMO in 1956. Nimbostratus usually produces precipitation over a wide area. Nimbo- is from the Latin word nimbus, which denotes precipitation. It has a diffuse cloud base generally found anywhere from near surface in the low levels to about 3,000 m (9,800 ft) in the middle level of the troposphere. Although usually dark at its base, it often appears illuminated from within to a surface observer.`,
         category_id: categories.cloud.id,
-        img: 'http://www.itworldcanada.com/wp-content/uploads/2017/05/cp1_0111.jpg',
+        img: '/assets/images/nimbo.jpg',
         price: 50,
         quantity: 45
     },
@@ -161,7 +161,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'cumulonimbus',
         description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
         category_id: categories.cloud.id,
-        img: 'https://i.pinimg.com/736x/91/52/d8/9152d84686e30abe15dcfb714eb1ddf4--painting-clouds-cloud-it.jpg',
+        img: '/assets/images/culmulo.jpg',
         price: 500,
 
         quantity: 25
@@ -178,7 +178,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'rain',
         description: `Rain is liquid water in the form of droplets that have condensed from atmospheric water vapor and then precipitated—that is, become heavy enough to fall under gravity. Rain is a major component of the water cycle and is responsible for depositing most of the fresh water on the Earth. It provides suitable conditions for many types of ecosystems, as well as water for hydroelectric power plants and crop irrigation.The major cause of rain production is moisture moving along three-dimensional zones of temperature and moisture contrasts known as weather fronts. If enough moisture and upward motion is present, precipitation falls from convective clouds (those with strong upward vertical motion) such as cumulonimbus (thunder clouds) which can organize into narrow rainbands. In mountainous areas, heavy precipitation is possible where upslope flow is maximized within windward sides of the terrain at elevation which forces moist air to condense and fall out as rainfall along the sides of mountains. On the leeward side of mountains, desert climates can exist due to the dry air caused by downslope flow which causes heating and drying of the air mass. The movement of the monsoon trough, or intertropical convergence zone, brings rainy seasons to savannah climes. The urban heat island effect leads to increased rainfall, both in amounts and intensity, downwind of cities. Global warming is also causing changes in the precipitation pattern globally, including wetter conditions across eastern North America and drier conditions in the tropics.[citation needed] Antarctica is the driest continent. The globally averaged annual precipitation over land is 715 mm (28.1 in), but over the whole Earth it is much higher at 990 mm (39 in).[1] Climate classification systems such as the Köppen classification system use average annual rainfall to help differentiate between differing climate regimes. Rainfall is measured using rain gauges. Rainfall amounts can be estimated by weather radar.`,
         category_id: categories.precipitation.id,
-        img: 'http://dreamicus.com/data/rain/rain-01.jpg',
+        img: '/assets/images/rain.jpg',
         price: 50,
         quantity: 3
     },
