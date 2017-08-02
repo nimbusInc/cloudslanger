@@ -1,6 +1,6 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
-import {connect} from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 class Item extends React.Component {
     render() {
@@ -13,32 +13,25 @@ class Item extends React.Component {
         })
         return (
 
-            <div>
-                {productList && productList.map((product) => (
-                    <div className="grid text-center" key={product.id}>
-                        <NavLink to={`/products/${product.id}`} >
-                            <div className="grid-item transition metal ium">
-                                <img alt="" src={product.img}></img>
-                                <div className="grid_hover_area text-center">
-                                    <div className="grid_hover_text m-top-110">
-                                        <h4 className="text-white">{product.name}</h4>
-                                        <h5 className="text-white">
-                                            <em>{product.description}</em>
-                                        </h5>
-                                        <img className="popup-img text-white m-top-40"/>See more
-                                        <i className="fa fa-cloud"></i>
+            <div className="row">
+                    {productList && productList.map((product) => (
+                        <div className="text-center" key={product.id}>
+                            <NavLink to={`/products/${product.id}`} >
+                                <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+                                    <img alt="" src={product.img}></img>
+                                    <div className=" text-center">
+                                            <h4 >{product.name}</h4>
                                     </div>
                                 </div>
-                            </div>
-                        </NavLink>
-                    </div>
-                ))}
+                            </NavLink>
+                        </div>
+                    ))}
             </div>
         )
     }
 }
 
-const mapProps= (state) => ({
+const mapProps = (state) => ({
     categories: state.categories,
     products: state.products,
 })
