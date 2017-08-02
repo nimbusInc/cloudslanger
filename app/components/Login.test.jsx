@@ -30,32 +30,4 @@ describe('<Login />', () => {
         expect(submit).to.have.length(1)
     })
 
-    describe('when submitted', () => {
-        const login = spy()
-        const root = shallow(<Login login={login}/>)
-        const evt = {
-            preventDefault: spy(),
-            target: {
-                email: {value: 'bones@example.com'},
-                password: {value: '12345'},
-            }
-        }
-
-        beforeEach('submit', () => {
-            login.reset()
-            evt.preventDefault.reset()
-            root.find('button[type="submit"]').simulate('submit', evt)
-        })
-
-        it('calls props.login with credentials', (evt) => {
-            expect(login).to.have.been.calledWith(
-                target.email.value,
-                target.password.value,
-            )
-        })
-
-        it('calls preventDefault', () => {
-            expect(evt.preventDefault).to.have.been.called
-        })
-    })
 })
