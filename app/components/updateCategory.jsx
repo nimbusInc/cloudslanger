@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {NavLink, withRouter} from 'react-router-dom'
-import {addCategory} from './reducers/categories'
+import {updateCategory} from './reducers/categories'
 
-class adminAddCategory extends React.Component {
+class adminUpdateCategory extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
@@ -11,6 +10,15 @@ class adminAddCategory extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.categories.length) {
+            const currentCategory = nextProps.categories.find(category => (category.id=== +nextProps.match.params.id))
+            this.setState({
+                name: currentCategory.name
+            })
+        };
     }
 
     handleChange(event) {
@@ -33,13 +41,12 @@ class adminAddCategory extends React.Component {
     render() {
         return (
             <div>
-                <h1>NEW CATEGORY FORM</h1>
+                <h1>{this.state.name}</h1>
                 <form onSubmit= {this.handleSubmit}>
                     <div className="form-group">
                         <label>NAME</label>
                         <input type="text" value={this.state.name} onChange={this.handleChange} id="name-field" name="name" />
                     </div>
-                    <button type="submit">Add Category</button>
                 </form>
             </div>
         )
@@ -50,6 +57,6 @@ const mapProps= (state) => ({
     categories: state.categories
 })
 
-const mapDispatch = {addCategory}
+const mapDispatch = {updateCategory}
 
-export default connect(mapProps, mapDispatch)(adminAddCategory)
+export default connect(mapProps, mapDispatch)(adminUpdateCategory)
