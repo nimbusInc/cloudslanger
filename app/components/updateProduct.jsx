@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateProduct} from './reducers/products'
+import {updateProduct} from '../reducers/products'
 
-class adminUpdateProduct extends React.Component {
+class AdminUpdateProduct extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
@@ -113,4 +113,4 @@ const mapProps= (state) => ({
 
 const mapDispatch = {updateProduct}
 
-export default connect(mapProps, mapDispatch)(adminUpdateProduct)
+export default connect(mapProps, mapDispatch)(AdminUpdateProduct)

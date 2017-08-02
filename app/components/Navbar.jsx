@@ -20,7 +20,7 @@ const Navbar = ({ cart, user, logout, emptyCart, searchInput, updateSearch }) =>
 
                     </div>
                 </div>
-                    <SearchResults searchInput={ searchInput } />
+                <SearchResults searchInput={ searchInput } />
 
             </div>
 

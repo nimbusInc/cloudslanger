@@ -14,18 +14,18 @@ class Item extends React.Component {
         return (
 
             <div className="row">
-                    {productList && productList.map((product) => (
-                        <div className="text-center" key={product.id}>
-                            <NavLink to={`/products/${product.id}`} >
-                                <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
-                                    <img alt="" src={product.img}></img>
-                                    <div className=" text-center">
-                                            <h4 >{product.name}</h4>
-                                    </div>
+                {productList && productList.map((product) => (
+                    <div className="text-center" key={product.id}>
+                        <NavLink to={`/products/${product.id}`} >
+                            <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+                                <img alt="" src={product.img}></img>
+                                <div className=" text-center">
+                                    <h4 >{product.name}</h4>
                                 </div>
-                            </NavLink>
-                        </div>
-                    ))}
+                            </div>
+                        </NavLink>
+                    </div>
+                ))}
             </div>
         )
     }

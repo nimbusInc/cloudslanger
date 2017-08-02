@@ -17,6 +17,11 @@ import Footer from './components/Footer'
 import SingleProduct from './components/SingleProduct'
 import SearchResults from './components/SearchResults'
 import UserReviews from './components/UserReviews'
+import AdminCategories from './components/AdminCategories'
+import AdminAddCategory from './components/CreateCategory'
+import AdminProducts from './components/AdminProducts'
+import AdminAddProduct from './components/CreateProduct'
+import AdminSingleProduct from './components/AdminSingleProduct'
 
 class Routes extends Component {
     componentDidMount() {
@@ -28,6 +33,11 @@ class Routes extends Component {
             <Router>
                 <div className='culmn'>
                     <Navbar />
+                    <Route exact path='admin/categories' component={AdminCategories} />
+                    <Route exact path='admin/addCategory' component={AdminAddCategory}/>
+                    <Route exact path='admin/addProduct' component={AdminAddProduct}/>
+                    <Route exact path='admin/products' component={AdminProducts} />
+                    <Route exact path='admin/products/:id' component={AdminSingleProduct} />
                     <Route exact path='/products' component={AllProducts} />
                     <Route exact path='/products/:id' component={SingleProduct} />
                     <Route exact path='/login' component={Login} />
