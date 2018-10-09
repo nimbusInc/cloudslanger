@@ -73,7 +73,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Anticyclone',
         description: `An anticyclone (that is, opposite to a cyclone) is a weather phenomenon defined by the United States National Weather Service's glossary as "a large-scale circulation of winds around a central region of high atmospheric pressure, clockwise in the Northern Hemisphere, counterclockwise in the Southern Hemisphere". Effects of surface-based anticyclones include clearing skies as well as cooler, drier air. Fog can also form overnight within a region of higher pressure. Mid-tropospheric systems, such as the subtropical ridge, deflect tropical cyclones around their periphery and cause a temperature inversion inhibiting free convection near their center, building up surface-based haze under their base. Anticyclones aloft can form within warm core lows such as tropical cyclones, due to descending cool air from the backside of upper troughs such as polar highs, or from large scale sinking such as the subtropical ridge.`,
         category_id: categories.precipitation.id,
-        img: '/assets/images/High_pressure_Area_Sep_08_2012.jpg',
+        img: 'High_pressure_Area_Sep_08_2012.jpg',
         price: 150,
         quantity: 7
     },
@@ -81,7 +81,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Acid Rain',
         description: `Acid rain is a rain or any other form of precipitation that is unusually acidic, meaning that it possesses elevated levels of hydrogen ions (low pH). It can have harmful effects on plants, aquatic animals and infrastructure. Acid rain is caused by emissions of sulfur dioxide and nitrogen oxide, which react with the water molecules in the atmosphere to produce acids. Some governments have made efforts since the 1970s to reduce the release of sulfur dioxide and nitrogen oxide into the atmosphere with positive results. Nitrogen oxides can also be produced naturally by lightning strikes, and sulfur dioxide is produced by volcanic eruptions. Acid rain has been shown to have adverse impacts on forests, freshwaters and soils, killing insect and aquatic life-forms, causing paint to peel, corrosion of steel structures such as bridges, and weathering of stone buildings and statues as well as having impacts on human health.`,
         category_id: categories.precipitation.id,
-        img: '/assets/images/Cloud_formation_from_refinery_in_Curacao.jpg',
+        img: 'Cloud_formation_from_refinery_in_Curacao.jpg',
         price: 2555,
         quantity: 300
     },
@@ -89,7 +89,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Ball Lightning',
         description: `Ball lightning is an unexplained atmospheric electrical phenomenon. The term refers to reports of luminous, spherical objects that vary from pea-sized to several meters in diameter. Though usually associated with thunderstorms, the phenomenon lasts considerably longer than the split-second flash of a lightning bolt. Many early reports claim that the ball eventually explodes, sometimes with fatal consequences, leaving behind the odor of sulfur.`,
         category_id: categories.storm.id,
-        img: '/assets/images/Ball_lightning.jpg',
+        img: 'Ball_lightning.jpg',
         price: 1250,
         quantity: 600
     },
@@ -97,7 +97,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Crow Instability',
         description: `In aerodynamics, the Crow Instability, or V.C.I. vortex crow instability, is an inviscid line-vortex instability, named after its discoverer S. C. Crow. The Crow instability is most commonly observed in the skies behind large aircraft such as the Boeing 747. It occurs when the wingtip vortices interact with contrails from the engines, producing visible distortions in the shape of the contrail.`,
         category_id: categories.weird.id,
-        img: '/assets/images/Crow_instability_contrail_1-9-08.jpg',
+        img: 'Crow_instability_contrail_1-9-08.jpg',
         price: 8000,
         quantity: 30
     },
@@ -105,7 +105,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Diamond Dust',
         description: `Diamond dust is a ground-level cloud composed of tiny ice crystals. This meteorological phenomenon is also referred to simply as ice crystals and is reported in the METAR code as IC. Diamond dust generally forms under otherwise clear or nearly clear skies, so it is sometimes referred to as clear-sky precipitation. It is most commonly observed in Antarctica and the Arctic, but it can occur anywhere with a temperature well below freezing. In polar regions diamond dust may continue for several days without interruption.`,
         category_id: categories.frost.id,
-        img: '/assets/images/diamonddust.jpg',
+        img: 'diamonddust.jpg',
         price: 1250,
         quantity: 306
     },
@@ -113,7 +113,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Extratropical Cyclone',
         description: `Extratropical cyclones, sometimes called mid-latitude cyclones or wave cyclones, are low-pressure areas which, along with the anticyclones of high-pressure areas, drive the weather over much of the Earth. Extratropical cyclones are capable of producing anything from cloudiness and mild showers to heavy gales, thunderstorms, blizzards, and tornadoes. These types of cyclones are defined as large scale (synoptic) low pressure weather systems that occur in the middle latitudes of the Earth. In contrast with tropical cyclones, extratropical cyclones produce rapid changes in temperature and dew point along broad lines, called weather fronts, about the center of the cyclone.`,
         category_id: categories.storm.id,
-        img: '/assets/images/Northwest_Pacific_cyclone_2017-01-10_0300Z.jpg',
+        img: 'Northwest_Pacific_cyclone_2017-01-10_0300Z.jpg',
         price: 1250,
         quantity: 86
     },
@@ -121,7 +121,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Indian Summer',
         description: `Indian summer is a period of unseasonably warm, dry weather that sometimes occurs in autumn in the Northern Hemisphere. The US National Weather Service defines this as weather conditions that are sunny and clear with above normal temperatures, occurring late-September to mid-November.[1] It is usually described as occurring after a killing frost.`,
         category_id: categories.dry.id,
-        img: '/assets/images/IndianSummer.jpg',
+        img: 'IndianSummer.jpg',
         price: 667,
         quantity: 6
     },
@@ -129,7 +129,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Kelvin–Helmholtz',
         description: `The Kelvin–Helmholtz instability (after Lord Kelvin and Hermann von Helmholtz) can occur when there is velocity shear in a single continuous fluid, or where there is a velocity difference across the interface between two fluids. An example is wind blowing over water: The instability manifests in waves on the water surface. More generally, clouds, the ocean, Saturn's bands, Jupiter's Red Spot, and the sun's corona show this instability`,
         category_id: categories.cloud.id,
-        img: '/assets/images/Saturn_Kelvin_Helmholtz.jpg',
+        img: 'Saturn_Kelvin_Helmholtz.jpg',
         price: 667,
         quantity: 6
     },
@@ -137,7 +137,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Rain of Animals',
         description: `Raining animals is a rare meteorological phenomenon in which flightless animals fall from the sky. Such occurrences have been reported in many countries throughout history.[1] One hypothesis is that tornadic waterspouts sometimes pick up creatures such as fish or frogs, and carry them for up to several miles. However, this aspect of the phenomenon has never been witnessed by scientists.`,
         category_id: categories.weird.id,
-        img: '/assets/images/frogs.jpg',
+        img: 'frogs.jpg',
         price: 666,
         quantity: 13
     },
@@ -145,7 +145,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'storm',
         description: `A storm is any disturbed state of an environment or astronomical body's atmosphere especially affecting its surface, and strongly implying severe weather. It may be marked by significant disruptions to normal conditions such as strong wind, Tornadoes, hail, thunder and lightning (a thunderstorm), heavy precipitation (snowstorm, rainstorm), heavy freezing rain (ice storm), strong winds (tropical cyclone, windstorm), or wind transporting some substance through the atmosphere as in a dust storm, blizzard, sandstorm, etc.`,
         category_id: categories.storm.id,
-        img: '/assets/images/storm.jpg',
+        img: 'storm.jpg',
         price: 100,
         quantity: 4
     },
@@ -153,7 +153,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Nimbostratus',
         description: `Nimbostratus is a stratiform genus formerly classified as "Family C" low-level, but now considered by the World Meteorological Organization (WMO) to be a middle- or multi-level stratus type. Although it is usually a low-based cloud, it actually forms most commonly in the middle level of the troposphere and then spreads vertically into the low and high levels. This change in classification would once have made it a "Family D" cloud, but this style of nomenclature was discontinued by the WMO in 1956. Nimbostratus usually produces precipitation over a wide area. Nimbo- is from the Latin word nimbus, which denotes precipitation. It has a diffuse cloud base generally found anywhere from near surface in the low levels to about 3,000 m (9,800 ft) in the middle level of the troposphere. Although usually dark at its base, it often appears illuminated from within to a surface observer.`,
         category_id: categories.cloud.id,
-        img: '/assets/images/nimbo.jpg',
+        img: 'nimbo.jpg',
         price: 50,
         quantity: 45
     },
@@ -161,7 +161,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'cumulonimbus',
         description: 'Cumulonimbus, from the Latin cumulus ("heap") and nimbus ("rainstorm", "storm cloud"), is a dense towering vertical cloud[1] associated with thunderstorms and atmospheric instability, forming from water vapor carried by powerful upward air currents. If observed during a storm, these clouds may be referred to as thunderheads. Cumulonimbus can form alone, in clusters, or along cold front squall lines. These clouds are capable of producing lightning and other dangerous severe weather, such as tornadoes. Cumulonimbus progress from overdeveloped cumulus congestus clouds and may further develop as part of a supercell. Cumulonimbus is abbreviated Cb.',
         category_id: categories.cloud.id,
-        img: '/assets/images/culmulo.jpg',
+        img: 'culmulo.jpg',
         price: 500,
 
         quantity: 25
@@ -170,7 +170,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Cirrostratus',
         description: 'Cirrostratus /ˌsɪroʊˈstrɑːtəs/ is a high-level, very thin, generally uniform stratiform genus-type of cloud, composed of ice-crystals. It is difficult to detect and is capable of forming halos when the cloud takes the form of thin cirrostratus nebulosus. The cloud has a fibrous texture with no halos if it is thicker cirrostratus fibratus. On the approach of a frontal system, the cirrostratus often begins as nebulosus and turns to fibratus. If the cirrostratus begins as fragmented fibratus it often means the front is weak. Cirrostratus is usually located above 5.5 km (18,000 ft). Its presence indicates a large amount of moisture in the upper atmosphere.',
         category_id: categories.cloud.id,
-        img: '/assets/images/Curious_Cirrostratus.JPG',
+        img: 'Curious_Cirrostratus.JPG',
         price: 200,
         quantity: 5
     },
@@ -178,7 +178,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'rain',
         description: `Rain is liquid water in the form of droplets that have condensed from atmospheric water vapor and then precipitated—that is, become heavy enough to fall under gravity. Rain is a major component of the water cycle and is responsible for depositing most of the fresh water on the Earth. It provides suitable conditions for many types of ecosystems, as well as water for hydroelectric power plants and crop irrigation.The major cause of rain production is moisture moving along three-dimensional zones of temperature and moisture contrasts known as weather fronts. If enough moisture and upward motion is present, precipitation falls from convective clouds (those with strong upward vertical motion) such as cumulonimbus (thunder clouds) which can organize into narrow rainbands. In mountainous areas, heavy precipitation is possible where upslope flow is maximized within windward sides of the terrain at elevation which forces moist air to condense and fall out as rainfall along the sides of mountains. On the leeward side of mountains, desert climates can exist due to the dry air caused by downslope flow which causes heating and drying of the air mass. The movement of the monsoon trough, or intertropical convergence zone, brings rainy seasons to savannah climes. The urban heat island effect leads to increased rainfall, both in amounts and intensity, downwind of cities. Global warming is also causing changes in the precipitation pattern globally, including wetter conditions across eastern North America and drier conditions in the tropics.[citation needed] Antarctica is the driest continent. The globally averaged annual precipitation over land is 715 mm (28.1 in), but over the whole Earth it is much higher at 990 mm (39 in).[1] Climate classification systems such as the Köppen classification system use average annual rainfall to help differentiate between differing climate regimes. Rainfall is measured using rain gauges. Rainfall amounts can be estimated by weather radar.`,
         category_id: categories.precipitation.id,
-        img: '/assets/images/rain.jpg',
+        img: 'rain.jpg',
         price: 50,
         quantity: 3
     },
@@ -186,7 +186,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'haboob',
         description: 'A haboob is a type of intense dust storm carried on an atmospheric gravity current, also known as a weather front. Haboobs occur regularly in arid regions throughout the world.',
         category_id: categories.precipitation.id,
-        img: '/assets/images/haboob-1.jpg',
+        img: 'haboob-1.jpg',
         price: 50,
         quantity: 3
     },
@@ -194,7 +194,7 @@ const products = seed(Product, ({ categories }) => ({
         name: 'Fog',
         description: `Fog consists of visible cloud water droplets or ice crystals suspended in the air at or near the Earth's surface.[1] Fog can be considered a type of low-lying cloud and is heavily influenced by nearby bodies of water, topography, and wind conditions. In turn, fog has affected many human activities, such as shipping, travel, and warfare.`,
         category_id: categories.fog.id,
-        img: '/assets/images/High_Desert_Fog.jpg',
+        img: 'High_Desert_Fog.jpg',
         price: 56,
         quantity: 3000
     }

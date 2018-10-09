@@ -20,7 +20,7 @@ function AdminSingleProduct({ products, match, updateCart, categories, reviews }
                         <div className="col-md-8">
                             <div className="blog_fashion_left">
                                 <div className="blog_fashion_img">
-                                    <img src={product.img} alt="" ></img>
+                                    <img src={`/assets/images/${product.img}`} alt="" ></img>
                                 </div>
                                 <div className="blog_fashion_content">
                                     <ol className="breadcrumb">
