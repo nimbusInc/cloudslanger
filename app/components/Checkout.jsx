@@ -17,17 +17,10 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
         <section id="testimonial" className="testimonial fix roomy-100">
             <div className="container">
                 <div className="row">
-
-
                     <div className="service_content_area">
-
                         <div className="col-md-4 service_left wow fadeInLeft">
-
-
                             <div className="service_items">
                                 <div className="row">
-
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -35,22 +28,16 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div className="col-xs-9">
                                         <div className="text-left service_left_text">
                                             <h4 className="main-color">Free Shipping</h4>
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-
-
                             <div className="service_items">
                                 <div className="row">
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -58,22 +45,16 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div className="col-xs-9">
                                         <div className="text-left service_left_text">
                                             <h4 className="main-color">Garaunteed Delivery</h4>
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-
-
                             <div className="service_items">
                                 <div className="row">
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -81,7 +62,6 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                     <div className="col-xs-9">
                                         <div className="text-left service_left_text">
                                             <h4 className="main-color">Pore Cleansing</h4>
@@ -90,34 +70,21 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-
-
-
                         <div className="col-md-4 sm-m-top-40 sm-text-center">
                             <div className="service-img wow bounceIn">
                                 <img src='https://booster.io/wp-content/uploads/checkout-custom-fields-e1438367928930.png' alt="Architect Img"></img>
                             </div>
                         </div>
-
-
                         <div className="col-md-4 service_right wow fadeInRight sm-m-top-40" >
-
-
                             <div className="service_items">
                                 <div className="row">
-
                                     <div className="col-xs-9">
                                         <div className="service_right_text p-l-15 text-right">
                                             <h4 className="main-color">Rain & Shine</h4>
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -125,26 +92,16 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
-
-
-
                             <div className="service_items">
                                 <div className="row">
-
                                     <div className="col-xs-9">
                                         <div className="service_right_text p-l-15 text-right">
                                             <h4 className="main-color">God is you</h4>
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
-
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -152,24 +109,16 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
-
                             <div className="service_items">
                                 <div className="row">
-
-
                                     <div className="col-xs-9">
                                         <div className="service_right_text p-l-15 text-right">
                                             <h4 className="main-color">And much more</h4>
                                             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie</p>
                                         </div>
                                     </div>
-
-
                                     <div className="col-xs-3">
                                         <div className="hexagon">
                                             <div className="about-content">
@@ -177,23 +126,16 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
             <section id="contact" className="contact fix">
                 <div className="container">
                     <div className="row">
                         <div className="main_contact p-top-100">
-
                             <div className="col-lg-12 sm-m-top-30">
                                 <form onSubmit={(event) => {
                                     event.preventDefault()
@@ -216,28 +158,24 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                                 <input id="name" name="name" type="text" className="form-control" required=""></input>
                                             </div>
                                         </div>
-
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Email *</label>
                                                 <input id="email" name="email" type="text" className="form-control"></input>
                                             </div>
                                         </div>
-
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Credit Card *</label>
                                                 <input id="payment" name="payment" type="text" className="form-control"></input>
                                             </div>
                                         </div>
-
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <label>Your Address *</label>
                                                 <input id="address" name="address" type="text" className="form-control"></input>
                                             </div>
                                         </div>
-
                                         <div className="col-sm-12">
                                             <div className="form-group">
                                                 <button
@@ -246,7 +184,6 @@ const Checkout = ({ cart, products, user, addOrder, history }) => {
                                                 </button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </form>
                             </div>

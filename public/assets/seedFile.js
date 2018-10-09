@@ -1,6 +1,6 @@
-//Basic seed file with products and filters
+// Basic seed file with products and filters
 
-const state =  {
+const state = {
     products: [
         {
             name: 'storm',
@@ -26,9 +26,8 @@ const state =  {
             price: 50,
             id: 3
         },
-        
     ],
     filters: ['precipation', 'clear', 'rough', 'wet']
 }
 
-export default state;
+export default state

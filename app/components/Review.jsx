@@ -1,4 +1,4 @@
-import {NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import React from 'react'
 
 export default function Review(rev) {
@@ -14,5 +14,3 @@ export default function Review(rev) {
         </div>
     ) : null
 }
-
-

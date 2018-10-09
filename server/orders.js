@@ -27,9 +27,7 @@ router.post('/', (req, res, next) => {
     const user = req.body.user
     const cart = req.body.cart
     Promise.all(
-        Object.keys(cart).map(productId => {
-            return Product.findById(+productId)
-        })
+        Object.keys(cart).map(productId => Product.findById(+productId))
     ).then(products => {
         Order.create().then(newOrder => {
             products.forEach(product => {
@@ -49,7 +47,7 @@ router.put('/:id', (req, res, next) => {
             id: req.params.id
         }
     })
-        .then(function (unupdatedOrder) {
+        .then(function(unupdatedOrder) {
             if (unupdatedOrder) {
                 return unupdatedOrder.update(req.body)
             }

@@ -8,7 +8,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(product => product.id === +match.params.id)
     const category = product && categories.find(category => category.id === +product.category_id)
     const productReview = category && reviews.filter(review => review.product_id === +product.id)
-    const averageReview = productReview && Math.ceil(productReview.reduce((acc, cur) => { return acc + cur.star }, 0) / productReview.length)
+    const averageReview = productReview && Math.ceil(productReview.reduce((acc, cur) => acc + cur.star, 0) / productReview.length)
     const AverageStars = averageReview && Array.apply(null, Array(averageReview)).map(star => null)
     return product ? (
         <section id="blog_fashion" className="blog_fashion roomy-100">
@@ -18,7 +18,7 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                         <div className="col-md-8">
                             <div className="blog_fashion_left">
                                 <div className="blog_fashion_img">
-                                    <img src={product.img} alt="" ></img>
+                                    <img src={`/assets/images/${product.img}`} alt="" ></img>
                                 </div>
                                 <div className="blog_fashion_content">
                                     <ol className="breadcrumb">

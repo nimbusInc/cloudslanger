@@ -21,7 +21,7 @@ const Cart = ({ cart, products, updateCart }) => {
                 {
 
                     cart && products && Object.keys(cart).map((id, i) => {
-                        let item = products.find(p => p.id === +id)
+                        const item = products.find(p => p.id === +id)
                         return item ? (
                             <div key={id} className="row">
                                 <div className="main_feature">
@@ -59,7 +59,7 @@ const Cart = ({ cart, products, updateCart }) => {
                                         <div className="feature_photo wow fadeIn sm-m-top-40">
                                             <div className="photo_border"></div>
                                             <div className="feature_img">
-                                                <img src={item && item.img} alt="" />
+                                                <img src={item && `/assets/images/${item.img}`} alt="" />
                                             </div>
                                         </div>
                                     </div>
