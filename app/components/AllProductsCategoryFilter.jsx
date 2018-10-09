@@ -48,9 +48,7 @@ class Categories extends React.Component {
 const mapProps = ({ categories, products, currentCategory }) => ({ categories, products, currentCategory })
 
 const mapDispatch = dispatch => ({
-    categorySelect: (newCat) => {
-        dispatch(select(newCat))
-    }
+    categorySelect: newCat => { dispatch(select(newCat)) }
 })
 
 export default connect(mapProps, mapDispatch)(Categories)

@@ -1,5 +1,5 @@
 'use strict'
-let sessionTracker = 1
+const sessionTracker = 1
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')

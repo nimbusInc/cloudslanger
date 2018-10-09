@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateCart } from '../reducers/cart'
+import { removeProduct } from '../reducers/products'
 import Review from './Review'
+import UpdateProduct from './UpdateProduct'
 
-function SingleProduct({ products, match, updateCart, categories, reviews }) {
+function AdminSingleProduct({ products, match, updateCart, categories, reviews }) {
     const product = products.find(product => product.id === +match.params.id)
     const category = product && categories.find(category => category.id === +product.category_id)
     const productReview = category && reviews.filter(review => review.product_id === +product.id)
@@ -45,18 +47,22 @@ function SingleProduct({ products, match, updateCart, categories, reviews }) {
                                 <hr />
                                 {
                                     productReview && productReview.map(rev => (<Review review={rev} key={rev.id} />
-                                    ))
+                                ))
                                 }
                             </div>
                         </div>
                     </div>
+                    <UpdateProduct/>
+                    <button onClick={() => removeProduct(+match.params.id)} className="btn btn-default text-uppercase">REMOVE PRODUCT
+                        <i className="fa fa-ban" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
         </section>
     ) : null
 }
 
-const mapDispatch = ({ updateCart })
+const mapDispatch = ({ updateCart, removeProduct })
 const mapProps = ({ products, categories, reviews }) => ({ products, categories, reviews })
 
-export default connect(mapProps, mapDispatch)(SingleProduct)
+export default connect(mapProps, mapDispatch)(AdminSingleProduct)

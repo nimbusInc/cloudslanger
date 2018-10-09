@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {NavLink, withRouter} from 'react-router-dom'
-import {addCategory} from './reducers/categories'
+import {addCategory} from '../reducers/categories'
 
-class adminAddCategory extends React.Component {
+class AdminAddCategory extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
@@ -52,4 +52,4 @@ const mapProps= (state) => ({
 
 const mapDispatch = {addCategory}
 
-export default connect(mapProps, mapDispatch)(adminAddCategory)
+export default connect(mapProps, mapDispatch)(AdminAddCategory)

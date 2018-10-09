@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {updateCategory} from './reducers/categories'
+import {updateCategory} from '../reducers/categories'
 
-class adminUpdateCategory extends React.Component {
+class AdminUpdateCategory extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
@@ -59,4 +59,4 @@ const mapProps= (state) => ({
 
 const mapDispatch = {updateCategory}
 
-export default connect(mapProps, mapDispatch)(adminUpdateCategory)
+export default connect(mapProps, mapDispatch)(AdminUpdateCategory)

@@ -37,14 +37,10 @@ export const fetchCart = () => dispatch => {
 }
 
 // pessimistic
-export const deleteFromCart = item => dispatch => {
-    return axios.delete(`/api/cart`, { data: item })
+export const deleteFromCart = item => dispatch => axios.delete(`/api/cart`, { data: item })
            .then(res => { dispatch(remove(res.data)) })
            .catch(err => console.error(`Removing ${item} unsuccessful`, err))
-}
 
-export const updateCart = (item, action) => dispatch => {
-    return axios.put('/api/cart', Object.assign({}, item, { action }))
+export const updateCart = (item, action) => dispatch => axios.put('/api/cart', Object.assign({}, item, { action }))
            .then(res => dispatch(update(res.data)))
            .catch(err => console.error(`Adding ${item}: unsuccessful`, err))
-}

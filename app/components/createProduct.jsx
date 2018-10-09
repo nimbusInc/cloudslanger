@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {NavLink, withRouter} from 'react-router-dom'
-import {addProduct} from './reducers/products'
+import {addProduct} from '../reducers/products'
 
-class adminAddProduct extends React.Component {
+class AdminAddProduct extends React.Component {
     constructor(props) {
         super(props)
         this.state= {
@@ -99,4 +99,4 @@ const mapProps= (state) => ({
 
 const mapDispatch = {addProduct}
 
-export default connect(mapProps, mapDispatch)(adminAddProduct)
+export default connect(mapProps, mapDispatch)(AdminAddProduct)

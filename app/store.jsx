@@ -24,4 +24,3 @@ export default store
 store.dispatch(whoami())
 store.dispatch(fetchCart())
 store.dispatch(fetchOrders())
-
